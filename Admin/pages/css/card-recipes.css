@@ -9,6 +9,10 @@ body {
   height: 100vh;
   background-color:var(--bg-color);
 }
+a{
+  color: var(--font-color);
+  text-decoration: none;
+}
 .search{
   display: flex;
   justify-content: center;
@@ -88,6 +92,19 @@ p {
   padding: 10px;
   border-radius: 0 0 12px 12px;
 }
+.add-recipe{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 80px;
+}
+.new-recipe{
+  padding: 15px 40px;
+  font-size: 18px;
+}
+.new-recipe:hover{
+  background-color: var(--primary-color);
+}
 
 button {
   border: none;
@@ -100,10 +117,7 @@ button {
   color: var(--font-color);
   background-color: var(--secondary-color);
 }
-button:disabled{
-  opacity: 0.3;
-}
-button:hover:not(:disabled){
+button:hover{
   color: var(--bg-color);
   background-color:var(--font-color);
 }
