@@ -1,0 +1,90 @@
+:root{
+  --bg-color: #FCF7E4;
+  --primary-color:#AFBCAA;
+  --secondary-color: #F7AF89;
+  --font-color: #333333;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color:var(--bg-color);
+  color: var(--font-color);
+  height: 100vh;
+  margin: 0;
+}
+section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-container {
+  background: rgba(255, 255, 255, 0.418);
+  padding: 20px;
+  margin-block: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 60%;
+}
+.profile-image {
+  text-align: center;
+  padding: 20px;
+}
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.profile-info {
+  flex-grow: 1;
+  padding: 20px;
+}
+.profile-info h2 {
+  margin-bottom: 10px;
+}
+.profile-info p {
+color: rgb(92, 92, 92);
+margin-left: 10px;
+}
+.form-group {
+  margin-bottom: 10px;
+}
+.form-group label {
+  display: block;
+  font-weight: bold;
+}
+.form-group input {
+  width: 100%;
+  margin-block: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.buttons {
+  text-align: right;
+}
+button {
+  background: var(--secondary-color);
+  color: var(--font-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 5px;
+}
+.buttons .logout:hover {
+  background: rgb(202, 13, 13);
+  transition: 0.3s;
+}
+.pass{
+  padding: 8px 10px;
+}
+.buttons .save:hover , .pass:hover {
+  background:var(--primary-color);
+  transition: 0.3s;
+}
+@media screen and (max-width:768px) {
+  .profile-container {
+    width: 80%;
+  }
+}
