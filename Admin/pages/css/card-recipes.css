@@ -28,6 +28,13 @@ body {
   color: var(--font-color);
   outline: var(--primary-color);
 }
+.card-content input{
+  border: 1px solid var(--font-color);
+  margin: 5px;
+  padding: 5px;
+  border-radius: 20px;
+  outline: none;
+}
 .cards-body {
   margin-top: 50px;
   margin-inline: 30px;
@@ -48,6 +55,7 @@ body {
   transform: translateY(-8px);
 }
 .card-image {
+  background-color:#afbcaa25;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,7 +100,10 @@ button {
   color: var(--font-color);
   background-color: var(--secondary-color);
 }
-button:hover{
+button:disabled{
+  opacity: 0.3;
+}
+button:hover:not(:disabled){
   color: var(--bg-color);
   background-color:var(--font-color);
 }
