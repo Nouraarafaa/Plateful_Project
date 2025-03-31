@@ -1,4 +1,4 @@
-# Plateful-Project -> Project (1)
+# Plateful (Recipe Finder)
 
 | Name   | Tasks |
 |--------|---------|
