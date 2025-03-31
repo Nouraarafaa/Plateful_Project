@@ -36,7 +36,7 @@ body {
   gap: 20px;
 }
 .card {
-  background: #ffffff58;
+  background: white;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -92,6 +92,16 @@ button {
   color: var(--font-color);
   background-color: var(--secondary-color);
 }
+
+a {
+  text-decoration: none;
+  color: var(--font-color);
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
 button:hover{
   color: var(--bg-color);
   background-color:var(--font-color);

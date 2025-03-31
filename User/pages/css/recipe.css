@@ -1,0 +1,13 @@
+:root{
+  --bg-color: #FCF7E4;
+  --primary-color:#AFBCAA;
+  --secondary-color: #F7AF89;
+  --font-color: #333333;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+  background-color:var(--bg-color);
+}
+
