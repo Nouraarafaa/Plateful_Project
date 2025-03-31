@@ -1,0 +1,111 @@
+/* General Page Styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #FCF7E4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Hero Section Container */
+.hero-container {
+    width: 100%;
+    height: 60vh; 
+    background-color: #FCF7E4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+/* Centered Text Content */
+.hero-text {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    color: #4A2F14; 
+}
+
+.hero-text h4 {
+    font-family: 'Rochester', cursive;
+    font-size: 30px;
+    margin: 0;
+}
+
+.hero-text h1 {
+    font-family: 'Rochester', cursive;
+    font-weight: bold;
+    font-size: 150px;
+    line-height: 0.1;
+}
+
+.hero-text p {
+    font-family: serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 2;
+}
+
+/* Video Elements */
+.hero-video {
+    width: 25%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Adjusting Video Alignment */
+.hero-video.left {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+}
+
+.hero-video.right {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+}
+
+/* Responsive Design for Medium Screens */
+@media (max-width: 1024px) {
+    .hero-video {
+        width: 30%;
+    }
+
+    .hero-text h1 {
+        font-size: 120px;
+    }
+}
+
+/* Responsive Design for Small Screens (Mobile) */
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+
+    .hero-video {
+        width: 90%;
+        height: auto;
+    }
+
+    .hero-text {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .hero-text h1 {
+        font-size: 80px;
+    }
+
+    .hero-text p {
+        font-size: 18px;
+    }
+}
+
+
