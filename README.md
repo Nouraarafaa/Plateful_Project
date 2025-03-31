@@ -2,7 +2,7 @@
 
 | Name   | Tasks |
 |--------|---------|
-| Israa     |  view all ingredients , Footer   |
+| Israa     |  View all ingredients , Footer   |
 | Noura  | Cards , Favourites , Navbar , User Profile |
 | Eman    | Login , Register   |
 | Menna   | Home  |
