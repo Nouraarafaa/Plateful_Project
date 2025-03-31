@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/Admin/pages/css/card-recipes.css">
-  <link rel="stylesheet" href="/Admin/pages/css/home-nav.css">
+  <link rel="stylesheet" href="/User/pages/css/home-nav.css">
   <link rel="stylesheet" href="/Admin/pages/css/all.min.css">
   <link rel="shortcut icon" href="/imgs/logo-favicon.png" type="image/x-icon">
   <title>Recipes</title>
@@ -14,35 +14,40 @@
 <body>
   <nav>
     <div class="logo">
-      <img src="/imgs/logo.png" alt="Logo">
+        <img src="/imgs/logo.png" alt="Logo">
     </div>
     <ul class="nav-links">
       <li><a href="/index.html">Home</a></li>
       <li><a href="/Admin/pages/html/card-recipes.html">Recipes</a></li>
       <li><a href="#">Contact us</a></li>
       <li><a class="favourites" href="#">
-          <i class="fa-solid fa-heart"></i>
-        </a></li>
-      <li><a href="">
-          <i class="fa-solid fa-user"></i>
-        </a></li>
+        <i class="fa-solid fa-heart"></i>
+      </a></li>
+      <li><a href="/User/pages/html/profile.html">
+        <i class="fa-solid fa-user"></i>
+      </a></li>
     </ul>
 
     <div class="menu-container">
-      <div class="menu-icon">☰</div>
-      <ul class="nav-links">
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/Admin/pages/html/card-recipes.html">Recipes</a></li>
-        <li><a href="#">Contact us</a></li>
-        <li><a class="favourites" href="#">
-            <i class="fa-solid fa-heart"></i>
-          </a></li>
-        <li><a href="#">
-            <i class="fa-solid fa-user"></i>
-          </a></li>
+      <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+      <label for="menu-toggle" class="menu-icon">☰</label>
+      <ul class="mobile-nav">
+        <div class="names">
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/Admin/pages/html/card-recipes.html">Recipes</a></li>
+          <li><a href="#">Contact us</a></li>
+        </div>
+        <div class="icons">
+          <li><a class="favourites" href="/User/pages/html/favourites.html">
+            <i class="fa-solid fa-heart"></i> Favourites</a>
+        </li>
+          <li><a href="/User/pages/html/profile.html">
+              <i class="fa-solid fa-user"></i> Profile</a>
+          </li>
+        </div>
       </ul>
     </div>
-  </nav>
+</nav>
   <div class="search">
     <i class="fa-solid fa-magnifying-glass"></i>
     <input type="search" name="search" placeholder="Search..">
