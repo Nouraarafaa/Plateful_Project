@@ -19,6 +19,7 @@ body {
 .search i{
   color: var(--font-color);
 }
+
 .search input{
   border: none;
   width: 500px;
