@@ -1,11 +1,11 @@
 :root{
   --bg-color: #FCF7E4;
-  --primary-color:#AFBCAA;
+  --primary-color:#70974C;
   --secondary-color: #F7AF89;
-  --font-color: #333333;
+  --font-color:#2d1c0a;
 }
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Rochester', cursive;
   height: 100vh;
   background-color:var(--bg-color);
 }
@@ -89,22 +89,30 @@ button {
   cursor: pointer;
   transition: 0.3s;
   font-weight: 500;
-  color: var(--font-color);
-  background-color: var(--secondary-color);
+  color:var(--bg-color);
+  background-color: var(--font-color);
 }
 
 a {
   text-decoration: none;
-  color: var(--font-color);
-}
+  color:var(--bg-color);}
 
 a:hover {
-  color: var(--secondary-color);
+  color: var(--bg-color);
 }
 
 button:hover{
   color: var(--bg-color);
-  background-color:var(--font-color);
+  background-color:var(--primary-color);
+}
+.addFavourites{
+  background-color: transparent;
+  color: #4A2F14;
+  font-size: 18px;
+}
+.addFavourites:hover{
+  color: #AA080C;
+  background-color: transparent;
 }
 @media (max-width: 768px) {
   .search input{    

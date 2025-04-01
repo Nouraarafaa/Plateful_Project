@@ -5,10 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="/Admin/pages/css/all.min.css">
+  <link rel="stylesheet" href="/User/pages/css/home-nav.css">
   <link rel="shortcut icon" href="/imgs/logo-favicon.png" type="image/x-icon">
   <title>Home</title>
 </head>
 <body>
-  
+  <nav>
+    <div class="logo">
+        <img src="/imgs/Logo-brown.png" alt="Logo">
+    </div>
+    <ul class="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/User/pages/html/card-recipes.html">Recipes</a></li>
+      <li><a href="#">Contact us</a></li>
+      <li><a class="favourites" href="/User/pages/html/favourites.html">
+        <i class="fa-solid fa-heart"></i></a>
+    </li>
+      <li><a href="/User/pages/html/profile.html">
+        <i class="fa-solid fa-user"></i>
+      </a></li>
+    </ul>
+
+    <div class="menu-container">
+      <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+      <label for="menu-toggle" class="menu-icon">☰</label>
+      <ul class="mobile-nav">
+        <div class="names">
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/User/pages/html/card-recipes.html">Recipes</a></li>
+          <li><a href="#">Contact us</a></li>
+        </div>
+        <div class="icons">
+          <li><a class="favourites" href="/User/pages/html/favourites.html">
+              <i class="fa-solid fa-heart"></i> Favourites</a>
+          </li>
+          <li><a href="/User/pages/html/profile.html">
+              <i class="fa-solid fa-user"></i> Profile</a>
+          </li>
+        </div>
+      </ul>
+    </div>
+</nav>
+
+  <!-- Hero Section -->
+  <section class="hero-container">
+    <!-- Left-side video -->
+    <video autoplay loop muted playsinline class="hero-video left">
+        <source src="imgs/FOOD_WHEEL_L.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>    
+
+    <!-- Center text content -->
+    <div class="hero-text">
+        <h4>Welcome to</h4>
+        <h1>Plateful</h1>
+        <p>Where every dish tells a story!<br> Discover, create, and savor the best recipes from around the world.</p>
+        <button class="start"><a href="">Get Started</a></button>
+    </div>
+
+
+    <!-- Right-side video -->
+    <video autoplay loop muted playsinline class="hero-video right">
+        <source src="imgs/FOOD_WHEEL_R.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>    
+</section>
 </body>
 </html>

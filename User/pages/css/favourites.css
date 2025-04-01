@@ -1,11 +1,11 @@
 :root{
   --bg-color: #FCF7E4;
-  --primary-color:#AFBCAA;
+  --primary-color:#70974C;
   --secondary-color: #F7AF89;
-  --font-color: #333333;
+  --font-color:#2d1c0a;
 }
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Rochester', cursive;
   margin: 0;
   background-color:var(--bg-color);
   color: var(--font-color);
@@ -15,7 +15,7 @@ body {
   text-align: center;
 }
 h1 {
-  color: #333;
+  color: var(--font-color);
   margin-bottom: 20px;
 }
 .recipes {
@@ -44,10 +44,9 @@ h1 {
   background-color: #f22e2e;
   color: var(--bg-color);
   border: none;
-  padding: 8px 30px;
+  padding: 6px 42px;
   cursor: pointer;
   border-radius: 10px;
-  margin-left: 5px;
   margin-top: 5px;
 }
 .remove-btn:hover {
@@ -56,15 +55,19 @@ h1 {
 button {
   border: none;
   font-size: 14px;
-  padding: 8px 30px;
+  padding: 6px 30px;
   border-radius: 10px;
   cursor: pointer;
   transition: 0.3s;
-  font-weight: 500;
-  color: var(--font-color);
-  background-color: var(--secondary-color);
+  color: var(--bg-color);
+  background-color: var(--font-color);
 }
 button:hover{
   color: var(--bg-color);
-  background-color:var(--font-color);
+  background-color:var(--primary-color);
+}
+@media (max-width: 768px) {
+  .remove-btn{    
+    margin-left: 5px;
+  }
 }
