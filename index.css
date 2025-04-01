@@ -54,6 +54,7 @@ nav{
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 /* Adjusting Video Alignment */
@@ -61,6 +62,7 @@ nav{
   margin-left: 0;
   padding-left: 0;
   border-left: none;
+  overflow: hidden;
 }
 
 .hero-video.right {
@@ -68,6 +70,7 @@ nav{
   padding-left: 0;
   border-left: none;
   right: 0;
+  overflow: hidden;
 }
 a{
   color: #FCF7E4;

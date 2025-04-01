@@ -6,7 +6,7 @@
 }
 
 nav {
-  font-family:'Rochester', cursive;
+  /* font-family:'Rochester', cursive; */
   display: flex;
   align-items: center;
   justify-content: space-between;
