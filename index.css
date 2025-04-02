@@ -1,9 +1,44 @@
+
+
+
+
+
+
+
 /* General Page Styling */
 body {
   margin: 0;
   background-color: #FCF7E4;
   height: 100vh;
 }
+
+/* 
+#modeToggle {
+  display: none;
+}
+
+.toggle-label {
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px 20px;
+  background: #ddd;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+#modeToggle:checked ~ .container {
+  background-color: black;
+  color: white;
+}
+
+#modeToggle:checked ~ .toggle-label {
+  background: #555;
+  color: white;
+}
+
+ */
+
+
 nav{
   width: 100%;
   margin-bottom: 100px;
