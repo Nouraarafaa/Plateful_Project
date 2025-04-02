@@ -114,11 +114,17 @@ h2{
         font-size: 14px;
         margin-bottom: 20px;
     }
+    .register-form{
+        flex-direction: column;
+    }
 }
 @media screen and (min-width:770px) and (max-width:900px){
     .image-container img{
         width: 100%;
         height: 100%;
+    }
+    .register-form{
+        flex-direction: column;
     }
     .login-btn , .register-btn , .contact-btn{
         width: fit-content;
