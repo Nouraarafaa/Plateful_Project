@@ -15,6 +15,21 @@ footer{
     padding: 20px 8vw;
     padding-top: 30px;
     margin-top: 120px;
+    font-family: cursive;
+}
+
+footer h2 {
+    font-size: 20px;
+}
+
+footer li , footer p{
+    font-size: 15px;
+}
+
+.footer-copyright{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
 }
 
 footer img{
@@ -78,12 +93,19 @@ footer hr{
     footer{
         margin-top: 30px;
     }
+    footer h2 {
+        font-size: 16px;
+    }
+    footer li , footer p{
+        font-size: 13px;
+    }
+
     .footer-content{
         display: flex;
         flex-direction: column;
         gap: 40px;
     }
     .footer-copyright{
-        text-align: center;
+        font-size: 12px;
     }
 }
