@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/Admin/pages/css/card-recipes.css">
+  <link rel="stylesheet" href="/User/pages/css/home-nav.css">
+  <link rel="stylesheet" href="/Admin/pages/css/all.min.css">
+  <link rel="stylesheet" href="/Admin/Edit/edit-recipe.css">
+  <link rel="shortcut icon" href="/imgs/logo-favicon.png" type="image/x-icon">
+  <title>Edit Recipe</title>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <img src="/imgs/logo.png" alt="Logo">
+    </div>
+    <ul class="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/Admin/pages/html/card-recipes.html">Recipes</a></li>
+      <li><a href="#">Contact us</a></li>
+      <li><a class="favourites" href="#">
+        <i class="fa-solid fa-heart"></i>
+      </a></li>
+      <li><a href="/User/pages/html/profile.html">
+        <i class="fa-solid fa-user"></i>
+      </a></li>
+    </ul>
+  </nav>
+
+  <section class="edit-container">
+    <h1>Edit Recipe</h1>
+    <form class="edit-form" action="/Admin/pages/html/save-recipe.html" method="POST">
+      <!-- Recipe Name -->
+      <label for="recipe-name">Recipe Name:</label>
+      <input type="text" id="recipe-name" name="recipe-name" value="Burger Sandwich">
+
+      <!-- Recipe Image -->
+<div class="image-edit-container">
+  <div class="image-preview">
+    <img src="/imgs/img-recipe.jpg" alt="Recipe Image">
+  </div>
+  <div class="image-edit">
+    <label for="recipe-image">Recipe Image:</label>
+    <input type="file" id="recipe-image" name="recipe-image">
+  </div>
+</div>
+
+      <!-- Recipe Description -->
+      <label for="How to prepare the recipe">How to prepare:</label>
+      <textarea id="How to prepare the recipe" name="How to prepare the recipe">This paragraph explains how to prepare the recipe</textarea>
+
+      <!-- Recipe Ingredients -->
+      <label for="recipe-ingredients">Ingredients:</label>
+      <textarea id="recipe-ingredients" name="recipe-ingredients">- Bread
+- Beef Patty
+- Lettuce
+- Tomato
+- Cheese</textarea>
+
+      <!-- Recipe Video -->
+      <label for="recipe-video">Recipe Video URL:</label>
+      <input type="url" id="recipe-video" name="recipe-video" value="https://example.com/video.mp4">
+
+      <!-- Save Button -->
+      <button type="submit">Save Changes</button>
+    </form>
+  </section>
+</body>
+
+</html>
