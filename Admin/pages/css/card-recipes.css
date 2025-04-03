@@ -1,8 +1,8 @@
 :root{
   --bg-color: #FCF7E4;
-  --primary-color:#AFBCAA;
+  --primary-color:#70974C;
   --secondary-color: #F7AF89;
-  --font-color: #333333;
+  --font-color:#2d1c0a;
 }
 body {
   font-family: "Montserrat", sans-serif;
@@ -10,7 +10,7 @@ body {
   background-color:var(--bg-color);
 }
 a{
-  color: var(--font-color);
+  color: var(--bg-color);
   text-decoration: none;
 }
 .search{
@@ -89,8 +89,10 @@ p {
 }
 
 .card-action {
-  padding: 10px;
-  border-radius: 0 0 12px 12px;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
 }
 .add-recipe{
   display: flex;
@@ -109,17 +111,16 @@ p {
 button {
   border: none;
   font-size: 14px;
-  padding: 8px 30px;
+  padding: 8px 20px;
   border-radius: 10px;
   cursor: pointer;
   transition: 0.3s;
   font-weight: 500;
-  color: var(--font-color);
-  background-color: var(--secondary-color);
+  color: var(--bg-color);
+  background-color: var(--font-color);
 }
 button:hover{
-  color: var(--bg-color);
-  background-color:var(--font-color);
+  background-color:var(--primary-color);
 }
 @media (max-width: 768px) {
   .search input{    

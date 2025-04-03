@@ -1,3 +1,12 @@
+:root{
+  --bg-color: #FCF7E4;
+  --primary-color:#70974C;
+  --secondary-color: #F7AF89;
+  --font-color:#2d1c0a;
+}
+body{
+  font-family: cursive;
+}
 .edit-container {
     margin: 30px auto;
     padding: 20px;
@@ -50,42 +59,40 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    background-color: #28a745;
-    color: white;
+    background-color:var(--font-color);
+    color:var(--bg-color);
     transition: 0.3s;
     margin-top: 20px;
   }
   
   .edit-form button:hover {
-    background-color: green;
+    background-color: var(--primary-color);
     color: var(--bg-color);
-    font-weight: bold;
   }
   
   .image-edit-container {
     display: flex;
-    align-items: center; /* Vertically center the image and input */
-    justify-content: flex-end; /* Align items to the right */
-    gap: 20px; /* Add space between the image and the input */
+    align-items: center; 
+    justify-content: flex-end; 
+    gap: 20px; 
   }
   
   .image-preview {
-    order: 2; /* Move the image to the right */
-    flex-shrink: 0; /* Prevent the image from shrinking */
-    margin-top: 30px; /* Move the image slightly down */
+    order: 2; 
+    flex-shrink: 0;
+    margin-top: 30px;
   }
   
   .image-preview img {
-    max-width: 150px; /* Set a fixed width for the image */
-    max-height: 150px; /* Set a fixed height for the image */
+    max-width: 150px; 
+    max-height: 150px; 
     border-radius: 8px;
     object-fit: cover;
   }
   
   .image-edit {
-    order: 1; /* Keep the input section on the left */
-    flex-grow: 1; /* Allow the input section to take up the remaining space */
-    display: flex;
-    flex-direction: column; /* Stack the label and input vertically */
-    gap: 10px; /* Add spacing between the label and input */
+    order: 1; 
+    flex-grow: 1;
+    flex-direction: column;
+    gap: 10px; 
   }
