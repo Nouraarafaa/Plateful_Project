@@ -72,6 +72,11 @@ button {
   font-size: 14px;
   margin: 5px;
 }
+.logout a 
+{
+    color: var(--bg-color);
+    text-decoration: none;
+}
 .buttons .logout:hover {
   background: rgb(202, 13, 13);
   transition: 0.3s;
