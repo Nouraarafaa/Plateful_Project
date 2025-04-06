@@ -1,13 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/Admin/pages/css/new-recipe.css">
+  <link rel="stylesheet" href="/Admin/pages/css/card-recipes.css">
+  <link rel="stylesheet" href="/User/pages/css/home-nav.css">
   <link rel="stylesheet" href="/Admin/pages/css/all.min.css">
-  <title>Document</title>
+  <link rel="stylesheet" href="/Admin/pages/css/edit-recipe.css">
+  <link rel="shortcut icon" href="/imgs/logo-favicon.png" type="image/x-icon">
+  <title>Edit Recipe</title>
 </head>
+
 <body>
-  
+  <nav>
+    <div class="logo">
+      <img src="/imgs/logo.png" alt="Logo">
+    </div>
+    <ul class="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/User/pages/html/about.html">About</a></li>
+      <li><a href="/User/pages/html/card-recipes.html">Recipes</a></li>
+      <li><a href="/User/pages/html/contact.html">Contact us</a></li>
+      <li><a class="favourites" href="/User/pages/html/favourites.html">
+          <i class="fa-solid fa-heart"></i></a>
+      </li>
+      <li><a href="/User/pages/html/profile.html">
+          <i class="fa-solid fa-user"></i>
+        </a></li>
+    </ul>
+
+    <div class="menu-container">
+      <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+      <label for="menu-toggle" class="menu-icon">☰</label>
+      <ul class="mobile-nav">
+        <div class="names">
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/User/pages/html/about.html">About</a></li>
+          <li><a href="/User/pages/html/card-recipes.html">Recipes</a></li>
+          <li><a href="/User/pages/html/contact.html">Contact us</a></li>
+        </div>
+        <div class="icons">
+          <li><a class="favourites" href="/User/pages/html/favourites.html">
+              <i class="fa-solid fa-heart"></i></a>
+          </li>
+          <li><a href="/User/pages/html/profile.html">
+              <i class="fa-solid fa-user"></i> </a>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="edit-container">
+    <h1>Add New Recipe</h1>
+    <form class="edit-form" action="/Admin/pages/html/save-recipe.html" method="POST">
+      <!-- Recipe Name -->
+      <label for="recipe-name">Recipe Name:</label>
+      <input type="text" id="recipe-name" name="recipe-name">
+
+      <!-- Recipe Image -->
+      <div class="image-edit-container">
+        <div class="image-edit">
+          <label for="recipe-image">Recipe Image:</label>
+          <input type="file" id="recipe-image" name="recipe-image" value="Recipe Name...">
+        </div>
+      </div>
+
+      <!-- Recipe Description -->
+      <label for="How to prepare the recipe">How to prepare:</label>
+      <textarea id="How to prepare the recipe"
+        name="How to prepare the recipe">This paragraph explains how to prepare the recipe</textarea>
+
+      <!-- Recipe Ingredients -->
+      <label for="recipe-ingredients">Ingredients:</label>
+      <textarea id="recipe-ingredients" name="recipe-ingredients">- Bread
+- Beef Patty
+- Lettuce
+- Tomato
+- Cheese</textarea>
+
+      <!-- Recipe Video -->
+      <label for="recipe-video">Recipe Video URL:</label>
+      <input type="url" id="recipe-video" name="recipe-video" value="https://example.com/video.mp4">
+
+      <!-- Save Button -->
+      <button class="save">
+        <a href="/Admin/pages/html/card-recipes.html">Save Changes</a>
+      </button>
+    </form>
+  </section>
 </body>
+
 </html>
