@@ -148,7 +148,7 @@ button:hover{
   color: var(--font-color);
 }
 
-.category-item:hover {
+.category-item:hover , .active{
   background: var(--font-color);
   color: var(--bg-color);
   transition: 0.4s;
@@ -159,7 +159,7 @@ button:hover{
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1300px) {
   .search input{    
   width: 70%;
   }

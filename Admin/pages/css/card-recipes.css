@@ -1,129 +1,25 @@
-:root{
+:root {
   --bg-color: #FCF7E4;
-  --primary-color:#70974C;
+  --primary-color: #70974C;
   --secondary-color: #F7AF89;
-  --font-color:#2d1c0a;
+  --font-color: #2d1c0a;
 }
-body {
-  font-family: "Montserrat", sans-serif;
-  height: 100vh;
-  background-color:var(--bg-color);
-}
-a{
-  color: var(--bg-color);
-  text-decoration: none;
-}
-.search{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 50px;
-  gap: 5px;
-}
-.search i{
-  color: var(--font-color);
-}
-.search input{
-  border: none;
-  width: 500px;
-  height: 30px;
-  border-radius: 20px;
-  padding: 8px;
-  color: var(--font-color);
-  outline: var(--primary-color);
-}
-.card-content input{
-  border: 1px solid var(--font-color);
-  margin: 5px;
-  padding: 5px;
-  border-radius: 20px;
-  outline: none;
-}
-.cards-body {
-  margin-top: 50px;
-  margin-inline: 30px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-.card {
-  background: #ffffff58;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  text-align: center;
-  transition: transform 0.3s ease-in-out;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-}
-.card-image {
-  background-color:#afbcaa25;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
-}
-.card-image img {
-  margin: 10px;
-  width: 80%;
-  height: 90%;
-  border-radius:50% ;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 10px;
-}
-
-h2 {
-  color:var(--font-color);
-  font-size: 18px;
-  margin-bottom: 5px;
-}
-
-p {
-  color:var(--font-color);
-  font-size: 14px;
-}
-
-.card-action {
-  margin: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 5px;
-}
-.add-recipe{
+.add-recipe {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-block: 80px;
 }
-.new-recipe{
+
+.new-recipe {
   padding: 15px 40px;
   font-size: 18px;
 }
-.new-recipe:hover{
+
+.new-recipe:hover {
   background-color: var(--primary-color);
 }
 
 button {
-  border: none;
-  font-size: 14px;
   padding: 8px 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-  font-weight: 500;
-  color: var(--bg-color);
-  background-color: var(--font-color);
-}
-button:hover{
-  background-color:var(--primary-color);
-}
-@media (max-width: 768px) {
-  .search input{    
-  width: 300px;
-  }
 }
