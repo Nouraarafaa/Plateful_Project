@@ -80,10 +80,10 @@ footer{
 }
 
 .hero-text p {
-  font-family: serif;
-  font-size: 20px;
+  font-family: cursive;
+  font-size: 16px;
+  margin-top: 5px;
   font-weight: 500;
-  line-height: 2;
 }
 
 /* Video Elements */
@@ -114,6 +114,7 @@ a{
   color: #FCF7E4;
 }
 .start{
+  font-family: cursive;
   background-color:#2d1c0a; 
   color: #FCF7E4;
   padding: 8px 40px;
