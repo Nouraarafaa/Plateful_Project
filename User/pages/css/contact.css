@@ -7,6 +7,9 @@
   justify-content: center;
   align-items: center;
 }
+.contact-form h2{
+  color: #2d1c0a ;
+}
 footer{
   margin-top: 85px;
 }
