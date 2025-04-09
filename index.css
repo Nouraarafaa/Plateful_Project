@@ -67,24 +67,56 @@ footer{
   color:#2d1c0a; 
 }
 
+/*The header (welcome to)(to be...)*/
 .hero-text h4 {
   font-family: 'Rochester', cursive;
   font-size: 30px;
   margin: 0;
 }
 
+/*The header (Plateful)(to be...)*/
 .hero-text h1 {
   font-family: 'Rochester', cursive;
   font-weight: bold;
   font-size: 120px;
 }
+/*The header (Where every dish...)(to be...)*/
+.hero-text h5 {
+  font-family: 'Rochester', cursive;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
 
+/*The paragraph (to be...)*/
 .hero-text p {
   font-family: cursive;
-  font-size: 16px;
-  margin-top: 5px;
+  font-size: 20px;
+  margin-bottom: 2px;
   font-weight: 500;
+  z-index: 1;
+  text-align: center;
 }
+
+span.highlighted {
+  position: relative;
+  z-index: 1; 
+  font-size: 1.6em;
+  font-family: cursive;
+  font-style:bold;
+}
+
+span.highlighted::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.2em;
+  width: 100%;
+  height: 30%;
+  background-color: #8da478;
+  z-index: -1; 
+  border-radius: 2px; 
+}
+
 
 /* Video Elements */
 .hero-video {
@@ -117,11 +149,11 @@ a{
   font-family: cursive;
   background-color:#2d1c0a; 
   color: #FCF7E4;
-  padding: 8px 40px;
-  border-radius: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
   border: none;
-  font-size: 16px;
-  margin-top: 5px;
+  font-size: 20px;
+  margin-top: 15px;
   transition: 0.3s;
   cursor: pointer;
 }
@@ -171,10 +203,11 @@ a{
 
   .hero-text h1 {
       font-size: 60px;
+      text-shadow: 2px 2px 4px rgb(187, 187, 187);
   }
 
   .hero-text p {
       font-size: 18px;
+      text-align: center;
   }
 }
-
