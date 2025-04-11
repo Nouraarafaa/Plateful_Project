@@ -11,7 +11,9 @@ body {
     color: var(--font-color);
 
 }
-
+a:hover{
+    text-decoration: none;
+}
 .login a,
 .register a 
 {
@@ -65,9 +67,6 @@ p.link {
 
 }
 
-a:hover {
-    text-decoration: underline;
-}
 
 h2 {
     margin-bottom: 30px;
@@ -154,7 +153,6 @@ h2 {
     .register-form,
     .login-form {
         flex-direction: column;
-        margin-inline: 10px;
     }
 }
 
