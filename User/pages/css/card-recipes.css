@@ -158,8 +158,40 @@ button:hover{
 .dropdown {
   display: none;
 }
+.category-dropdown {
+  position: relative;
+  display: inline-block;
+}
 
-@media (max-width: 1300px) {
+.subcategory-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  z-index: 10;
+}
+
+.category-dropdown:hover .subcategory-menu {
+  display: block;
+  margin-top: 10px;
+}
+
+.subcategory-item {
+  display: block;
+  padding: 8px 12px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: #2d1c0a;
+}
+
+.subcategory-item:hover {
+  background-color: #f0f0f0;
+  color: #7d6144;
+}
+
+@media (max-width: 1200px) {
   .search input{    
   width: 70%;
   }
