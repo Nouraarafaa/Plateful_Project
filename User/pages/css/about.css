@@ -7,6 +7,8 @@
 
 body {
   background-color: var(--bg-color);
+  font-family: "Montserrat", sans-serif;
+
 }
 
 #home {
@@ -24,7 +26,7 @@ body {
 
 /*The headers (to be edited)*/
 #home .left h2 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Rochester", cursive;
   font-size: 90px;
   text-align: center;
   margin-bottom: 20px;
