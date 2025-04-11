@@ -79,7 +79,7 @@ span.highlight_story::after {
 #home .right img {
   width: 100%;
   align-self: center;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 #home .right:hover {
