@@ -22,7 +22,7 @@ body {
 .login-form,
 .register-form {
     width: fit-content;
-    margin: auto;
+    margin:50px auto;
     margin-top: 50px;
     padding: 30px;
     border-radius: 15px;
@@ -121,8 +121,10 @@ h2 {
     .register-btn {
         flex-direction: column;
         width: fit-content;
-        padding: 20px 10px;
-        margin-bottom: 20px;
+        padding: 20px 30px;
+        margin-bottom: 0px;
+        justify-content: center;
+        align-items: center;
     }
 
     input,
@@ -152,6 +154,7 @@ h2 {
     .register-form,
     .login-form {
         flex-direction: column;
+        margin-inline: 10px;
     }
 }
 

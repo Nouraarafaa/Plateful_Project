@@ -23,3 +23,14 @@
 button {
   padding: 8px 20px;
 }
+.remove{
+  font-size: 18px;
+  margin: auto;
+  margin-top: 5px;
+  background-color: transparent;
+  color: #2d1c0a;
+}
+.remove:hover{
+  background-color: transparent;
+  color:rgb(183, 19, 19);
+}
