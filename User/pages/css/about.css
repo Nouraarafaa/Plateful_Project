@@ -7,8 +7,6 @@
 
 body {
   background-color: var(--bg-color);
-  font-family: "Montserrat", sans-serif;
-
 }
 
 #home {
@@ -24,7 +22,6 @@ body {
   width: 55%;
 }
 
-/*The headers (to be edited)*/
 #home .left h2 {
   font-family: 'Rochester', cursive;
   font-size: 90px;
@@ -36,7 +33,7 @@ body {
 
 
 #home .left p {
-  font-family: cursive;
+  font-family: "Montserrat", sans-serif;
   color: #2d1c0a;
   padding-block: 15px;
   font-size: 20px;
