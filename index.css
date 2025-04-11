@@ -46,12 +46,11 @@ footer{
 /* Hero Section Container */
 .hero-container {
   width: 100%;
-  height: 60vh; 
+  height: 65vh; 
   background-color: #FCF7E4;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10px;
 }
 
 /* Centered Text Content */
@@ -68,24 +67,25 @@ footer{
 }
 
 .hero-text h1 {
+  font-size: 125px; 
   font-family: 'Rochester', cursive;
-  font-weight: bold;
-  font-size: 120px;
+  margin-bottom: 25px;
+  text-shadow: 4px 4px 5px #a4dc6f,4px 4px 5px #8aba5e;
 }
 
 .hero-text p {
   font-family: cursive;
-  font-size: 16px;
-  margin-top: 5px;
-  font-weight: 500;
+  font-size: 16.5px;
+  margin-top: 8px;
+  font-weight: 540;
+  line-height: 2;
 }
 
 /* Video Elements */
 .hero-video {
-  width: 25%;
+  width: 27%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
   overflow: hidden;
 }
 
@@ -111,11 +111,11 @@ a{
   font-family: cursive;
   background-color:#2d1c0a; 
   color: #FCF7E4;
-  padding: 8px 40px;
+  padding: 10px 25px;
   border-radius: 10px;
   border: none;
   font-size: 16px;
-  margin-top: 5px;
+  margin-top: 20px;
   transition: 0.3s;
   cursor: pointer;
 }
@@ -126,7 +126,7 @@ a{
 /* Responsive Design for Medium Screens */
 @media (max-width: 1024px) {
   .hero-video {
-      width: 20%;
+      width: 50%;
   }
 
   .hero-text h1 {
@@ -148,6 +148,8 @@ a{
   .hero-video {
       width: 90%;
       height: auto;
+      border-radius: 10px;
+
   }
   .hero-video.left {
     display: none;
@@ -164,10 +166,10 @@ a{
   }
 
   .hero-text h1 {
-      font-size: 60px;
+      font-size: 80px;
   }
 
   .hero-text p {
-      font-size: 18px;
+      font-size: 17px;
   }
 }
