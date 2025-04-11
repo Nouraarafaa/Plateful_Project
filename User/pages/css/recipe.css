@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family:  'Rochester', cursive;
+  font-family: "Montserrat", sans-serif;
   height: 100vh;
   background-color:var(--bg-color);
 }
