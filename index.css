@@ -1,7 +1,6 @@
 
 /* General Page Styling */
 body {
-  font-family: "Montserrat", sans-serif;  ;
   margin: 0;
   background-color: #FCF7E4;
   height: 100vh;
@@ -75,7 +74,7 @@ footer{
 }
 
 .hero-text p {
-  font-family: cursive;
+  font-family: "Montserrat", sans-serif;  ;
   font-size: 16.5px;
   margin-top: 8px;
   font-weight: 540;
