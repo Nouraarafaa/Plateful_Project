@@ -20,7 +20,7 @@
     </tr>
     <tr>
       <td>Menna</td>
-      <td>Home</td>
+      <td>Home, Edit</td>
     </tr>
   </table>
 
