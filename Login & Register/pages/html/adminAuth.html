@@ -1,0 +1,121 @@
+<!-- Register Page -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="shortcut icon" href="../../../imgs/logo-favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rochester&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./../css/login.css">
+    <link rel="stylesheet" href="../../../User/pages/css/home-nav.css">
+    <link rel="stylesheet" href="../css/all.min.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="../../../imgs/logo.png" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <div class="home">
+                <i class="fa-solid fa-house"></i>
+                <li><a href="../../../index.html">Home</a></li>
+            </div>
+        </ul>
+    
+        <div class="menu-container">
+            <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+            <label for="menu-toggle" class="menu-icon">☰</label>
+            <ul class="mobile-nav">
+                <div class="names">
+                    <i class="fa-solid fa-house"></i>
+                    <li><a href="../../../index.html">Home</a></li>
+                </div>
+            </ul>
+        </div>
+    </nav>
+    <div class="register-form">
+        <div class="container">
+            <h2>Create a new Account</h2>
+            <form id="registerform" action="#" method="POST">
+                <input type="text" id="registerFirstName" name="firstName" placeholder="First Name" required>
+                <input type="text" id="registerLastName" name="lastName" placeholder="Last Name" required>
+                <input type="email" id="registerEmail" name="email" placeholder="Email" required>
+                <input type="tel" id="registerPhone" name="phone" placeholder="Phone number" required>
+                <input type="text" id="registerAddress" name="address" placeholder="Address" required>
+                <input type="password" id="registerPassword" name="password" placeholder="Password" required>
+                <input type="password" id="registerConfirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                
+                <p id="registerErrorMessage" style="color:red; display:none;"></p>
+    
+                <div class="register-btn">
+                    <button type="submit" class="register">Register</button>
+                </div>
+            </form>
+            <p class="link">Already have an account? 
+                <a class="register-link" href="../html/login.html">Login</a>
+            </p>
+        </div>
+    
+        <!-- Image Section -->
+        <div class="image-container">
+            <img src="../../../imgs/register.svg" alt="Delicious Food">
+        </div>
+    </div>
+    <script src="../js/authentication.js"></script>
+</body>
+
+</html>
+
+<!-- <div class="register-form">
+    <div class="container">
+        <h2>Create a new Account</h2>
+        <form action="#" method="POST">
+          <input type="tel" name="ID" placeholder="Admin ID" required>
+            <input type="text" name="name" placeholder="First Name" required>
+            <input type="text" name="name" placeholder="Last Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="tel" name="phone" placeholder="Phone number" required>
+            <input type="text" name="address" placeholder="Address" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="password" placeholder="Confirm Password" required>
+            <div class="register-btn">
+                <button class="register">
+                    <a href="../../../Admin/pages/html/card-recipes.html">Register</a>
+                </button>
+            </div>    
+        </form>
+        <p class="link">Already have an account? <a class="register-link" href="../html/adminlogin.html">Login</a></p>
+    </div>
+    <div class="image-container">
+        <img src="../../../imgs/register.svg" alt="Delicious Food">
+    </div>
+</div> -->
+<!-- <div class="login-form">
+    <div class="container">
+        <h2>Login to Plateful</h2>
+        <form action="#" method="POST">
+            <input type="tel" name="ID" placeholder="Admin ID" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <div class="login-btn">
+                <button class="login">
+                    <a href="../../../Admin/pages/html/card-recipes.html">Login</a>
+                </button>
+
+            </div>
+        </form>
+        <p class="link">Don't have an admin account? <a class="login-link" href="../html/adminRegister.html">Register</a></p>
+        <p class="link"><a class="login-link" href="../html/login.html">Log in as a User</a></p>
+
+      </div>
+
+    <div class="image-container">
+        <img src="../../../imgs/login.svg" alt="Delicious Food">
+    </div>
+</div> -->

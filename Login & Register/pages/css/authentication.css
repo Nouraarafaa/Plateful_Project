@@ -1,0 +1,28 @@
+
+.Authcontainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.userBtn,
+.adminBtn {
+  font-family: "Montserrat", sans-serif;
+    background-color: var(--primary-color);
+    color: var(--font-color);
+    border: none;
+    border-radius: 10px;
+    padding: 15px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.4s;
+    width: 260px;
+}
+@media screen and (max-width: 768px) {
+  .userBtn,
+  .adminBtn{
+    font-size: 14px;
+    width: 200px;
+  }
+}

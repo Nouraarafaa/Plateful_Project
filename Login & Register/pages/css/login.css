@@ -11,20 +11,22 @@ body {
     color: var(--font-color);
 
 }
-a:hover{
+
+a:hover {
     text-decoration: none;
 }
-.login a,
-.register a 
-{
+
+#login a,
+#register a ,
+.auth a {
     color: var(--bg-color);
     text-decoration: none;
 }
 
-.login-form,
-.register-form {
+.container,
+.auth {
     width: fit-content;
-    margin:50px auto;
+    margin: 50px auto;
     margin-top: 50px;
     padding: 30px;
     border-radius: 15px;
@@ -53,21 +55,19 @@ textarea {
     border-color: #70974c66;
     outline: none;
 }
-
-p.link {
-    margin-top: 5px;
-    text-align: center;
+p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
 }
-
-.login-link,
-.register-link,
-.contact-link {
+p a{
     color: var(--primary-color);
-    transition: 0.4s;
-
 }
-
-
+p a:hover {
+    text-decoration: underline;
+    transition: 0.4s;
+}
 h2 {
     margin-bottom: 30px;
     font-size: 30px;
@@ -83,8 +83,8 @@ h2 {
     align-items: center;
 }
 
-.login,
-.register,
+#login,
+#register,
 .contact {
     background-color: var(--primary-color);
     color: var(--font-color);
@@ -96,22 +96,37 @@ h2 {
     transition: 0.4s;
     width: fit-content;
 }
-
-.login:hover,
-.register:hover,
-.contact:hover {
+.fa-house{
+    color:  var(--bg-color);
+}
+#login:hover,
+#register:hover,
+.contact:hover,
+.userBtn:hover,
+.adminBtn:hover {
     background-color: var(--font-color);
     color: var(--bg-color);
 
 }
 
 .image-container img {
+    margin-top: 20px;
     width: 500px;
     height: 500px;
 }
-
+#loginErrorMessage,
+#registerErrorMessage{
+    color: #9B1D26;
+    font-size: 18px;
+}
+.error{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 @media screen and (max-width: 768px) {
     .image-container img {
+        margin-top: 20px;
         width: 100%;
         height: 100%;
     }
@@ -133,8 +148,8 @@ h2 {
         padding: 8px;
     }
 
-    .login,
-    .register,
+    #login,
+    #register,
     .contact {
         padding: 8px 70px;
     }
@@ -149,9 +164,8 @@ h2 {
         font-size: 14px;
         margin-bottom: 20px;
     }
-
-    .register-form,
-    .login-form {
+    .form-container,
+    .auth {
         flex-direction: column;
     }
 }
@@ -162,7 +176,8 @@ h2 {
         height: 100%;
     }
 
-    .register-form {
+    .form-container,
+    .auth {
         flex-direction: column;
     }
 
@@ -182,8 +197,8 @@ h2 {
         padding: 8px;
     }
 
-    .login,
-    .register,
+    #login,
+    #register,
     .contact {
         padding: 8px 90px;
     }
