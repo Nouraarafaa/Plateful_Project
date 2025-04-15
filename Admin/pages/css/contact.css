@@ -1,0 +1,77 @@
+:root {
+    --bg-color: #FCF7E4;
+    --primary-color: #70974C;
+    --secondary-color: #F7AF89;
+    --font-color: #2d1c0a;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: "Montserrat", sans-serif;
+    color: var(--font-color);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    padding: 40px;
+    text-align: center;
+}
+h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-top: 50px;
+    font-weight: bold;
+    color: var(--font-color);
+}
+
+
+.complaint-card {
+    width: 400px;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.44);
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.05);
+    margin:10px;
+    text-align: left;
+}
+
+.complaint-card h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--font-color);
+}
+
+.complaint-card p {
+    margin-bottom: 10px;
+    font-size: 15px;
+
+}
+
+.replyBtn{
+    display: flex;
+    justify-content: center;
+}
+.replyBtn button{
+    padding: 5px 50px;
+    font-size: 14px;
+    color:var(--bg-color);
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.4s;
+}
+.replyBtn button:hover {
+    color:var(--bg-color);
+    background-color: var(--font-color);
+    border: 1px solid var(--font-color);
+}
