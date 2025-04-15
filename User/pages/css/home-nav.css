@@ -14,11 +14,6 @@ nav {
   background-color: #70974C;
 }
 
-nav a.active {
-  font-weight: bold; 
-  background-color: #455e2e;
-}
-
 .logo img {
   height: 65px;
 }
@@ -46,6 +41,11 @@ nav a.active {
 
 .nav-links a:hover {
   background-color:#455e2e;
+}
+
+.nav-links a.active {
+  font-weight: bold; 
+  background-color: #455e2e;
 }
 
 .favourites i {
