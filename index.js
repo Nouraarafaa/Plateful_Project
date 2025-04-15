@@ -1,7 +1,8 @@
 // Navigation bar
 
 // Get the current page name from the URL
-const currentPage = window.location.pathname.split('/').pop();
+let currentPage = window.location.pathname.split("/").pop();
+if (currentPage === "") currentPage = "index.html";
 
 // Select all navigation links
 const navLinks = document.querySelectorAll('nav a');
