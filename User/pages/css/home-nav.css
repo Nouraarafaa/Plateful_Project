@@ -14,6 +14,11 @@ nav {
   background-color: #70974C;
 }
 
+nav a.active {
+  font-weight: bold; 
+  background-color: #455e2e;
+}
+
 .logo img {
   height: 65px;
 }
@@ -40,7 +45,7 @@ nav {
 }
 
 .nav-links a:hover {
-  background-color:#2d1c0a;
+  background-color:#455e2e;
 }
 
 .favourites i {
