@@ -123,6 +123,7 @@ a{
 .start:hover{
   background-color:#70974C; 
   color: #FCF7E4;
+  font-weight: bold;
 }
 /* Responsive Design for Medium Screens */
 @media (max-width: 1024px) {
