@@ -16,13 +16,17 @@ const navLinks = document.querySelectorAll('nav a');
 
 // Reset all links by removing the "active" class
 navLinks.forEach(link => {
-  link.classList.remove('active'); // Remove "active" class from all links
+  link.classList.remove('active');
 });
 
 // Loop through each link and add the "active" class if it matches the current page
 navLinks.forEach(link => {
-  const linkPage = link.getAttribute('href');
-  if (link.href.includes(currentPage)) {
-    link.classList.add('active'); // Add "active" class to the current link
+  const linkHref = link.getAttribute('href');
+
+  // Skip this link if it goes to index.html and has class "btn"
+  if (linkHref.includes('index.html') && link.classList.contains('auth-btn')) return;
+
+  if (linkHref.includes(currentPage)) {
+    link.classList.add('active');
   }
 });
