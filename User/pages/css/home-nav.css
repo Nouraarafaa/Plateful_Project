@@ -40,12 +40,11 @@ nav {
 }
 
 .nav-links a:hover {
-  background-color:#455e2e;
+  background-color:#2d1c0a;
 }
 
 .nav-links a.active {
-  font-weight: bold; 
-  background-color: #455e2e;
+  background-color:#2d1c0a;
 }
 
 .favourites i {
