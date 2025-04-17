@@ -83,10 +83,10 @@ document.getElementById('registerform').addEventListener('submit', function(even
       return;
   }
 
-  if (password.length < 8) {
-      document.getElementById('registerErrorMessage').textContent = 'Password must be at least 8 characters long!';
-      document.getElementById('registerErrorMessage').style.display = 'block';
-      return;
+  if (!validatePassword(password)) {
+    document.getElementById('registerErrorMessage').textContent = 'Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.';
+    document.getElementById('registerErrorMessage').style.display = 'block';
+    return;
   }
 
   if (password !== confirmPassword) {
@@ -133,3 +133,9 @@ function validateEmail(email) {
     var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     return regex.test(email);
 }
+
+function validatePassword(password) {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+    return regex.test(password);
+}
+  

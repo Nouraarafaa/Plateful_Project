@@ -17,5 +17,5 @@ window.addEventListener("DOMContentLoaded", () => {
         `;
 
     container.appendChild(card);
-});
+    });
 });
