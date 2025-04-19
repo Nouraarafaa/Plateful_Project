@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,360 +55,67 @@
             </div>
         </ul>
     </div>
-</nav>
+  </nav>
+
   <div class="search">
     <i class="fa-solid fa-magnifying-glass"></i>
     <input type="search" name="search" placeholder="Search.."> 
   </div>
 
   <div class="details">
+    <!-- Visible on large screens -->
+    <div class="items">
+      <a class="category-item active">All</a>
+      <a class="category-item">Egyptian</a>
+      <a class="category-item">Oriental</a>
+      <div class="category-dropdown">
+        <a class="category-item">Western ▾</a>
+        <div class="subcategory-menu">
+          <a class="subcategory-item">Italian</a>
+          <a class="subcategory-item">Asian</a>
+          <a class="subcategory-item">American</a>
+          <a class="subcategory-item">French</a>
+        </div>
+      </div>
+      <a class="category-item">Grilled</a>
+      <a class="category-item">Fast Food</a>
+      <a class="category-item">Seafood</a>
+      <a class="category-item">Pasta & Rice</a>
+      <a class="category-item">Soups</a>
+      <a class="category-item">Salads</a>
+      <a class="category-item">Vegetarian</a>
+      <a class="category-item">Desserts</a>
+    </div>
 
-<!-- Visible on large screens -->
-<div class="items">
-  <a class="category-item active">All</a>
-  <a class="category-item">Egyptian</a>
-  <a class="category-item">Oriental</a>
-  <div class="category-dropdown">
-    <a class="category-item">Western ▾</a>
-    <div class="subcategory-menu">
-      <a class="subcategory-item">Italian</a>
-      <a class="subcategory-item">Asian</a>
-      <a class="subcategory-item">American</a>
-      <a class="subcategory-item">French</a>
+    <!-- Visible only on small screens -->
+    <div class="dropdown">
+      <select>
+        <option class="active">All</option>
+        <option>Egyptian</option>
+        <option>Oriental</option>
+        <optgroup label="Western">
+          <option>Italian</option>
+          <option>Asian</option>
+          <option>American</option>
+          <option>French</option>
+        </optgroup>
+        <option>Grilled</option>
+        <option>Fast Food</option>
+        <option>Seafood</option>
+        <option>Pasta & Rice</option>
+        <option>Soups</option>
+        <option>Salads</option>
+        <option>Vegetarian</option>
+        <option>Desserts</option>
+        <option>Drinks</option>
+      </select>
     </div>
   </div>
-  <a class="category-item">Grilled</a>
-  <a class="category-item">Fast Food</a>
-  <a class="category-item">Seafood</a>
-  <a class="category-item">Pasta & Rice</a>
-  <a class="category-item">Soups</a>
-  <a class="category-item">Salads</a>
-  <a class="category-item">Vegetarian</a>
-  <a class="category-item">Desserts</a>
-</div>
 
-<!-- Visible only on small screens -->
-<div class="dropdown">
-  <select>
-    <option class="active">All</option>
-    <option>Egyptian</option>
-    <option>Oriental</option>
-    <optgroup label="Western">
-      <option>Italian</option>
-      <option>Asian</option>
-      <option>American</option>
-      <option>French</option>
-    </optgroup>
-    <option>Grilled</option>
-    <option>Fast Food</option>
-    <option>Seafood</option>
-    <option>Pasta & Rice</option>
-    <option>Soups</option>
-    <option>Salads</option>
-    <option>Vegetarian</option>
-    <option>Desserts</option>
-    <option>Drinks</option>
-  </select>
-</div>
-
-</div>
   <section class="cards-body">
-    <div class="card">
-      <div class="card-image">
-        <img src="../../../imgs/img-recipe.jpg" alt="Recipe Image">
-      </div>
-      <div class="card-content">
-        <h2>Burger Sandwich</h2>
-        <p>This is a short description about the recipe.</p>
-        <div class="reviews">
-          <span>4.6</span>
-          <span>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star"></i>
-          </span>
-        </div>
-      </div>
-      <div class="card-action">
-        <button><a href="../html/recipe.html">View Recipe</a></button>
-        <button class="addFavourites"><i class="fa-solid fa-heart"></i></button>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-image">
-        <img src="../../../imgs/img-recipe-1.jpg" alt="Recipe Image">
-      </div>
-      <div class="card-content">
-        <h2>Noodles</h2>
-        <p>This is a short description about the recipe.</p>
-        <div class="reviews">
-          <span>4.6</span>
-          <span>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star"></i>
-          </span>
-        </div>
-      </div>
-      <div class="card-action">
-        <button><a href="../html/recipe.html">View Recipe</a></button>
-        <button class="addFavourites"><i class="fa-solid fa-heart"></i></button>
-
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-image">
-        <img src="../../../imgs/img-recipe-2.jpg" alt="Recipe Image">
-      </div>
-      <div class="card-content">
-        <h2>Corn Dog</h2>
-        <p>This is a short description about the recipe.</p>
-        <div class="reviews">
-          <span>4.6</span>
-          <span>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star"></i>
-          </span>
-        </div>
-      </div>
-      <div class="card-action">
-        <button><a href="../html/recipe.html">View Recipe</a></button>
-        <button class="addFavourites"><i class="fa-solid fa-heart"></i></button>
-
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-image">
-        <img src="../../../imgs/img-recipe-3.jpg" alt="Recipe Image">
-      </div>
-      <div class="card-content">
-        <h2>Meat</h2>
-        <p>This is a short description about the recipe.</p>
-        <div class="reviews">
-          <span>4.6</span>
-          <span>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star"></i>
-          </span>
-        </div>
-      </div>
-      <div class="card-action">
-        <button><a href="../html/recipe.html">View Recipe</a></button>
-        <button class="addFavourites"><i class="fa-solid fa-heart"></i></button>
-
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-image">
-        <img src="../../../imgs/img-recipe-4.jpg" alt="Recipe Image">
-      </div>
-      <div class="card-content">
-        <h2>Salmon</h2>
-        <p>This is a short description about the recipe.</p>
-        <div class="reviews">
-          <span>4.6</span>
-          <span>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star"></i>
-          </span>
-        </div>
-      </div>
-      <div class="card-action">
-        <button><a href="../html/recipe.html">View Recipe</a></button>
-        <button class="addFavourites"><i class="fa-solid fa-heart"></i></button>
-
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-image">
-        <img src="../../../imgs/img-recipe-6.jpg" alt="Recipe Image">
-      </div>
-      <div class="card-content">
-        <h2>Tart Shell</h2>
-        <p>This is a short description about the recipe.</p>
-        <div class="reviews">
-          <span>4.6</span>
-          <span>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star"></i>
-          </span>
-        </div>
-      </div>
-      <div class="card-action">
-        <button><a href="../html/recipe.html">View Recipe</a></button>
-        <button class="addFavourites"><i class="fa-solid fa-heart"></i></button>
-
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-image">
-        <img src="../../../imgs/img-recipe.jpg" alt="Recipe Image">
-      </div>
-      <div class="card-content">
-        <h2>Burger Sandwich</h2>
-        <p>This is a short description about the recipe.</p>
-        <div class="reviews">
-          <span>4.6</span>
-          <span>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star"></i>
-          </span>
-        </div>
-      </div>
-      <div class="card-action">
-        <button><a href="../html/recipe.html">View Recipe</a></button>
-        <button class="addFavourites"><i class="fa-solid fa-heart"></i></button>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-image">
-        <img src="../../../imgs/img-recipe-1.jpg" alt="Recipe Image">
-      </div>
-      <div class="card-content">
-        <h2>Noodles</h2>
-        <p>This is a short description about the recipe.</p>
-        <div class="reviews">
-          <span>4.6</span>
-          <span>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star"></i>
-          </span>
-        </div>
-      </div>
-      <div class="card-action">
-        <button><a href="../html/recipe.html">View Recipe</a></button>
-        <button class="addFavourites"><i class="fa-solid fa-heart"></i></button>
-
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-image">
-        <img src="../../../imgs/img-recipe-2.jpg" alt="Recipe Image">
-      </div>
-      <div class="card-content">
-        <h2>Corn Dog</h2>
-        <p>This is a short description about the recipe.</p>
-        <div class="reviews">
-          <span>4.6</span>
-          <span>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star"></i>
-          </span>
-        </div>
-      </div>
-      <div class="card-action">
-        <button><a href="../html/recipe.html">View Recipe</a></button>
-        <button class="addFavourites"><i class="fa-solid fa-heart"></i></button>
-
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-image">
-        <img src="../../../imgs/img-recipe-3.jpg" alt="Recipe Image">
-      </div>
-      <div class="card-content">
-        <h2>Meat</h2>
-        <p>This is a short description about the recipe.</p>
-        <div class="reviews">
-          <span>4.6</span>
-          <span>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star"></i>
-          </span>
-        </div>
-      </div>
-      <div class="card-action">
-        <button><a href="../html/recipe.html">View Recipe</a></button>
-        <button class="addFavourites"><i class="fa-solid fa-heart"></i></button>
-
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-image">
-        <img src="../../../imgs/img-recipe-4.jpg" alt="Recipe Image">
-      </div>
-      <div class="card-content">
-        <h2>Salmon</h2>
-        <p>This is a short description about the recipe.</p>
-        <div class="reviews">
-          <span>4.6</span>
-          <span>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star"></i>
-          </span>
-        </div>
-      </div>
-      <div class="card-action">
-        <button><a href="../html/recipe.html">View Recipe</a></button>
-        <button class="addFavourites"><i class="fa-solid fa-heart"></i></button>
-
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-image">
-        <img src="../../../imgs/img-recipe-6.jpg" alt="Recipe Image">
-      </div>
-      <div class="card-content">
-        <h2>Tart Shell</h2>
-        <p>This is a short description about the recipe.</p>
-        <div class="reviews">
-          <span>4.6</span>
-          <span>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star yellow"></i>
-            <i class="fa-solid fa-star"></i>
-          </span>
-        </div>
-      </div>
-      <div class="card-action">
-        <button><a href="../html/recipe.html">View Recipe</a></button>
-        <button class="addFavourites"><i class="fa-solid fa-heart"></i></button>
-
-      </div>
-    </div>
-
   </section>
+
+
   <footer class='footer' id='footer'>
     <div class="footer-content">
         <div class="footer-content-left">

@@ -1,0 +1,462 @@
+[
+{
+    "id": 1,
+    "title": "Burger Sandwich",
+    "description": "This is a short description about the recipe.",
+    "image": "../../../imgs/img-recipe.jpg",
+    "rating": 4.6,
+    "difficulty": "Easy",
+    "category": "Fast Food",
+    "cuisine": "American",
+    "preparation_time": "10 minutes",
+    "cooking_time": "20 minutes",
+    "total_time": "30 minutes",
+    "nutritional_info": {
+        "calories": 500,
+        "carbohydrates": 50,
+        "protein": 25,
+        "fat": 20,
+        "fiber": 5
+    },
+    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "descriptionCooking": "Crumble the bread into small pieces. Sprinkle with water, cover with a damp cloth and leave for 30 minutes. Heat 2-3 tbsp of oil in a deep pan. Add the garlic cloves, chopped onion, and your favorite spices. Add the bread and stir continuously for 5 minutes. Set the pan aside. In a separate frying pan, sauté the meat or any desired ingredients. Combine everything, stirring constantly for 15 minutes and add a grinding of black pepper. Add some broth or water if needed. Cook for about 20 minutes. It will be ready when the bread is soft and golden.",
+    "ingrediants": [
+        {
+            "id": 1,
+            "name": "Bread",
+            "quantity": "2 slices"
+        },
+        {
+            "id": 2,
+            "name": "Lettuce",
+            "quantity": "1 leaf"
+        },
+        {
+            "id": 3,
+            "name": "Tomato",
+            "quantity": "1 slice"
+        },
+        {
+            "id": 4,
+            "name": "Cheese",
+            "quantity": "1 slice"
+        },
+        {
+            "id": 5,
+            "name": "Patty",
+            "quantity": "1 piece"
+        }
+    ],
+    "steps": [
+        {
+            "id": 1,
+            "description": "Toast the bread slices."
+        },
+        {
+            "id": 2,
+            "description": "Cook the patty."
+        },
+        {
+            "id": 3,
+            "description": "Assemble the sandwich with lettuce, tomato, cheese, and patty."
+        },
+        {
+            "id": 4,
+            "description": "Serve with fries."
+        }
+    ]
+},
+{
+    "id": 2,
+    "title": "Pasta",
+    "description": "This is a short description about the recipe.",
+    "image": "../../../imgs/img-recipe-1.jpg",
+    "rating": 4.6,
+    "difficulty": "Medium",
+    "category": "Italian",
+    "cuisine": "Italian",
+    "preparation_time": "15 minutes",
+    "cooking_time": "25 minutes",
+    "total_time": "40 minutes",
+    "nutritional_info": {
+        "calories": 400,
+        "carbohydrates": 60,
+        "protein": 15,
+        "fat": 10,
+        "fiber": 3
+    },
+    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "descriptionCooking": "Cook the pasta according to package instructions. In a separate pan, sauté garlic and onion in olive oil. Add tomatoes and cook until soft. Mix in the cooked pasta and season with salt and pepper. Serve with grated cheese.",
+    "ingrediants": [
+        {
+            "id": 1,
+            "name": "Pasta",
+            "quantity": "200g"
+        },
+        {
+            "id": 2,
+            "name": "Tomato Sauce",
+            "quantity": "100ml"
+        },
+        {
+            "id": 3,
+            "name": "Garlic",
+            "quantity": "2 cloves"
+        },
+        {
+            "id": 4,
+            "name": "Onion",
+            "quantity": "1 small"
+        },
+        {
+            "id": 5,
+            "name": "Olive Oil",
+            "quantity": "2 tbsp"
+        }
+    ],
+    "steps": [
+        {
+            "id": 1,
+            "description": "Boil water and cook the pasta."
+        },
+        {
+            "id": 2,
+            "description": "Sauté garlic and onion in olive oil."
+        },
+        {
+            "id": 3,
+            "description": "Add tomato sauce and mix with pasta."
+        },
+        {
+            "id": 4,
+            "description": "Serve with grated cheese."
+        }
+    ]
+},
+
+{
+    "id": 3,
+    "title": "Pizza",
+    "description": "This is a short description about the recipe.",
+    "image": "../../../imgs/img-recipe-2.jpg",
+    "rating": 4.6,
+    "difficulty": "Medium",
+    "category": "Italian",
+    "cuisine": "Italian",
+    "preparation_time": "20 minutes",
+    "cooking_time": "30 minutes",
+    "total_time": "50 minutes",
+    "nutritional_info": {
+        "calories": 600,
+        "carbohydrates": 70,
+        "protein": 20,
+        "fat": 25,
+        "fiber": 4
+    },
+    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "descriptionCooking": "Prepare the dough by mixing flour, water, yeast, and salt. Roll out the dough and place it on a baking sheet. Spread tomato sauce, add cheese and toppings of your choice. Bake in a preheated oven until golden brown.",
+    "ingrediants": [
+        {
+            "id": 1,
+            "name": "Pizza Dough",
+            "quantity": "1 base"
+        },
+        {
+            "id": 2,
+            "name": "Tomato Sauce",
+            "quantity": "100ml"
+        },
+        {
+            "id": 3,
+            "name": "Cheese",
+            "quantity": "150g"
+        },
+        {
+            "id": 4,
+            "name": "Toppings",
+            "quantity": "as desired"
+        }
+    ],
+    "steps": [
+        {
+            "id": 1,
+            "description": "Prepare the dough."
+        },
+        {
+            "id": 2,
+            "description": "Spread tomato sauce on the dough."
+        },
+        {
+            "id": 3,
+            "description": "Add cheese and toppings."
+        },
+        {
+            "id": 4,
+            "description": "Bake in the oven."
+        }
+    ]
+},
+{
+    "id": 4,
+    "title": "Salad",
+    "description": "This is a short description about the recipe.",
+    "image": "../../../imgs/img-recipe-3.jpg",
+    "rating": 4.6,
+    "difficulty": "Easy",
+    "category": "Healthy",
+    "cuisine": "Mediterranean",
+    "preparation_time": "10 minutes",
+    "cooking_time": "0 minutes",
+    "total_time": "10 minutes",
+    "nutritional_info": {
+        "calories": 200,
+        "carbohydrates": 15,
+        "protein": 5,
+        "fat": 10,
+        "fiber": 2
+    },
+    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "descriptionCooking": "Chop the vegetables and mix them in a bowl. Add olive oil, vinegar, salt, and pepper. Toss well and serve fresh.",
+    "ingrediants": [
+        {
+            "id": 1,
+            "name": "Lettuce",
+            "quantity": "1 cup"
+        },
+        {
+            "id": 2,
+            "name": "Tomato",
+            "quantity": "1"
+        },
+        {
+            "id": 3,
+            "name": "Cucumber",
+            "quantity": "1"
+        },
+        {
+            "id": 4,
+            "name": "Olive Oil",
+            "quantity": "2 tbsp"
+        },
+        {
+            "id": 5,
+            "name": "Vinegar",
+            "quantity": "1 tbsp"
+        }
+    ],
+    "steps": [
+        {
+            "id": 1,
+            "description": "Chop the vegetables."
+        },
+        {
+            "id": 2,
+            "description": "Mix in a bowl with olive oil and vinegar."
+        },
+        {
+            "id": 3,
+            "description": "Toss well and serve."
+        }
+    ]
+},
+{
+    "id": 5,
+    "title": "Sushi",
+    "description": "This is a short description about the recipe.",
+    "image": "../../../imgs/img-recipe-4.jpg",
+    "rating": 4.6,
+    "difficulty": "Hard",
+    "category": "Japanese",
+    "cuisine": "Japanese",
+    "preparation_time": "30 minutes",
+    "cooking_time": "20 minutes",
+    "total_time": "50 minutes",
+    "nutritional_info": {
+        "calories": 300,
+        "carbohydrates": 40,
+        "protein": 10,
+        "fat": 5,
+        "fiber": 1
+    },
+    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "descriptionCooking": "Cook the rice and let it cool. Place a sheet of nori on a bamboo mat, spread rice evenly, and add fillings like fish and vegetables. Roll tightly and slice into pieces. Serve with soy sauce and wasabi.",
+    "ingrediants": [
+        {
+            "id": 1,
+            "name": "Sushi Rice",
+            "quantity": "200g"
+        },
+        {
+            "id": 2,
+            "name": "Nori Sheets",
+            "quantity": "2"
+        },
+        {
+            "id": 3,
+            "name": "Fish",
+            "quantity": "100g"
+        },
+        {
+            "id": 4,
+            "name": "Vegetables",
+            "quantity": "as desired"
+        },
+        {
+            "id": 5,
+            "name": "Soy Sauce",
+            "quantity": "for serving"
+        }
+    ],
+    "steps": [
+        {
+            "id": 1,
+            "description": "Cook the sushi rice."
+        },
+        {
+            "id": 2,
+            "description": "Place nori on a bamboo mat."
+        },
+        {
+            "id": 3,
+            "description": "Spread rice and add fillings."
+        },
+        {
+            "id": 4,
+            "description": "Roll tightly and slice."
+        },
+        {
+            "id": 5,
+            "description": "Serve with soy sauce."
+        }
+    ]
+},
+{
+    "id": 6,
+    "title": "Tacos",
+    "description": "This is a short description about the recipe.",
+    "image": "../../../imgs/img-recipe-5.jpg",
+    "rating": 4.6,
+    "difficulty": "Medium",
+    "category": "Mexican",
+    "cuisine": "Mexican",
+    "preparation_time": "15 minutes",
+    "cooking_time": "15 minutes",
+    "total_time": "30 minutes",
+    "nutritional_info": {
+        "calories": 350,
+        "carbohydrates": 40,
+        "protein": 15,
+        "fat": 10,
+        "fiber": 3
+    },
+    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "descriptionCooking": "Cook the meat with spices. Warm the tortillas and fill them with meat, lettuce, cheese, and salsa. Roll and serve.",
+    "ingrediants": [
+        {
+            "id": 1,
+            "name": "Tortillas",
+            "quantity": "4"
+        },
+        {
+            "id": 2,
+            "name": "Ground Meat",
+            "quantity": "200g"
+        },
+        {
+            "id": 3,
+            "name": "Lettuce",
+            "quantity": "1 cup"
+        },
+        {
+            "id": 4,
+            "name": "Cheese",
+            "quantity": "50g"
+        },
+        {
+            "id": 5,
+            "name": "Salsa",
+            "quantity": "for serving"
+        }
+    ],
+    "steps": [
+        {
+            "id": 1,
+            "description": "Cook the ground meat with spices."
+        },
+        {
+            "id": 2,
+            "description": "Warm the tortillas."
+        },
+        {
+            "id": 3,
+            "description": "Fill with meat, lettuce, cheese, and salsa."
+        },
+        {
+            "id": 4,
+            "description": "Roll and serve."
+        }
+    ]
+},
+{
+    "id": 7,
+    "title": "Steak",
+    "description": "This is a short description about the recipe.",
+    "image": "../../../imgs/img-recipe-6.jpg",
+    "rating": 4.6,
+    "difficulty": "Medium",
+    "category": "Meat",
+    "cuisine": "American",
+    "preparation_time": "10 minutes",
+    "cooking_time": "20 minutes",
+    "total_time": "30 minutes",
+    "nutritional_info": {
+        "calories": 700,
+        "carbohydrates": 0,
+        "protein": 50,
+        "fat": 50,
+        "fiber": 0
+    },
+    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "descriptionCooking": "Season the steak with salt and pepper. Heat a skillet and add oil. Cook the steak for 5-7 minutes on each side for medium-rare. Let it rest before slicing.",
+    "ingrediants": [
+        {
+            "id": 1,
+            "name": "Steak",
+            "quantity": "200g"
+        },
+        {
+            "id": 2,
+            "name": "Salt",
+            "quantity": "to taste"
+        },
+        {
+            "id": 3,
+            "name": "Pepper",
+            "quantity": "to taste"
+        },
+        {
+            "id": 4,
+            "name": "Olive Oil",
+            "quantity": "1 tbsp"
+        }
+    ],
+    "steps": [
+        {
+            "id": 1,
+            "description": "Season the steak with salt and pepper."
+        },
+        {
+            "id": 2,
+            "description": "Heat a skillet and add oil."
+        },
+        {
+            "id": 3,
+            "description": "Cook the steak for 5-7 minutes on each side."
+        },
+        {
+            "id": 4,
+            "description": "Let it rest before slicing."
+        }
+    ]
+}
+]
