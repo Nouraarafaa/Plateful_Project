@@ -101,27 +101,74 @@ body {
 
 .sidebar-right h2 {
   font-size: 1.2rem;
-  margin-bottom: 15px;
+  margin: 24px 0 15px 0; /* Add 20px margin only to the top */
   color: var(--font-color);
 }
 
-.ingredients-list {
+.sidebar-right .firsth2 {
+  margin : 0 0 15px 0; /* Remove top margin for the first h2 */
+}
+
+.ingredients-list , .nutritional-info{
   list-style: none;
   padding-left: 20px;
 }
 
-.ingredients-list li {
+.ingredients-list li, .nutritional-info li {
   margin-bottom: 8px;
   position: relative;
   color: var(--font-color);
 }
 
-.ingredients-list li::before {
+.ingredients-list li::before, .nutritional-info li::before {
   content: "• ";
   color: #AFBCAA;
   position: absolute;
   left: -15px;
 }
+
+.ingredients-list li {
+  list-style: none;
+  padding-left: 11px;
+}
+
+.preparation-steps {
+  list-style: none;
+  padding-left: 3px;
+}
+
+.preparation-steps li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  position: relative;
+  color: var(--font-color);
+  cursor: pointer; /* Add pointer cursor for interactivity */
+  gap: 10px;
+}
+
+.preparation-steps li::before {
+  font-family: "Font Awesome 6 Free";
+  content: "\f0c8"; /* Unicode for regular square (fa-square) */
+  font-weight: 400;
+  color: var(--font-color);
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.preparation-steps li.completed::before {
+  content: "\f14a"; /* Unicode for checked square (fa-check-square) */
+  font-weight: 900;  /* Solid style */
+  color: var(--primary-color);
+  text-decoration: none; /* Ensure no line-through on the square */
+}
+
+.preparation-steps li.completed {
+  text-decoration: line-through;
+  color: #AFBCAA;
+  cursor: default;
+}
+
 
 /* ============ MEDIA QUERIES ============ */
 @media (max-width: 992px) {
