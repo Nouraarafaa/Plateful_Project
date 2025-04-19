@@ -47,6 +47,8 @@ body {
   max-width: 400px;
   border-radius: 8px;
   margin-bottom: 20px;
+  height: 400px;
+
 }
 
 .recipe-description {
@@ -171,6 +173,28 @@ body {
 .preparation-steps li.completed::before {
   text-decoration: none; /* Ensure no line-through on the square */
 }
+
+/* Keyframe animation for sliding text from top to bottom */
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px); /* Start slightly above */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End at the original position */
+  }
+}
+
+
+/* Default styles for sidebar elements */
+.sidebar-right li,
+.sidebar-right p {
+  opacity: 0; /* Initially hidden */
+  transform: translateY(-20px); /* Start slightly above */
+  animation: slideDown 0.8s ease forwards; /* Trigger the animation */
+}
+
 
 
 /* ============ MEDIA QUERIES ============ */

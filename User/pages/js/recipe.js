@@ -34,16 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ingredientsList.appendChild(li);
             });
 
-            // populate the nutritional_info
-            const nutritionalInfo = recipe.nutritional_info;
-            const nutritionalInfoDiv = document.getElementById("nutritional-info");
-            nutritionalInfoDiv.innerHTML = ""; // Clear any existing content
-            for (const [key, value] of Object.entries(nutritionalInfo)) {
-                const p = document.createElement("li");
-                p.textContent = `${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}`;
-                nutritionalInfoDiv.appendChild(p);
-            }
-
             // Populate the preparation steps
             const preparationSteps = recipe.steps;
             const stepsList = document.getElementById("preparation-steps");
@@ -59,6 +49,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 stepsList.appendChild(li);
             });
 
+            // populate the nutritional_info
+            const nutritionalInfo = recipe.nutritional_info;
+            const nutritionalInfoDiv = document.getElementById("nutritional-info");
+            nutritionalInfoDiv.innerHTML = ""; // Clear any existing content
+            for (const [key, value] of Object.entries(nutritionalInfo)) {
+                const p = document.createElement("li");
+                p.textContent = `${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}`;
+                nutritionalInfoDiv.appendChild(p);
+            }
+
+            
+
+            // Trigger the animation for the sidebar
+            const sidebarElements = document.querySelectorAll(".sidebar-right li, .sidebar-right p");
+            sidebarElements.forEach((element, index) => {
+                element.style.animationDelay = `${index * 0.2}s`; // Dynamic delay
+            });
         })
         .catch((error) => {
             console.error("Error loading recipe:", error);
