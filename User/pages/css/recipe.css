@@ -160,13 +160,16 @@ body {
   content: "\f14a"; /* Unicode for checked square (fa-check-square) */
   font-weight: 900;  /* Solid style */
   color: var(--primary-color);
-  text-decoration: none; /* Ensure no line-through on the square */
 }
 
 .preparation-steps li.completed {
   text-decoration: line-through;
   color: #AFBCAA;
   cursor: default;
+}
+
+.preparation-steps li.completed::before {
+  text-decoration: none; /* Ensure no line-through on the square */
 }
 
 
