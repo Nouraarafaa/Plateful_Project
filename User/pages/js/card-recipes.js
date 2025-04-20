@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Function to display recipes
     function displayRecipes(recipes) {
+        const favourites = JSON.parse(localStorage.getItem("favourites")) || [];
         cardsBody.innerHTML = ""; // Clear existing cards
         if (recipes.length === 0) {
             // Display "No results" message if no recipes match
@@ -36,27 +37,67 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = document.createElement("div");
             card.classList.add("card");
 
+            const isFavourite = favourites.some((fav) => fav.id === recipe.id);
+
             card.innerHTML = `
                 <div class="card-image">
-                <img src="${recipe.image}" alt="${recipe.title}">
+                    <img src="${recipe.image}" alt="${recipe.title}">
                 </div>
                 <div class="card-content">
-                <h2>${recipe.title}</h2>
-                <p>${recipe.description}</p>
-                <div class="reviews">
-                    <span>${recipe.rating}</span>
-                    <span>
-                    ${generateStars(recipe.rating)}
-                    </span>
-                </div>
+                    <h2>${recipe.title}</h2>
+                    <p>${recipe.description}</p>
+                    <div class="reviews">
+                        <span>${recipe.rating}</span>
+                        <span>
+                            ${generateStars(recipe.rating)}
+                        </span>
+                    </div>
                 </div>
                 <div class="card-action">
-                <a href="../html/recipe.html?id=${recipe.id}" class="view-recipe-btn">View Recipe</a>
-                <button class="addFavourites"><i class="fa-solid fa-heart"></i></button>
+                    <a href="../html/recipe.html?id=${recipe.id}" class="view-recipe-btn">View Recipe</a>
+                    <button class="addFavourites ${isFavourite ? "active" : ""}" data-id="${recipe.id}">
+                        <i class="fa-solid fa-heart"></i>
+                    </button>
                 </div>
             `;
 
             cardsBody.appendChild(card);
+        });
+
+        // Add event listeners to favourite buttons
+        const favButtons = document.querySelectorAll(".addFavourites");
+        favButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                let favourites = JSON.parse(localStorage.getItem("favourites")) || [];
+                const recipeId = parseInt(button.getAttribute("data-id"));
+                const recipe = allRecipes.find((r) => r.id === recipeId);
+
+                if (button.classList.contains("active")) {
+                    favourites = favourites.filter((fav) => fav.id !== recipeId);
+                    localStorage.setItem("favourites", JSON.stringify(favourites));
+                    button.classList.remove("active");
+
+                    Swal.fire({
+                        title: "Recipe removed from your favourites.",
+                        text: "You can add it again anytime.",
+                        icon: "warning",
+                        confirmButtonText: "OK",
+                        confirmButtonColor: "#70974C"
+                    });
+                } else {
+                    favourites.push(recipe);
+                    localStorage.setItem("favourites", JSON.stringify(favourites));
+                    button.classList.add("active");
+
+                    Swal.fire({
+                        title: "Recipe added to your favourites successfully ❤️",
+                        text: "You can view it in the favourites section.",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        confirmButtonColor: "#70974C"
+                    });
+                }
+            });
         });
     }
 

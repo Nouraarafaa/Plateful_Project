@@ -28,11 +28,14 @@ h1 {
   margin-top: 10px;
 }
 .recipe-card {
-  background: rgba(255, 255, 255, 0.379);
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  background: rgba(255, 255, 255, 0.587);
+   border-radius: 12px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   overflow: hidden;
+   text-align: center;
+   transition: transform 0.3s ease-in-out;
+   opacity: 1; /* Ensure cards are visible */
+   transform: scale(1); /* Ensure cards are scaled correctly */
 }
 .recipe-card img {
   width: 100%;
