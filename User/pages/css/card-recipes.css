@@ -135,6 +135,13 @@ button:hover{
   color: #AA080C;
   background-color: transparent;
 }
+.addFavourites.active {
+  color: red;
+  background-color: transparent;}
+
+.addFavourites.active:hover {
+  opacity: 0.8;
+}
 .details {
   text-align: center;
   padding: 30px 10px 0 10px;
