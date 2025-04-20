@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let favourites = JSON.parse(localStorage.getItem("favourites")) || [];
 
     if (favourites.length === 0) {
-        favContainer.innerHTML = "<p>No recipes were added to your favourites.</p>";
+        favContainer.innerHTML = `<p class="no-results" >No recipes were added to your favourites.</p>`;
         return;
     }
 
