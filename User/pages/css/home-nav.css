@@ -1,3 +1,10 @@
+:root{
+  --bg-color: #FCF7E4;
+  --primary-color:#70974C;
+  --secondary-color: #F7AF89;
+  --font-color:#2d1c0a;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +18,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 4px 80px;
-  background-color: #70974C;
+  background-color: var(--bg-color);
 }
 
 .logo img {
@@ -30,9 +37,9 @@ nav {
 
 .nav-links a {
   text-decoration: none;
-  color:#FCF7E4;
+  color: var(--font-color);
   font-size: 17px;
-  font-weight: 600;
+  font-weight: 500;
   padding: 6px;
   border-radius: 10px;
   transition: 0.3s;
@@ -40,16 +47,19 @@ nav {
 }
 
 .nav-links a:hover {
-  background-color:#2d1c0a;
+  background-color: var(--font-color);
+  color: var(--bg-color);
 }
 
 .nav-links a.active {
   background-color:#2d1c0a;
+  color: var(--bg-color);
 }
 
 .favourites i {
-  color: var(--bg-color);
+  color: var(--font-color);
 }
+
 li:hover .favourites i {
   color: rgb(174, 8, 8);
 }
@@ -57,7 +67,7 @@ li:hover .favourites i {
 .menu-container {
   position: relative;
   display: none;
-}
+} 
 
 .menu-checkbox {
   display: none;
@@ -70,7 +80,7 @@ li:hover .favourites i {
   top: 10px;
   right: 30px;
   z-index: 1001;
-  color:#2d1c0a;
+  color: var(--font-color);
   border-radius: 5px;
 }
 
@@ -106,7 +116,7 @@ li:hover .favourites i {
 }
 
 .mobile-nav li a {
-  color: white;
+  color: var(--bg-color);
   font-size: 20px;
   padding-block: 30px;
   text-align: center;
@@ -114,7 +124,7 @@ li:hover .favourites i {
 }
 
 .mobile-nav li a {
-  color: white;
+  color: var(--bg-color);
   font-size: 16px;
 }
 
@@ -127,10 +137,10 @@ li:hover .favourites i {
   transition: 0.5s;
 }
 .auth-btn1 a:hover , .auth-btn2 a:hover{
-  background-color: #2d1c0a;
+  background-color: var(--bg-color);
 }
 .seperator{
-  color: #FCF7E4;
+  color: var(--font-color);
 }
 @media (max-width: 768px) {
   nav {
