@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!user) {
       const protectedLinks = [
-          "../../../user/pages/html/card-recipes.html",
           "../../../User/pages/html/favourites.html",
           "../../../User/pages/html/profile.html",
           "../../../User/pages/html/contact.html"
@@ -83,10 +82,10 @@ document.getElementById('registerform').addEventListener('submit', function(even
       return;
   }
 
-  if (password.length < 8) {
-      document.getElementById('registerErrorMessage').textContent = 'Password must be at least 8 characters long!';
-      document.getElementById('registerErrorMessage').style.display = 'block';
-      return;
+  if (!validatePassword(password)) {
+    document.getElementById('registerErrorMessage').innerHTML = 'Password must be at least 8 characters long<br>and include uppercase, lowercase, number, and <br> special character.';
+    document.getElementById('registerErrorMessage').style.display = 'block';
+    return;
   }
 
   if (password !== confirmPassword) {
@@ -132,4 +131,9 @@ document.getElementById('registerform').addEventListener('submit', function(even
 function validateEmail(email) {
     var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     return regex.test(email);
+}
+
+function validatePassword(password) {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+    return regex.test(password);
 }

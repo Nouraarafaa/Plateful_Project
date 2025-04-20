@@ -1,170 +1,277 @@
-:root{
+:root {
   --bg-color: #FCF7E4;
-  --primary-color:#70974C;
+  --primary-color: #70974C;
   --secondary-color: #F7AF89;
-  --font-color:#2d1c0a;
+  --font-color: #2d1c0a;
 }
 
 body {
   font-family: "Montserrat", sans-serif;
   height: 100vh;
-  background-color:var(--bg-color);
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
 }
 
 .main-container {
   display: flex;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
   max-width: 1200px;
   margin: 20px auto;
-  background-color: #ffffff81;
+  background-color: rgba(255, 255, 255, 0.587);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-.sidebar-left {
-  width: 180px;
-  background-color: #fdf7f050;
-  border-right: 1px solid #ddd;
-  padding: 20px;
-}
-.sidebar-left h3 {
-  margin-bottom: 15px;
-  font-size: 1.1rem;
-  color: var(--font-color);
-}
-.sidebar-left ul {
-  list-style: none;
-}
-.sidebar-left li {
-  margin-bottom: 10px;
-}
-.sidebar-left a {
-  color: var(--font-color);
-  font-weight: 600;
-  padding: 5px;
-  border-radius: 5px;
-}
-.sidebar-left a:hover {
-  background-color: var(--primary-color);
-  color: #fff;
-  transition: 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  gap: 20px; /* Add spacing between content and sidebar */
+  padding: 20px; /* Add padding around the container */
 }
 
 .content {
-  flex: 1;
+  flex: 1; /* Allow content to take up available space */
   padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  min-width: 300px; /* Ensure a minimum width for content */
 }
+
 .content h1 {
   font-size: 2rem;
   margin-bottom: 10px;
   color: var(--font-color);
 }
+
 .recipe-image {
   width: 100%;
   max-width: 400px;
   border-radius: 8px;
   margin-bottom: 20px;
+  height: 400px;
+
 }
+
 .recipe-description {
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 20px;
-  color: #555;
+  color: var(--font-color);
 }
+
+.steps-list {
+  list-style: decimal;
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+.nutritional-info p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: var(--font-color);
+}
+
 .buttons {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
 }
+
 .buttons a {
   display: inline-block;
-  background-color: #dc3545; 
+  background-color: var(--font-color);
   color: #fff;
   padding: 8px 16px;
   border-radius: 5px;
-  font-weight: bold;
-}
-.buttons a:hover {
-  background-color: #c51d2e;
-  transition: 0.3s;
-}
-.buttons .more-btn {
-  background-color: #007bff;
-}
-.buttons .more-btn:hover {
-  background-color: #0056b3;
+  
 }
 
-.sidebar-right {
-  width: 220px;
-  background-color: #FDF7F0;
-  border-left: 1px solid #ddd;
-  padding: 20px;
+.buttons a:hover {
+  background-color: rgba(255, 255, 255, 0.587);
+  transition: 0.3s;
+  border: var(--font-color) solid 1px;
+  color: var(--font-color);
 }
+
+
+.sidebar-right {
+  flex: 0 0 300px; /* Sidebar has a fixed width */
+  background-color: var(--bg-color);
+  border-left: 1px solid var(--font-color);
+  padding: 20px;
+  min-width: 250px; /* Ensure a minimum width for the sidebar */
+}
+
 .sidebar-right h2 {
   font-size: 1.2rem;
-  margin-bottom: 15px;
-  color:var(--font-color);
+  margin: 24px 0 15px 0; /* Add 20px margin only to the top */
+  color: var(--font-color);
 }
-.ingredients-list {
+
+.sidebar-right .firsth2 {
+  margin : 0 0 15px 0; /* Remove top margin for the first h2 */
+}
+
+.ingredients-list , .nutritional-info{
   list-style: none;
-  padding-left: 20px; 
+  padding-left: 20px;
 }
-.ingredients-list li {
+
+.ingredients-list li, .nutritional-info li {
   margin-bottom: 8px;
   position: relative;
   color: var(--font-color);
 }
-.ingredients-list li::before {
+
+.ingredients-list li::before, .nutritional-info li::before {
   content: "• ";
   color: #AFBCAA;
   position: absolute;
   left: -15px;
 }
 
-/* ============ MEDIA QUERIES ============ */
-@media (max-width: 992px) {
-  .sidebar-left {
-    width: 160px;
+.ingredients-list li {
+  list-style: none;
+  padding-left: 11px;
+}
+
+.preparation-steps {
+  list-style: none;
+  padding-left: 3px;
+}
+
+.preparation-steps li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  position: relative;
+  color: var(--font-color);
+  cursor: pointer; /* Add pointer cursor for interactivity */
+  gap: 10px;
+}
+
+.preparation-steps li::before {
+  font-family: "Font Awesome 6 Free";
+  content: "\f0c8"; /* Unicode for regular square (fa-square) */
+  font-weight: 400;
+  color: var(--font-color);
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.preparation-steps li.completed::before {
+  content: "\f14a"; /* Unicode for checked square (fa-check-square) */
+  font-weight: 900;  /* Solid style */
+  color: var(--primary-color);
+}
+
+.preparation-steps li.completed {
+  text-decoration: line-through;
+  color: #AFBCAA;
+  cursor: default;
+}
+
+.preparation-steps li.completed::before {
+  text-decoration: none; /* Ensure no line-through on the square */
+}
+
+/* Container for the recipe image and GIF column */
+.recipe-container {
+  display: flex;
+  align-items: center;
+  gap: 100px; /* Space between the image and the GIF column */
+}
+
+/* GIF column styles */
+.gif-column {
+  display: flex;
+  flex-direction: column; /* Stack GIFs vertically */
+  gap: 15px; /* Space between GIFs */
+}
+
+.gif-circle {
+  width: 80px; /* Set the size of the GIFs */
+  height: 80px;
+  border-radius: 50%; /* Make the GIFs circular */
+  object-fit: cover; /* Ensure the GIFs fit within the circle */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  transition: transform 0.3s ease; /* Add a hover effect */
+}
+
+.gif-circle:hover {
+  transform: scale(1.1); /* Slightly enlarge the GIF on hover */
+}
+
+/* Keyframe animation for sliding text from top to bottom */
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px); /* Start slightly above */
   }
-  .sidebar-right {
-    width: 200px;
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End at the original position */
   }
 }
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-  .menu-container {
-    display: block;
-  }
+
+
+/* Default styles for sidebar elements */
+.sidebar-right li,
+.sidebar-right p {
+  opacity: 0; /* Initially hidden */
+  transform: translateY(-20px); /* Start slightly above */
+  animation: slideDown 0.8s ease forwards; /* Trigger the animation */
+}
+
+
+
+/* ============ MEDIA QUERIES ============ */
+@media (max-width: 992px) {
   .main-container {
-    flex-direction: column;
+    flex-direction: column; /* Stack content and sidebar vertically */
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
   }
-  .sidebar-left, .sidebar-right {
-    width: 100%;
-    border: none;
-  }
+
   .sidebar-right {
+    width: 100%; /* Sidebar takes full width */
+    margin-top: 20px;
+    border-left: none;
     border-top: 1px solid #ddd;
   }
 }
-@media (max-width: 576px) {
-  .sidebar-left {
-    width: 100%;
+
+@media (max-width: 768px) {
+  .content {
+    padding: 10px;
   }
+
   .sidebar-right {
-    width: 100%;
+    padding: 10px;
+  }
+  .main-container {
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }
-@media (max-width: 400px) {
-  .sidebar-left {
-     width: 100%;
+
+@media (max-width: 576px) {
+  .main-container {
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
+
+  .content h1 {
+    font-size: 1.5rem;
+  }
+
+  .buttons a {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+
   .sidebar-right {
-    width: 100%;
+    padding: 10px;
   }
 }

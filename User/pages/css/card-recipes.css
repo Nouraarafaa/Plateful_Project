@@ -30,19 +30,24 @@ body {
   outline: var(--primary-color);
 }
 .cards-body {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Always maintain 5 columns */
+  gap: 20px; /* Space between cards */
   margin-top: 50px;
   margin-inline: 30px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  justify-items: center; /* Center cards horizontally */
+  align-items: start; /* Align cards to the top */
+  min-height: 300px; /* Ensure the grid has a minimum height */
 }
+
 .card {
   background: rgba(255, 255, 255, 0.587);
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   text-align: center;
-  transition: transform 0.3s ease-in-out;
+  opacity: 1; /* Ensure cards are visible */
+  transform: scale(1); /* Ensure cards are scaled correctly */
 }
 
 .card:hover {
@@ -94,6 +99,21 @@ button {
   background-color: var(--font-color);
 }
 
+.view-recipe-btn {
+  background-color: var(--font-color);
+  color: var(--bg-color);
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.view-recipe-btn:hover {
+  background-color: rgba(255, 255, 255, 0.587);
+  color: var(--font-color);
+  border: 1px solid var(--font-color);
+  transition: 0.3s;
+}
+
 a {
   text-decoration: none;
   color:var(--bg-color);}
@@ -108,12 +128,19 @@ button:hover{
 }
 .addFavourites{
   background-color: transparent;
-  color: #4A2F14;
+  color: var(--font-color);
   font-size: 18px;
 }
 .addFavourites:hover{
   color: #AA080C;
   background-color: transparent;
+}
+.addFavourites.active {
+  color: red;
+  background-color: transparent;}
+
+.addFavourites.active:hover {
+  opacity: 0.8;
 }
 .details {
   text-align: center;
@@ -154,6 +181,14 @@ button:hover{
   transition: 0.4s;
 }
 
+/* Style for active category */
+.category-item.active {
+  background: var(--font-color); 
+  color: var(--bg-color); 
+  font-weight: bold;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
 /* Hide dropdown by default */
 .dropdown {
   display: none;
@@ -168,7 +203,7 @@ button:hover{
   position: absolute;
   top: 100%;
   left: 0;
-  background: white;
+  background: var(--font-color);
   border: 1px solid #ccc;
   z-index: 10;
 }
@@ -183,30 +218,68 @@ button:hover{
   padding: 8px 12px;
   white-space: nowrap;
   cursor: pointer;
-  color: #2d1c0a;
+  color: var(--bg-color);
 }
 
 .subcategory-item:hover {
-  background-color: #f0f0f0;
-  color: #7d6144;
+  background-color: var(--bg-color);
+  color: var(--font-color);
 }
 
-@media (max-width: 1200px) {
+/* Style for no results message */
+.no-results {
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 50vh; /* Set the height to 50% of the viewport */
+  width: 100%; /* Ensure it spans the full width of the container */
+  text-align: center; /* Center the text */
+  font-size: 18px; /* Adjust font size */
+  color: var(--font-color); /* Use the font color variable */
+  font-weight: bold; /* Make the text bold */
+  grid-column: 1 / -1; /* Span all columns in the grid */
+}
+
+@media (max-width: 1300px) {
   .search input{    
   width: 70%;
   }
   .items {
     display: none; /* Hide category links */
+  }
+
+  .dropdown {
+      display: block; /* Show dropdown */
+  }
+
+  .dropdown select {
+      width: 70%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+  }
+
+  .cards-body {
+    grid-template-columns: repeat(4, 1fr); /* Reduce to 4 columns */
+  }
+}
+/* For screens smaller than 992px */
+@media (max-width: 1000px) {
+  .cards-body {
+    grid-template-columns: repeat(3, 1fr); /* Reduce to 3 columns */
+  }
 }
 
-.dropdown {
-    display: block; /* Show dropdown */
+/* For screens smaller than 768px */
+@media (max-width: 830px) {
+  .cards-body {
+    grid-template-columns: repeat(2, 1fr); /* Reduce to 2 columns */
+  }
 }
 
-.dropdown select {
-    width: 70%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+/* For screens smaller than 576px */
+@media (max-width: 576px) {
+  .cards-body {
+    grid-template-columns: 1fr; /* Single column */
+  }
 }

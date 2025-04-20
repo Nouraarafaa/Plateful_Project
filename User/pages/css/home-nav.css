@@ -43,6 +43,10 @@ nav {
   background-color:#2d1c0a;
 }
 
+.nav-links a.active {
+  background-color:#2d1c0a;
+}
+
 .favourites i {
   color: var(--bg-color);
 }
@@ -117,7 +121,17 @@ li:hover .favourites i {
 .menu-checkbox:checked + .menu-icon + .mobile-nav {
   right: 20px;
 }
-  
+.auth-btn1 a, .auth-btn2 a{
+  color: var(--bg-color);
+  font-weight: 500;
+  transition: 0.5s;
+}
+.auth-btn1 a:hover , .auth-btn2 a:hover{
+  background-color: #2d1c0a;
+}
+.seperator{
+  color: #FCF7E4;
+}
 @media (max-width: 768px) {
   nav {
     padding-inline: 40px;
