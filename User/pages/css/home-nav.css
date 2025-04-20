@@ -79,7 +79,7 @@ li:hover .favourites i {
   top: 55px;
   right: -100%;
   width: 150px;
-  height: 300px;
+  height: 350px;
   background: rgba(0, 0, 0, 0.9);
   border-radius:  20px 20px 20px 20px;
   padding-inline: 20px;
@@ -147,4 +147,8 @@ li:hover .favourites i {
   .menu-icon {
     display: block;
   }
+}
+.btn-success , .btn-danger{
+  margin-inline: 5px;
+  padding: 10px 15px;
 }

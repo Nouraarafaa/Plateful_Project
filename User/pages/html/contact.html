@@ -20,42 +20,57 @@
 <body>
     <nav>
         <div class="logo">
-            <img src="../../../imgs/logo.png" alt="Logo">
+          <img src="../../../imgs/logo.png" alt="Logo">
         </div>
         <ul class="nav-links">
-            <li><a href="../../../index.html">Home</a></li>
-            <li><a href="../html/about.html">About</a></li>
-            <li><a href="../html/card-recipes.html">Recipes</a></li>
-            <li><a href="../html/contact.html">Contact us</a></li>
-            <li><a class="favourites" href="../html/favourites.html">
-                    <i class="fa-solid fa-heart"></i></a>
-            </li>
-            <li><a href="../html/profile.html">
-                    <i class="fa-solid fa-user"></i>
-                </a></li>
+          <li><a href="../../../index.html">Home</a></li>
+          <li><a href="../html/about.html">About</a></li>
+          <li><a href="../html/card-recipes.html">Recipes</a></li>
+          <li id="contactBtn"><a href="../html/contact.html">Contact us</a></li>
+          <li id="favouritesBtn"><a class="favourites" href="../html/favourites.html">
+              <i class="fa-solid fa-heart"></i></a>
+          </li>
+          <li id="profileBtn"><a href="../html/profile.html">
+              <i class="fa-solid fa-user"></i>
+            </a></li>
+          <div class="seperator">
+            <span>|</span>
+          </div>
+          <li id="loginBtn" class="auth-btn1"><a href="../../../Login & Register/pages/html/userAuth.html">Login</a></li>
+          <li id="registerBtn" class="auth-btn2"><a href="../../../Login & Register/pages/html/userAuth.html">Register</a>
+          </li>
         </ul>
-
+    
         <div class="menu-container">
-            <input type="checkbox" id="menu-toggle" class="menu-checkbox">
-            <label for="menu-toggle" class="menu-icon">☰</label>
-            <ul class="mobile-nav">
-                <div class="names">
-                    <li><a href="../../../index.html">Home</a></li>
-                    <li><a href="../html/about.html">About</a></li>
-                    <li><a href="../html/card-recipes.html">Recipes</a></li>
-                    <li><a href="../html/contact.html">Contact us</a></li>
-                </div>
-                <div class="icons">
-                    <li><a class="favourites" href="../html/favourites.html">
-                        <i class="fa-solid fa-heart"></i></a>
-                </li>
-                <li><a href="../html/profile.html">
-                        <i class="fa-solid fa-user"></i>
-                    </a></li>
-                </div>
-            </ul>
+          <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+          <label for="menu-toggle" class="menu-icon">☰</label>
+          <ul class="mobile-nav">
+            <div class="names">
+              <li><a href="../../../index.html">Home</a></li>
+              <li><a href="../html/about.html">About</a></li>
+              <li><a href="../html/card-recipes.html">Recipes</a></li>
+              <li><a href="../html/contact.html" class="protected-link">Contact us</a></li>
+              <li><a class="favourites protected-link" href="../html/favourites.html">
+                  <i class="fa-solid fa-heart"></i></a>
+              </li>
+              <li id="profileBtn"><a class="protected-link" href="../html/profile.html">
+                  <i class="fa-solid fa-user"></i>
+                </a></li>
+    
+            </div>
+            <div class="icons">
+              <li><a class="favourites" href="../html/favourites.html">
+                  <i class="fa-solid fa-heart"></i></a>
+              </li>
+              <li id="profileBtn"><a href="../html/profile.html">
+                  <i class="fa-solid fa-user"></i>
+                </a></li>
+              <li><a href="../../../Login & Register/pages/html/userAuth.html">Login</a></li>
+              <li><a href="../../../Login & Register/pages/html/userAuth.html">Register</a></li>
+            </div>
+          </ul>
         </div>
-    </nav>
+      </nav>
 
 
     <section>
@@ -122,6 +137,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/contact.js"></script>
     <script src="../../../index.js"></script>
+    <script src="./../../../Login & Register/pages/js/authentication.js"></script>
 </body>
 
 </html>
