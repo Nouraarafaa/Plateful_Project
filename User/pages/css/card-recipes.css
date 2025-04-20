@@ -136,7 +136,7 @@ button:hover{
   background-color: transparent;
 }
 .addFavourites.active {
-  color: #AA080C;
+  color: red;
   background-color: transparent;}
 
 .addFavourites.active:hover {
