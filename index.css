@@ -1,5 +1,5 @@
 :root{
-  --bg-color: #FCF7E4;
+  --bg-color: white;
   --primary-color:#70974C;
   --secondary-color: #F7AF89;
   --font-color:#2d1c0a;
@@ -49,18 +49,41 @@ footer{
 /* Hero Section Container */
 .hero-container {
   width: 100%;
-  height: 90vh; 
-  background-color: #FCF7E4;
+  height: 94vh;
+  padding: 0 80px; /* Padding for the container */
+  background-image: url('./imgs/Marble\ background\ with\ flour\ and\ a\ rolling\ pin\ on\ the\ right\ side.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center; /* Ensure content is vertically centered */
 }
 
 /* Centered Text Content */
 .hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  padding: 20px;
-  color:#2d1c0a; 
+  color: #2d1c0a;
+}
+
+/* Responsive Design for Small Screens (Mobile) */
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column; /* Stack elements vertically */
+    padding: 20px; /* Adjust padding for smaller screens */
+    height: auto; /* Allow height to adjust based on content */
+  }
+
+  .hero-text {
+    position: static; /* Remove absolute positioning */
+    transform: none; /* Reset transform */
+    margin-top: 20px; /* Add spacing above the text */
+  }
 }
 
 .hero-text h4 {
@@ -136,82 +159,109 @@ a{
 
 /* Team Section Styles */
 .team-section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  padding: 50px;
-  background-color: white; /* Light background color */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 30px;
+    padding: 20px 80px;
+    background-color: white; /* Light background color */
+    align-items: center;
 }
 
 .team-intro {
-  flex: 1 1 100%;
-  max-width: 600px;
+    flex: 1 1 50%; /* Take half the width on larger screens */
+    max-width: 600px;
+    text-align: left;
 }
 
 .team-intro h2 {
-  font-size: 2rem;
-  color: var(--font-color); 
-  margin-bottom: 20px;
+    font-size: 2rem;
+    color: var(--font-color); 
+    margin-bottom: 20px;
 }
 
 .team-intro p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--font-color);
-  margin-bottom: 20px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--font-color);
+    margin-bottom: 20px;
 }
 
 .read-more-btn {
-  display: inline-block;
-  background-color: var(--font-color); 
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease-in-out;
+    display: inline-block;
+    background-color: var(--font-color); 
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .read-more-btn:hover {
-  background-color: white; 
-  color: var(--font-color); 
-  border: 2px solid var(--font-color); 
+    background-color: white; 
+    color: var(--font-color); 
+    border: 2px solid var(--font-color); 
 }
 
 .team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
-  flex: 1 1 100%;
+    flex: 1 1 50%; /* Take half the width on larger screens */
+    display: grid;
+    grid-template-columns: repeat(auto-fit , minmax(150px, 1fr));
+    gap: 35px;
 }
 
 .team-member {
-  text-align: center;
+    text-align: center;
+    padding : 20px 5px;
+    border-radius: 10px;
 }
 
 .team-member img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%; 
-  object-fit: cover;
-  margin-bottom: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    width: 110px;
+    height: 110px;
+    border-radius: 50%; 
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.team-member:hover {
+    box-shadow: 0 4px 8px var(--font-color); /* Shadow effect on hover */
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
 }
 
 .team-member h3 {
-  font-size: 1rem;
-  color: var(--font-color);
-  margin-bottom: 5px;
+    font-size: 1rem;
+    color: var(--font-color);
+    margin-bottom: 5px;
 }
 
 .team-member p {
-  font-size: 0.9rem;
-  color: var(--font-color);
+    font-size: 0.9rem;
+    color: var(--font-color);
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+    .team-section {
+      flex-direction: column; /* Stack elements vertically */
+    }
+
+    .team-intro {
+      flex: 1 1 100%; /* Take full width */
+      text-align: center; /* Center-align text on smaller screens */
+    }
+
+    .team-grid {
+      flex: 1 1 100%; /* Take full width */
+      grid-template-columns: repeat(2, 1fr); /* Two columns for team members */
+      gap: 20px; /* Add spacing between items */
+    }
 }
 
 /* Popular Dishes Section Styles */
 .popular-dishes-section {
-  padding: 50px;
+  padding: 30px 50px;
   background-color: #2d1c0a; /* Dark background */
   color: var(--bg-color);
   text-align: center;
@@ -219,7 +269,7 @@ a{
 }
 
 .popular-dishes-section h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 40px;
   color: var(--bg-color);
 }
@@ -234,31 +284,53 @@ a{
 }
 
 .dish {
-  text-align: center;
   position: relative;
-}
-
-.dish img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.dish img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
 }
 
-.dish h3 {
+.dish:hover img {
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.dish-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Gray transparent overlay */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 50%;
+}
+
+.dish:hover .dish-overlay {
+  opacity: 1; /* Show overlay on hover */
+}
+
+.dish-overlay h3 {
   font-size: 1.2rem;
-  margin: 10px 0 5px;
   color: var(--bg-color);
+  margin-bottom: 10px;
 }
 
-.dish p {
-  font-size: 1rem;
-  margin: 0 0 10px;
-  color: var(--bg-color);
-}
-
-.view-btn {
+.dish-overlay .view-btn {
   background-color: var(--primary-color);
   color: var(--bg-color);
   border: none;
@@ -269,7 +341,7 @@ a{
   transition: background-color 0.3s ease;
 }
 
-.view-btn:hover {
+.dish-overlay .view-btn:hover {
   background-color: var(--secondary-color);
 }
 
@@ -325,7 +397,7 @@ a{
   }
   .hero-container {
       flex-direction: column;
-      height: auto;
+      height: 90vh; /* Allow height to adjust based on content */
       padding: 20px;
   }
 
@@ -343,10 +415,15 @@ a{
     padding-left: 0;
     border-left: none;
   }
+
   .hero-text {
-      width: 100%;
-      text-align: center;
-      padding: 10px;
+    position: static; /* Remove absolute positioning */
+    transform: none; /* Reset transform */
+    margin-top: 20px; /* Add spacing above the text */
+    width: 100%;
+    flex-direction: center;
+    text-align: center;
+    padding: 10px;
   }
 
   .hero-text h1 {
