@@ -11,46 +11,16 @@ body {
   background-color: var(--bg-color);
 }
 
-/* 
-#modeToggle {
-  display: none;
-}
-
-.toggle-label {
-  display: inline-block;
-  cursor: pointer;
-  padding: 10px 20px;
-  background: #ddd;
-  border-radius: 5px;
-  margin: 20px;
-}
-
-#modeToggle:checked ~ .container {
-  background-color: black;
-  color: white;
-}
-
-#modeToggle:checked ~ .toggle-label {
-  background: #555;
-  color: white;
-}
-
- */
-
-
-footer{
-  width: 100%;
-  background-color: #2d1c0a;
+.footer h2 {
+  font-size: 20px;
   color: var(--bg-color);
-  margin: 0%;
 }
-
 
 /* Hero Section Container */
 .hero-container {
   width: 100%;
   height: 100vh;
-  padding: 0 80px; /* Padding for the container */
+  padding: 0 80px; 
   background-image: url('./imgs/Marble\ background\ with\ flour\ and\ a\ rolling\ pin\ on\ the\ right\ side.jpg');
   background-size: cover;
   background-position: center;
@@ -58,17 +28,16 @@ footer{
   position: relative;
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Ensure content is vertically centered */
+  align-items: center; 
 }
 
 .navbar {
-  position: absolute; /* Position the navbar relative to the hero section */
-  top: 0; /* Align it to the top of the hero section */
-  left: 0; /* Align it to the left */
-  width: 100%; /* Make it span the full width */
-  z-index: 10; /* Ensure it appears above other content */
-  background-color: #2d1c0a1d; /* Add a semi-transparent background */
-  padding: 10px 20px; /* Add some padding for spacing */
+  position: absolute; 
+  top: 0;
+  left: 0; 
+  width: 100%; 
+  z-index: 10;
+  background-color: #2d1c0a1d;
 }
 
 /* Centered Text Content */
@@ -84,15 +53,15 @@ footer{
 /* Responsive Design for Small Screens (Mobile) */
 @media (max-width: 768px) {
   .hero-container {
-    flex-direction: column; /* Stack elements vertically */
-    padding: 20px; /* Adjust padding for smaller screens */
-    height: auto; /* Allow height to adjust based on content */
+    flex-direction: column; 
+    padding: 20px; 
+    height: auto; 
   }
 
   .hero-text {
-    position: static; /* Remove absolute positioning */
-    transform: none; /* Reset transform */
-    margin-top: 20px; /* Add spacing above the text */
+    position: static;
+    transform: none; 
+    margin-top: 20px;
   }
 }
 
@@ -116,30 +85,6 @@ footer{
   line-height: 2;
 }
 
-/* Video Elements */
-.hero-video {
-  width: 27%;
-  height: 100%;
-  object-fit: cover;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-/* Adjusting Video Alignment */
-.hero-video.left {
-  margin-left: 0;
-  padding-left: 0;
-  border-left: none;
-  overflow: hidden;
-}
-
-.hero-video.right {
-  margin-left: 0;
-  padding-left: 0;
-  border-left: none;
-  right: 0;
-  overflow: hidden;
-}
 a{
   color: var(--bg-color);
 }
@@ -170,17 +115,17 @@ a{
 
 /* Team Section Styles */
 .team-section {
-  width: 80%; /* Make the section take 80% of the page width */
-  margin: 50px auto; /* Center the section on the page */
-  padding: 30px; /* Add internal spacing */
-  background-color: rgb(252, 247, 247); /* White background color */
-  border-radius: 15px; /* Rounded corners */
-  box-shadow: 0 1px 8px #2d1c0a; /* Add a light shadow */
-  text-align: center; /* Center-align the text */
+  width: 80%; 
+  margin: 50px auto; 
+  padding: 30px; 
+  background-color: var(--bg-color); 
+  border-radius: 15px; 
+  box-shadow: 0 1px 8px var(--font-color);
+  text-align: center; 
 }
 
 .team-intro {
-  flex: 1 1 50%; /* Take half the width on larger screens */
+  flex: 1 1 50%; 
   max-width: 600px;
   text-align: left;
 }
@@ -201,7 +146,7 @@ a{
 .read-more-btn {
   display: inline-block;
   background-color: var(--font-color); 
-  color: #fff;
+  color: var(--bg-color);
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
@@ -224,59 +169,58 @@ a{
 
 .team-member {
   text-align: center;
-  padding: 10px ; /* Reduce padding */
+  padding: 10px ; 
   border-radius: 10px;
-  transform: scale(0.9); /* Slightly reduce the overall size */
-  margin-top: 20px; /* Add spacing above the member */
+  transform: scale(0.9); 
+  margin-top: 20px; 
 }
 
 .team-member img {
-  width: 80px; /* Reduce the width of the image */
-  height: 80px; /* Reduce the height of the image */
+  width: 80px; 
+  height: 80px; 
   border-radius: 50%; 
   object-fit: cover;
-  margin-bottom: 8px; /* Reduce spacing below the image */
+  margin-bottom: 8px;
 }
 
 .team-member:hover {
-  box-shadow: 0 4px 8px var(--font-color); /* Shadow effect on hover */
+  box-shadow: 0 4px 8px var(--font-color); 
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
 }
 
 .team-member h3 {
-  font-size: 0.9rem; /* Reduce font size for the name */
+  font-size: 0.9rem; 
   color: var(--font-color);
   margin-bottom: 5px;
 }
 
 .team-member p {
-  font-size: 0.8rem; /* Reduce font size for the description */
+  font-size: 0.8rem; 
   color: var(--font-color);
 }
 
-/* Responsive Design for Small Screens */
 @media (max-width: 768px) {
     .team-section {
-      flex-direction: column; /* Stack elements vertically */
+      flex-direction: column;
     }
 
     .team-intro {
-      flex: 1 1 100%; /* Take full width */
-      text-align: center; /* Center-align text on smaller screens */
+      flex: 1 1 100%; 
+      text-align: center; 
     }
 
     .team-grid {
-      flex: 1 1 100%; /* Take full width */
-      grid-template-columns: repeat(2, 1fr); /* Two columns for team members */
-      gap: 20px; /* Add spacing between items */
+      flex: 1 1 100%; 
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 20px; 
     }
 }
 
-/* Popular Dishes Section Styles */
+
 .popular-dishes-section {
   padding: 30px 50px;
-  background-color: #2d1c0a; /* Dark background */
+  background-color: var(--font-color); 
   color: var(--bg-color);
   text-align: center;
   position: relative;
@@ -294,7 +238,7 @@ a{
   justify-content: center;
   flex-wrap: wrap;
   position: relative;
-  gap: 50px; /* Space between dishes */
+  gap: 50px; 
 }
 
 .dish {
@@ -305,7 +249,7 @@ a{
   overflow: hidden;
   cursor: pointer;
   text-align: center;
-  margin-bottom: 20px; /* Space below each dish */
+  margin-bottom: 20px; 
 }
 
 .dish img {
@@ -317,7 +261,7 @@ a{
 }
 
 .dish:hover img {
-  transform: scale(1.1); /* Slight zoom effect on hover */
+  transform: scale(1.1);
 }
 
 .dish-overlay {
@@ -326,7 +270,7 @@ a{
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Gray transparent overlay */
+  background-color: rgba(0, 0, 0, 0.6); 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -337,7 +281,7 @@ a{
 }
 
 .dish:hover .dish-overlay {
-  opacity: 1; /* Show overlay on hover */
+  opacity: 1;
 }
 
 .dish-overlay h3 {
@@ -364,31 +308,6 @@ a{
 
 }
 
-.wave-image {
-  width: 100%; /* Make the wave span the full width of the page */
-  margin: 0; /* Remove any default margins */
-  padding: 0; /* Remove any default padding */
-}
-
-.wave-image img {
-  display: block; /* Ensure the image behaves like a block element */
-  width: 100%; /* Make the image span the full width */
-  height: auto; /* Maintain the aspect ratio */
-}
-
-.wave-footer {
-  width: 100%; /* Make the wave span the full width of the page */
-  margin: 0; /* Remove any default margins */
-  padding: 0; /* Remove any default padding */
-}
-
-.wave-footer img {
-  display: block; /* Ensure the image behaves like a block element */
-  width: 100%; /* Make the image span the full width */
-  height: auto; /* Maintain the aspect ratio */
-  rotate: 180deg; /* Rotate the image upside down */
-}
-
 /* Responsive Design for Medium Screens */
 @media (max-width: 1024px) {
   .hero-video {
@@ -411,25 +330,10 @@ a{
       padding: 20px;
   }
 
-  .hero-video {
-      width: 90%;
-      height: auto;
-      border-radius: 10px;
-
-  }
-  .hero-video.left {
-    display: none;
-  }
-  .hero-video.right {
-    margin-left: 0;
-    padding-left: 0;
-    border-left: none;
-  }
-
   .hero-text {
-    position: static; /* Remove absolute positioning */
-    transform: none; /* Reset transform */
-    margin-top: 80px; /* Add spacing above the text */
+    position: static; 
+    transform: none; 
+    margin-top: 80px; 
     width: 100%;
     flex-direction: center;
     text-align: center;
