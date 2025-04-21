@@ -18,6 +18,10 @@ footer{
     margin-top: 0px;
 }
 
+footer h2 {
+    font-size: 20px;
+    color: var(--bg-color);
+}
 
 footer li , footer p{
     font-size: 15px;
@@ -55,7 +59,7 @@ footer img{
 }
 
 .footer-content-right h2, .footer-content-center h2{
-    color: var(--font-color);
+    color: var(--bg-color); /* Use the background color variable for contrast */
     margin-bottom: 10px;
 }
 p .title{
@@ -83,6 +87,10 @@ p .title{
 
 .footer-social-icons .bxl-linkedin {
     color: #0077B5; 
+}
+
+footer p {
+    color : var(--bg-color); 
 }
 
 footer hr{

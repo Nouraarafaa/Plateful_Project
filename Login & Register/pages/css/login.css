@@ -1,9 +1,9 @@
-:root {
-    --bg-color: #FCF7E4;
-    --primary-color: #70974C;
-    --secondary-color: #F7AF89;
-    --font-color: #2d1c0a;
-}
+:root{
+    --bg-color: rgb(252, 247, 247);
+    --primary-color:#FCF7E4;
+    --secondary-color: #FCF7E4;
+    --font-color:#2d1c0a;
+}  
 
 body {
     background-color: var(--bg-color);
@@ -34,7 +34,7 @@ a:hover {
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.486);
-    box-shadow: 2px 1px 20px 0.1px var(--primary-color);
+    box-shadow: 2px 1px 20px 0.1px var(--font-color);
 }
 
 .container form {
@@ -52,7 +52,7 @@ textarea {
     border-radius: 10px;
     border: 1px solid var(--primary-color);
     font-size: 14px;
-    border-color: #70974c66;
+    border-color: var(--font-color);
     outline: none;
 }
 p{
@@ -62,7 +62,7 @@ p{
     margin-top: 10px;
 }
 p a{
-    color: var(--primary-color);
+    color: var(--font-color);
 }
 p a:hover {
     text-decoration: underline;
@@ -86,11 +86,11 @@ h2 {
 #login,
 #register,
 .contact {
-    background-color: var(--primary-color);
-    color: var(--font-color);
+    background-color: var(--font-color);
+    color: var(--bg-color);
     border: none;
     border-radius: 10px;
-    padding: 8px 100px;
+    padding: 8px 70px;
     font-size: 16px;
     cursor: pointer;
     transition: 0.4s;
@@ -104,9 +104,9 @@ h2 {
 .contact:hover,
 .userBtn:hover,
 .adminBtn:hover {
-    background-color: var(--font-color);
-    color: var(--bg-color);
-
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    border: 2px solid var(--font-color);
 }
 
 .image-container img {

@@ -20,53 +20,49 @@
 
 <body>
     <!-- <input type="checkbox" id="modeToggle">
-  <label for="modeToggle" class="toggle-label">Toggle Dark Mode</label> -->
+    <label for="modeToggle" class="toggle-label">Toggle Dark Mode</label> -->
 
     <div class="container">
-        <nav>
-            <div class="logo">
-                <img src="../../../imgs/logo.png" alt="Logo">
-            </div>
-            <ul class="nav-links">
-                <li><a href="./adminHome.html">Home</a></li>
-                <li><a href="./User/pages/html/about.html">About</a></li>
-                <li><a href="./User/pages/html/card-recipes.html">Recipes</a></li>
-                <li id="contactBtn"><a href="./User/pages/html/contact.html">Contact us</a></li>
-                <li id="profileBtn"><a href="./adminProfile.html">
-                    <i class="fa-solid fa-user"></i>
-                  </a></li>
-                <span id="seperator" class="seperator">|</span>
-                <li id="loginBtn" class="auth-btn1"><a href="../../../Login & Register/pages/html/authentication.html">Login</a></li>
-                <li id="registerBtn" class="auth-btn2"><a href="../../../Login & Register/pages/html/authentication.html">Register</a></li>
-            </ul>
 
-            <div class="menu-container">
-                <input type="checkbox" id="menu-toggle" class="menu-checkbox">
-                <label for="menu-toggle" class="menu-icon">☰</label>
-                <ul class="mobile-nav">
-                    <div class="names">
-                        <li><a href="./adminHome.html">Home</a></li>
-                        <li><a href="./User/pages/html/about.html">About</a></li>
-                        <li><a href="./User/pages/html/card-recipes.html">Recipes</a></li>
-                        <li><a href="./User/pages/html/contact.html">Contact us</a></li>
-                    </div>
-                    <div class="icons">
-
-                        <li id="profileBtn"><a href="./adminProfile.html">
-                            <i class="fa-solid fa-user"></i>
-                          </a></li>
-                        <li ><a href="../../../Login & Register/pages/html/authentication.html">Login</a></li>
-                        <li ><a href="../../../Login & Register/pages/html/authentication.html">Register</a></li>
-                    </div>
-                </ul>
-            </div>
-        </nav>
         <section class="hero-container">
-            <!-- Left-side video -->
-            <video autoplay loop muted playsinline class="hero-video left">
-                <source src="../../../imgs/FOOD_WHEEL_L.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="../../../imgs/logo-brown.png" alt="Logo">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="./adminHome.html">Home</a></li>
+                    <li><a href="./User/pages/html/about.html">About</a></li>
+                    <li><a href="./User/pages/html/card-recipes.html">Recipes</a></li>
+                    <li id="contactBtn"><a href="./User/pages/html/contact.html">Contact us</a></li>
+                    <li id="profileBtn"><a href="./adminProfile.html">
+                        <i class="fa-solid fa-user"></i>
+                        </a></li>
+                    <span id="seperator" class="seperator">|</span>
+                    <li id="loginBtn" class="auth-btn1"><a href="../../../Login & Register/pages/html/authentication.html">Login</a></li>
+                    <li id="registerBtn" class="auth-btn2"><a href="../../../Login & Register/pages/html/authentication.html">Register</a></li>
+                </ul>
+    
+                <div class="menu-container">
+                    <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+                    <label for="menu-toggle" class="menu-icon">☰</label>
+                    <ul class="mobile-nav">
+                        <div class="names">
+                            <li><a href="./adminHome.html">Home</a></li>
+                            <li><a href="./User/pages/html/about.html">About</a></li>
+                            <li><a href="./User/pages/html/card-recipes.html">Recipes</a></li>
+                            <li><a href="./User/pages/html/contact.html">Contact us</a></li>
+                        </div>
+                        <div class="icons">
+    
+                            <li id="profileBtn"><a href="./adminProfile.html">
+                                <i class="fa-solid fa-user"></i>
+                                </a></li>
+                            <li ><a href="../../../Login & Register/pages/html/authentication.html">Login</a></li>
+                            <li ><a href="../../../Login & Register/pages/html/authentication.html">Register</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </nav>
 
             <!-- Center text content -->
             <div class="hero-text">
@@ -78,52 +74,92 @@
                 <button class="start" id="getStartedBtn"><a href="../../../Login & Register/pages/html/authentication.html">Get Started</a></button>
             </div>
 
-
-            <!-- Right-side video -->
-            <video autoplay loop muted playsinline class="hero-video right">
-                <source src="../../../imgs/FOOD_WHEEL_R.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
         </section>
 
-        <footer class='footer' id='footer'>
-            <div class="footer-content">
-                <div class="footer-content-left">
-                    <img src=../../../imgs/logo-brown.png alt="" class='footer-logo' />
-                    <p>Our mission is to transform the way people eat. It's ambitious, but so are we. And we need people
-                        like you to help us do it.</p>
-                    <div class="footer-social-icons">
-                        <i class='bx bxl-facebook'></i>
-                        <i class='bx bxl-twitter'></i>
-                        <i class='bx bxl-instagram'></i>
-                        <i class='bx bxl-linkedin'></i>
+        <section class="popular-dishes-section">
+            <h2>Our Popular Dishes</h2>
+            <div class="dishes-container">
+                <div class="dish">
+                    <img src="../../../imgs/dish-1.png" alt="Spaghetti Meat Frying">
+                    <div class="dish-overlay">
+                        <h3>Spaghetti</h3>
+                        <p>Meat Frying</p>
+                        <button class="view-btn">View</button>
                     </div>
                 </div>
-                <div class="footer-content-center">
-                    <h2>COMPANY</h2>
-                    <ul>
-                        <li>Home</li>
-                        <li>Recipes</li>
-                        <li>About Us</li>
-                        <li>Privacy policy</li>
-                    </ul>
-
+                <div class="dish">
+                    <img src="../../../imgs/dish-2.png" alt="Spaghetti with Olive Oil">
+                    <div class="dish-overlay">
+                        <h3>Spaghetti</h3>
+                        <p>With Olive Oil</p>
+                        <button class="view-btn">View</button>
+                    </div>
                 </div>
-                <div class="footer-content-right">
-                    <h2>CONTACT</h2>
-                    <ul>
-                        <li>1234 Street Name, City Name, United States</li>
-                        <li>+1-234-567-1989</li>
-                        <li>contact@Plateful.com</li>
-                    </ul>
+                <div class="dish">
+                    <img src="../../../imgs/dish-1.png" alt="Taco Soup Recipe">
+                    <div class="dish-overlay">
+                        <h3>Taco</h3>
+                        <p>Soup Recipe</p>
+                        <button class="view-btn">View</button>
+                    </div>
+                </div>
+                <div class="dish">
+                    <img src="../../../imgs/dish-2.png" alt="Spaghetti with Olive Oil">
+                    <div class="dish-overlay">
+                        <h3>Spaghetti</h3>
+                        <p>With Olive Oil</p>
+                        <button class="view-btn">View</button>
+                    </div>
                 </div>
             </div>
-            <hr />
-            <p class='footer-copyright'>Copyright &copy; 2025 Plateful - All rights reserved</p>
+        </section>
 
-        </footer>
+        <!-- Add the wave image -->
+        <div class="wave-image">
+            <img src="../../../imgs/Waves.png" alt="Wave Design">
+        </div>
+
+        <section class="team-section">
+            <div class="team-intro">
+                <h2>The Plateful Recipes Team</h2>
+                <p>
+                    Plateful Recipes is a trusted resource for home cooks with more than 3,000 tested recipes, guides, and meal plans, drawing over 15 million readers each month from around the world. We're supported by a group of recipe developers, food writers, recipe and product testers, photographers, and other creative professionals.
+                </p>
+                <a href="#" class="read-more-btn">Read More</a>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="../../../imgs/menna.webp" alt="Israa">
+                    <h3>Israa Abdelhaq</h3>
+                    <p>Contributing Writer</p>
+                </div>
+                <div class="team-member">
+                    <img src="../../../imgs/noura.jpg" alt="Noura">
+                    <h3>Noura Arafa</h3>
+                    <p>Contributing Writer</p>
+                </div>
+                <div class="team-member">
+                    <img src="../../../imgs/eman.jpg" alt="Eman">
+                    <h3>Eman Emad</h3>
+                    <p>Contributing Writer</p>
+                </div>
+                <div class="team-member">
+                    <img src="../../../imgs/mennaa.jpg" alt="Menna">
+                    <h3>Menna tallah Gamal</h3>
+                    <p>Contributing Writer</p>
+                </div>
+                <div class="team-member">
+                    <img src="../../../imgs/Asser.jpg" alt="Asser">
+                    <h3>Asser</h3>
+                    <p>Contributing Writer</p>
+                </div>
+            </div>
+        </section>
+
+        <div id="footer-placeholder"></div>
 
     </div>
+    <script src="/User/pages/js/footer.js"></script>
     <script src="../../../index.js" ></script>
     <script src="../../../Login & Register/pages/js/authenticationAdmin.js" ></script>
 </body>

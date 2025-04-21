@@ -11,11 +11,6 @@ body {
   background-color: var(--bg-color);
 }
 
-.footer h2 {
-  font-size: 20px;
-  color: var(--bg-color);
-}
-
 /* Hero Section Container */
 .hero-container {
   width: 100%;
