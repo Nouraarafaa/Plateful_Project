@@ -1,5 +1,5 @@
 :root{
-  --bg-color: white;
+  --bg-color: rgb(252, 247, 247);
   --primary-color:#FCF7E4;
   --secondary-color: #FCF7E4;
   --font-color:#2d1c0a;
@@ -8,6 +8,7 @@
 body {
   margin: 0;
   height: 100vh;
+  background-color: var(--bg-color);
 }
 
 /* 
@@ -37,19 +38,18 @@ body {
  */
 
 
-nav{
-  width: 100%;
-}
-
 footer{
   width: 100%;
+  background-color: #2d1c0a;
+  color: var(--bg-color);
+  margin: 0%;
 }
 
 
 /* Hero Section Container */
 .hero-container {
   width: 100%;
-  height: 94vh;
+  height: 100vh;
   padding: 0 80px; /* Padding for the container */
   background-image: url('./imgs/Marble\ background\ with\ flour\ and\ a\ rolling\ pin\ on\ the\ right\ side.jpg');
   background-size: cover;
@@ -59,6 +59,16 @@ footer{
   display: flex;
   justify-content: space-between;
   align-items: center; /* Ensure content is vertically centered */
+}
+
+.navbar {
+  position: absolute; /* Position the navbar relative to the hero section */
+  top: 0; /* Align it to the top of the hero section */
+  left: 0; /* Align it to the left */
+  width: 100%; /* Make it span the full width */
+  z-index: 10; /* Ensure it appears above other content */
+  background-color: #2d1c0a1d; /* Add a semi-transparent background */
+  padding: 10px 20px; /* Add some padding for spacing */
 }
 
 /* Centered Text Content */
@@ -157,88 +167,92 @@ a{
   text-decoration: none;
 }
 
+
 /* Team Section Styles */
 .team-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-    gap: 30px;
-    padding: 20px 80px;
-    background-color: white; /* Light background color */
-    align-items: center;
+  width: 80%; /* Make the section take 80% of the page width */
+  margin: 50px auto; /* Center the section on the page */
+  padding: 30px; /* Add internal spacing */
+  background-color: rgb(252, 247, 247); /* White background color */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 1px 8px #2d1c0a; /* Add a light shadow */
+  text-align: center; /* Center-align the text */
 }
 
 .team-intro {
-    flex: 1 1 50%; /* Take half the width on larger screens */
-    max-width: 600px;
-    text-align: left;
+  flex: 1 1 50%; /* Take half the width on larger screens */
+  max-width: 600px;
+  text-align: left;
 }
 
 .team-intro h2 {
-    font-size: 2rem;
-    color: var(--font-color); 
-    margin-bottom: 20px;
+  font-size: 2rem;
+  color: var(--font-color); 
+  margin-bottom: 20px;
 }
 
 .team-intro p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--font-color);
-    margin-bottom: 20px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--font-color);
+  margin-bottom: 20px;
 }
 
 .read-more-btn {
-    display: inline-block;
-    background-color: var(--font-color); 
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease-in-out;
+  display: inline-block;
+  background-color: var(--font-color); 
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .read-more-btn:hover {
-    background-color: white; 
-    color: var(--font-color); 
-    border: 2px solid var(--font-color); 
+  background-color: white; 
+  color: var(--font-color); 
+  border: 2px solid var(--font-color); 
 }
 
 .team-grid {
-    flex: 1 1 50%; /* Take half the width on larger screens */
-    display: grid;
-    grid-template-columns: repeat(auto-fit , minmax(150px, 1fr));
-    gap: 35px;
+  flex: 1 1 50%; /* Take half the width on larger screens */
+  display: grid;
+  grid-template-columns: repeat(auto-fit , minmax(150px, 1fr));
+  gap: 35px;
 }
 
 .team-member {
-    text-align: center;
-    padding : 20px 5px;
-    border-radius: 10px;
+  text-align: center;
+  padding: 10px ; /* Reduce padding */
+  border-radius: 10px;
+  transform: scale(0.9); /* Slightly reduce the overall size */
+  margin-top: 20px; /* Add spacing above the member */
 }
 
 .team-member img {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%; 
-    object-fit: cover;
-    margin-bottom: 10px;
+  width: 80px; /* Reduce the width of the image */
+  height: 80px; /* Reduce the height of the image */
+  border-radius: 50%; 
+  object-fit: cover;
+  margin-bottom: 8px; /* Reduce spacing below the image */
 }
 
 .team-member:hover {
-    box-shadow: 0 4px 8px var(--font-color); /* Shadow effect on hover */
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
+  box-shadow: 0 4px 8px var(--font-color); /* Shadow effect on hover */
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
 }
 
 .team-member h3 {
-    font-size: 1rem;
-    color: var(--font-color);
-    margin-bottom: 5px;
+  font-size: 0.9rem; /* Reduce font size for the name */
+  color: var(--font-color);
+  margin-bottom: 5px;
 }
 
 .team-member p {
-    font-size: 0.9rem;
-    color: var(--font-color);
+  font-size: 0.8rem; /* Reduce font size for the description */
+  color: var(--font-color);
 }
 
 /* Responsive Design for Small Screens */
@@ -290,6 +304,8 @@ a{
   border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
+  text-align: center;
+  margin-bottom: 20px; /* Space below each dish */
 }
 
 .dish img {
@@ -348,6 +364,30 @@ a{
 
 }
 
+.wave-image {
+  width: 100%; /* Make the wave span the full width of the page */
+  margin: 0; /* Remove any default margins */
+  padding: 0; /* Remove any default padding */
+}
+
+.wave-image img {
+  display: block; /* Ensure the image behaves like a block element */
+  width: 100%; /* Make the image span the full width */
+  height: auto; /* Maintain the aspect ratio */
+}
+
+.wave-footer {
+  width: 100%; /* Make the wave span the full width of the page */
+  margin: 0; /* Remove any default margins */
+  padding: 0; /* Remove any default padding */
+}
+
+.wave-footer img {
+  display: block; /* Ensure the image behaves like a block element */
+  width: 100%; /* Make the image span the full width */
+  height: auto; /* Maintain the aspect ratio */
+  rotate: 180deg; /* Rotate the image upside down */
+}
 
 /* Responsive Design for Medium Screens */
 @media (max-width: 1024px) {
@@ -389,7 +429,7 @@ a{
   .hero-text {
     position: static; /* Remove absolute positioning */
     transform: none; /* Reset transform */
-    margin-top: 20px; /* Add spacing above the text */
+    margin-top: 80px; /* Add spacing above the text */
     width: 100%;
     flex-direction: center;
     text-align: center;
