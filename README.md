@@ -1,4 +1,4 @@
-<h1>Plateful (Recipe Finderr)</h1>
+<h1>Plateful (Recipe Finder)</h1>
 
   <h2>Phase 1</h2>
   <table>
