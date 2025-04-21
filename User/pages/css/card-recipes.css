@@ -48,11 +48,13 @@ body {
   text-align: center;
   opacity: 1; /* Ensure cards are visible */
   transform: scale(1); /* Ensure cards are scaled correctly */
+  transition: transform 0.5s ease-in-out; /* Smooth transition when hover ends */
+}
+.card:hover {
+  transform: scale(1.09);
+  transition: transform 0.3s ease-in-out;
 }
 
-.card:hover {
-  transform: translateY(-8px);
-}
 .card-image {
   display: flex;
   justify-content: center;
@@ -61,10 +63,15 @@ body {
 }
 .card-image img {
   margin: 10px;
-  width: 80%;
+  width: 70%;
   height: 90%;
   border-radius:50% ;
   object-fit: cover;
+  transition: transform 0.5s ease-in-out;
+}
+
+.card:hover .card-image img {
+  transform: rotate(360deg);
 }
 
 .card-content {
