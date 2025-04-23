@@ -75,6 +75,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 <label for="recipe-ingredients">Ingredients:</label>
                 <textarea id="recipe-ingredients" name="recipe-ingredients" placeholder="ingredient1: this much\ningredient2: that much\netc..."></textarea>
 
+                <label for="recipe-time">Cooking time (mins):</label>
+                <input type="text" id="recipe-time" name="recipe-time" placeholder="10 minutes" required>
+
+
                 <label for="recipe-video">Recipe Video URL:</label>
                 <input type="url" id="recipe-video" name="recipe-video" placeholder="https://www.website.com (don’t forget the &quot;https://&quot;)"">
 
@@ -108,7 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 fat: parseInt(document.getElementById("recipe-nut-fat").value, 10),
                 fiber: parseInt(document.getElementById("recipe-nut-fiber").value, 10)
             };
-
+            
+            const setTime = document.getElementById("recipe-time").value;
             const setVideo = document.getElementById("recipe-video").value;
             const imageInput = document.getElementById("recipe-image");
 
@@ -126,7 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         steps: setSteps,
                         ingrediants: setIngredients,
                         watchVideo: setVideo,
-                        image: setImage
+                        image: setImage,
+                        cooking_time: setTime
                     };
             
                     // Update recipes array
@@ -145,11 +151,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Create a new recipe object (no image)
                 const newRecipe = {
                     id: recipes.length > 0 ? Math.max(...recipes.map(recipe => recipe.id)) + 1 : 1, // Set ID to previous max ID + 1
-                    title: newTitle,
-                    description: newDesc,
-                    steps: newSteps,
-                    ingrediants: newIngredients,
-                    watchVideo: newVideo,
+                    title: setTitle,
+                    description: setDesc,
+                    steps: setSteps,
+                    ingrediants: setIngredients,
+                    nutritional_info: setNutritionalInfo,
+                    cooking_time: setTime,
+                    watchVideo: setVideo,
                     image: "" // No image provided
                 };
             

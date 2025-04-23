@@ -101,6 +101,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const { name, quantity } = ingredient;
     return quantity ? `${name}: ${quantity}` : `${name}: no specified quantity`;
 }).join('\n')}</textarea>
+
+                <label for="recipe-time">Cooking time (mins):</label>
+                <input type="text" id="recipe-time" name="recipe-time" value="${recipeToEdit.cooking_time}" placeholder="10 minutes" required>
+
                 <label for="recipe-video">Recipe Video URL:</label>
                 <input type="url" id="recipe-video" name="recipe-video" value="${recipeToEdit.watchVideo}" placeholder="https://www.website.com (don’t forget the &quot;https://&quot;)"">
 
@@ -152,6 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.setItem("recipes", JSON.stringify(recipes));
                     alert("Recipe updated successfully!");
                 }
+                const updatedTime = document.getElementById("recipe-time").value;
             const updatedVideo = document.getElementById("recipe-video").value;
 
             // Update the recipe object
@@ -160,6 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
             recipeToEdit.nutritional_info = updatedNutritionalInfo
             recipeToEdit.steps = updatedSteps;
             recipeToEdit.ingrediants = updatedIngredients;
+            recipeToEdit.cooking_time = updatedTime;
             recipeToEdit.watchVideo = updatedVideo;
 
             // Save the updated recipes array back to local storage

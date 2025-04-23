@@ -87,6 +87,12 @@ document.addEventListener("DOMContentLoaded", () => {
             p.textContent = `${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}`;
             nutritionalInfoDiv.appendChild(p);
         }
+        
+         // Populate the cooking time
+        const cookingTime = recipe.cooking_time;
+        const cookingTimeDiv = document.getElementById("cooking-time");
+        cookingTimeDiv.innerHTML = `${cookingTime}`;
+
 
         // Trigger the animation for the sidebar
         const sidebarElements = document.querySelectorAll(".sidebar-right li, .sidebar-right p");
