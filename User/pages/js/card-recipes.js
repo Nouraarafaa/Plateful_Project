@@ -1,28 +1,40 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // ===============================
-    // Your recipe-loading logic below
-    // ===============================
-
     const cardsBody = document.querySelector(".cards-body");
     const categoryItems = document.querySelectorAll(".category-item");
     let allRecipes = [];
 
-    fetch("../../data/recipes.json")
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error("Failed to fetch recipes");
-            }
-            return response.json();
-        })
-        .then((recipes) => {
-            console.log("Recipes fetched:", recipes);
-            allRecipes = recipes;
-            displayRecipes(allRecipes);
-        })
-        .catch((error) => {
-            console.error("Error loading recipes:", error);
-            cardsBody.innerHTML = "<p>Failed to load recipes. Please try again later.</p>";
-        });
+    // Check if recipes exist in localStorage
+    const storedRecipes = localStorage.getItem("recipes");
+
+    if (storedRecipes) {
+        // Load recipes from localStorage
+        console.log("Loading recipes from localStorage...");
+        allRecipes = JSON.parse(storedRecipes);
+        displayRecipes(allRecipes);
+    } else {
+        // Fetch recipes from JSON file and store them in localStorage
+        console.log("Fetching recipes from JSON file...");
+        fetch("../../data/recipes.json")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to fetch recipes");
+                }
+                return response.json();
+            })
+            .then((recipes) => {
+                console.log("Recipes fetched:", recipes);
+                allRecipes = recipes;
+
+                // update local storage
+                localStorage.setItem("recipes", JSON.stringify(allRecipes));
+
+                displayRecipes(allRecipes);
+            })
+            .catch((error) => {
+                console.error("Error loading recipes:", error);
+                cardsBody.innerHTML = "<p>Failed to load recipes. Please try again later.</p>";
+            });
+    }
 
     function displayRecipes(recipes) {
         const favourites = JSON.parse(localStorage.getItem("favourites")) || [];
@@ -69,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
         favButtons.forEach((button) => {
             button.addEventListener("click", () => {
                 const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-        
+
                 if (!isLoggedIn) {
                     Swal.fire({
                         icon: "warning",
@@ -82,16 +94,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     });
                     return;
                 }
-        
+
                 let favourites = JSON.parse(localStorage.getItem("favourites")) || [];
                 const recipeId = parseInt(button.getAttribute("data-id"));
                 const recipe = allRecipes.find((r) => r.id === recipeId);
-        
+
                 if (button.classList.contains("active")) {
                     favourites = favourites.filter((fav) => fav.id !== recipeId);
                     localStorage.setItem("favourites", JSON.stringify(favourites));
                     button.classList.remove("active");
-        
+
                     Swal.fire({
                         title: "Recipe removed from your favourites.",
                         text: "You can add it again anytime.",
@@ -103,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     favourites.push(recipe);
                     localStorage.setItem("favourites", JSON.stringify(favourites));
                     button.classList.add("active");
-        
+
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
@@ -115,7 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         });
-        
     }
 
     categoryItems.forEach((item) => {

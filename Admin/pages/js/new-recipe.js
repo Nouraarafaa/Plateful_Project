@@ -132,7 +132,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         ingrediants: setIngredients,
                         watchVideo: setVideo,
                         image: setImage,
-                        cooking_time: setTime
+                        cooking_time: setTime,
+                        rating: 4.6
                     };
             
                     // Update recipes array
@@ -158,7 +159,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     nutritional_info: setNutritionalInfo,
                     cooking_time: setTime,
                     watchVideo: setVideo,
-                    image: "" // No image provided
+                    image: "",
+                    rating: 4.6
                 };
             
                 // Update recipes array
