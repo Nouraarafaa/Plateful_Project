@@ -56,6 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 <label for="recipe-name">Recipe Name:</label>
                 <input type="text" id="recipe-name" name="recipe-name" value="${recipeToEdit.title}" required>
 
+                <label for="recipe-desc">Recipe Description:</label>
+                <input type="text" id="recipe-desc" name="recipe-desc" value="${recipeToEdit.description}" required>
+
                 <div class="image-edit-container">
                     <div class="image-preview">
                         <img src="${recipeToEdit.image}" alt="Recipe Image">
@@ -67,17 +70,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 <label for="How to prepare the recipe">How to prepare:</label>
                 
-                <textarea id="How to prepare the recipe" name="How to prepare the recipe">${recipeToEdit.steps.map(step => step.description).join('\n')}
-                </textarea>
+                <textarea id="How to prepare the recipe" name="How to prepare the recipe">${recipeToEdit.steps.map(step => step.description).join('\n')}</textarea>
 
                 <label for="recipe-ingredients">Ingredients:</label>
-                <textarea id="recipe-ingredients" name="recipe-ingredients">
-    ${recipeToEdit.ingrediants.map(ingredient => {
-        const { name, quantity } = ingredient;
-        return quantity ? `${name}: ${quantity}` : name;
-    }).join('\n')}
-</textarea>
-
+                <textarea id="recipe-ingredients" name="recipe-ingredients">${recipeToEdit.ingrediants.map(ingredient => {
+    const { name, quantity } = ingredient;
+    return quantity ? `${name}: ${quantity}` : `${name}: no specified quantity`;
+}).join('\n')}</textarea>
                 <label for="recipe-video">Recipe Video URL:</label>
                 <input type="url" id="recipe-video" name="recipe-video" value="${recipeToEdit.watchVideo}">
 
@@ -85,13 +84,13 @@ document.addEventListener("DOMContentLoaded", () => {
             </form>
         `;
 
-        // Add event listener to handle form submission
         const form = document.getElementById("edit-recipe-form");
         form.addEventListener("submit", (e) => {
             e.preventDefault(); // Prevent the default form submission behavior
 
             // Get updated values from the form
             const updatedTitle = document.getElementById("recipe-name").value;
+            const updatedDesc = document.getElementById("recipe-desc").value;
             const updatedSteps = document.getElementById("How to prepare the recipe").value.split('\n').map((description, index) => ({
                 id: index + 1,
                 description: description.trim()
@@ -99,14 +98,32 @@ document.addEventListener("DOMContentLoaded", () => {
             const updatedIngredients = document.getElementById("recipe-ingredients").value.split('\n').map(line => {
                 const [name, quantity] = line.split(':').map(part => part.trim());
                 return { 
-                    name: name || "", // Default to an empty string if name is undefined
-                    quantity: quantity || "" // Default to an empty string if quantity is undefined
+                    name: name, 
+                    quantity: quantity 
                 };
             });
+            const imageInput = document.getElementById("recipe-image");
+                if (imageInput.files && imageInput.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        recipeToEdit.image = e.target.result; // Save the Base64 string
+                        saveUpdatedRecipe();
+                    };
+                    reader.readAsDataURL(imageInput.files[0]); // Convert the file to a Base64 string
+                } else {
+                    saveUpdatedRecipe();
+                }
+
+                function saveUpdatedRecipe() {
+                    // Save the updated recipes array back to local storage
+                    localStorage.setItem("recipes", JSON.stringify(recipes));
+                    alert("Recipe updated successfully!");
+                }
             const updatedVideo = document.getElementById("recipe-video").value;
 
             // Update the recipe object
             recipeToEdit.title = updatedTitle;
+            recipeToEdit.description = updatedDesc
             recipeToEdit.steps = updatedSteps;
             recipeToEdit.ingrediants = updatedIngredients;
             recipeToEdit.watchVideo = updatedVideo;
@@ -114,7 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
             // Save the updated recipes array back to local storage
             localStorage.setItem("recipes", JSON.stringify(recipes));
 
-            // Provide feedback to the user
             alert("Recipe updated successfully!");
         });
     }
