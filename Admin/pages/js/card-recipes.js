@@ -74,11 +74,33 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
 
+            //enable deletion button
+            const deleteButton = card.querySelector(".remove");
+            deleteButton.addEventListener("click", () => {
+            deleteRecipe(recipe.id);
+        });
+
             cardsBody.appendChild(card);
         });
 
         
         
+    }
+
+    function deleteRecipe(recipeId) {
+        if (!confirm("Are you sure you want to delete this recipe?")) {
+            return;
+        }
+    
+        // Remove the recipe from the recipes array
+        allRecipes = allRecipes.filter((recipe) => recipe.id !== recipeId);
+    
+        // Update local storage
+        localStorage.setItem("recipes", JSON.stringify(allRecipes));
+    
+        displayRecipes(allRecipes);
+    
+        alert("Recipe deleted successfully!");
     }
 
     categoryItems.forEach((item) => {
