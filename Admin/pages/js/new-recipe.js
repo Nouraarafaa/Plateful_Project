@@ -34,10 +34,34 @@ document.addEventListener("DOMContentLoaded", () => {
             <form class="edit-form" method="POST" id="edit-recipe-form">
 
                 <label for="recipe-name">Recipe Name:</label>
-                <input type="text" id="recipe-name" name="recipe-name" required>
+                <input type="text" id="recipe-name" name="recipe-name" placeholder="It may be called..." required>
 
                 <label for="recipe-name">Recipe Description:</label>
-                <input type="text" id="recipe-desc" name="recipe-desc" required>
+                <input type="text" id="recipe-desc" name="recipe-desc" placeholder="How would you describe it?" required>
+
+                <label for="recipe-nut">Nutritional information:</label>
+                <div class="nutritional-info-container">
+                    <div class="nutritional-info-box">
+                        <label for="recipe-nut-calories">Calories (kcal):</label>
+                        <input type="number" id="recipe-nut-calories" name="recipe-nut-calories" placeholder="10" required>
+                    </div>
+                    <div class="nutritional-info-box">
+                        <label for="recipe-nut-carbohydrates">Carbohydrates (g):</label>
+                        <input type="number" id="recipe-nut-carbohydrates" name="recipe-nut-carbohydrates" placeholder="10" required>
+                    </div>
+                    <div class="nutritional-info-box">
+                        <label for="recipe-nut-protein">Protein (g):</label>
+                        <input type="number" id="recipe-nut-protein" name="recipe-nut-protein" placeholder="10" required>
+                    </div>
+                    <div class="nutritional-info-box">
+                        <label for="recipe-nut-fat">Fat (g):</label>
+                        <input type="number" id="recipe-nut-fat" name="recipe-nut-fat" placeholder="10" required>
+                    </div>
+                    <div class="nutritional-info-box">
+                        <label for="recipe-nut-fiber">Fiber (g):</label>
+                        <input type="number" id="recipe-nut-fiber" name="recipe-nut-fiber" placeholder="10" required>
+                    </div>
+                </div>
 
                 <div class="image-edit-container">
                     <div class="image-edit">
@@ -46,13 +70,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 </div>
                 <label for="How to prepare the recipe">How to prepare:</label>
-                <textarea id="How to prepare the recipe" name="How to prepare the recipe"></textarea>
+                <textarea id="How to prepare the recipe" name="How to prepare the recipe" placeholder="step 1\nstep2\nstep3\netc..."></textarea>
 
                 <label for="recipe-ingredients">Ingredients:</label>
-                <textarea id="recipe-ingredients" name="recipe-ingredients"></textarea>
+                <textarea id="recipe-ingredients" name="recipe-ingredients" placeholder="ingredient1: this much\ningredient2: that much\netc..."></textarea>
 
                 <label for="recipe-video">Recipe Video URL:</label>
-                <input type="url" id="recipe-video" name="recipe-video">
+                <input type="url" id="recipe-video" name="recipe-video" placeholder="https://www.website.com (don’t forget the &quot;https://&quot;)"">
 
                 <button type="submit" class="save">Add Recipe</button>
             </form>
@@ -64,36 +88,45 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault(); // Prevent the default form submission behavior
 
             // Get values from the form
-            const newTitle = document.getElementById("recipe-name").value;
-            const newDesc = document.getElementById("recipe-desc").value;
-            const newSteps = document.getElementById("How to prepare the recipe").value.split('\n').map((description, index) => ({
+            const setTitle = document.getElementById("recipe-name").value;
+            const setDesc = document.getElementById("recipe-desc").value;
+            const setSteps = document.getElementById("How to prepare the recipe").value.split('\n').map((description, index) => ({
                 id: index + 1,
                 description: description.trim()
             }));
-            const newIngredients = document.getElementById("recipe-ingredients").value.split('\n').map(line => {
+            const setIngredients = document.getElementById("recipe-ingredients").value.split('\n').map(line => {
                 const [name, quantity] = line.split(':').map(part => part.trim());
                 return { 
                     name: name || "", 
                     quantity: quantity || "" 
                 };
             });
-            const newVideo = document.getElementById("recipe-video").value;
+            const setNutritionalInfo = {
+                calories: parseInt(document.getElementById("recipe-nut-calories").value, 10),
+                carbohydrates: parseInt(document.getElementById("recipe-nut-carbohydrates").value, 10),
+                protein: parseInt(document.getElementById("recipe-nut-protein").value, 10),
+                fat: parseInt(document.getElementById("recipe-nut-fat").value, 10),
+                fiber: parseInt(document.getElementById("recipe-nut-fiber").value, 10)
+            };
+
+            const setVideo = document.getElementById("recipe-video").value;
             const imageInput = document.getElementById("recipe-image");
 
             if (imageInput.files && imageInput.files[0]) {
                 const reader = new FileReader();
                 reader.onload = function (e) {
-                    const newImage = e.target.result; // Base64 string of the image
+                    const setImage = e.target.result; // Base64 string of the image
             
                     // Create a new recipe object (with image)
                     const newRecipe = {
                         id: recipes.length > 0 ? Math.max(...recipes.map(recipe => recipe.id)) + 1 : 1, // Set ID to previous max ID + 1
-                        title: newTitle,
-                        description: newDesc,
-                        steps: newSteps,
-                        ingrediants: newIngredients,
-                        watchVideo: newVideo,
-                        image: newImage
+                        title: setTitle,
+                        description: setDesc,
+                        nutritional_info: setNutritionalInfo,
+                        steps: setSteps,
+                        ingrediants: setIngredients,
+                        watchVideo: setVideo,
+                        image: setImage
                     };
             
                     // Update recipes array
