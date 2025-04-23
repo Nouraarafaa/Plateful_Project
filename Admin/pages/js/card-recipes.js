@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const cardsBody = document.querySelector(".cards-body");
-    const categoryItems = document.querySelectorAll(".category-item");
+    const categoryItems = document.querySelectorAll(".category-item, .subcategory-item");
     let allRecipes = [];
 
     // Check if recipes exist in local storage
@@ -110,10 +110,41 @@ document.addEventListener("DOMContentLoaded", () => {
             item.classList.add("active");
 
             if (selectedCategory === "All") {
+                item.classList.add("active");
                 displayRecipes(allRecipes);
-            } else {
+            }
+            else if(item.id === "parent")
+            {
+                item.classList.add("active");
+                //check if a recipe includes a category from the selected ones (subs)
+                const selectedSubCategories = Array.from(item.nextElementSibling.childNodes).filter(
+                    (child) => child.nodeType === 1 && child.classList.contains("subcategory-item") // Filter only elements with the class "subcategory-item"
+                );
+
+                const selectedSubCategoriesNames = selectedSubCategories.map(
+                    (subcategory) => subcategory.textContent.trim()
+                ); 
+                const filteredRecipes = allRecipes.filter((recipe) =>
+                    selectedSubCategoriesNames.some((subcategoryName) =>
+                        recipe.category.includes(subcategoryName)
+                    )
+                );
+                displayRecipes(filteredRecipes);
+
+            }
+            else if(item.classList[0] === "subcategory-item")
+            {
+                const parentCategory = item.closest(".subcategory-menu").previousElementSibling;
+                parentCategory.classList.add("active");
                 const filteredRecipes = allRecipes.filter(
-                    (recipe) => recipe.category === selectedCategory
+                    (recipe) => recipe.category.includes(selectedCategory)
+                );
+                displayRecipes(filteredRecipes);
+            }
+            else {
+                item.classList.add("active");
+                const filteredRecipes = allRecipes.filter(
+                    (recipe) => recipe.category.includes(selectedCategory)
                 );
                 displayRecipes(filteredRecipes);
             }

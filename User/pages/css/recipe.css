@@ -30,7 +30,6 @@ body {
   flex: 1; /* Allow content to take up available space */
   padding: 20px;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   min-width: 300px; /* Ensure a minimum width for content */
