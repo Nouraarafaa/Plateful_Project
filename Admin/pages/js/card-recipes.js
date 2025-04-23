@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         displayRecipes(allRecipes);
     } else {
         // Fetch recipes from JSON file and save to local storage
-        fetch("../data/recipes.json")
+        fetch("../../../User/data/recipes.json")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Failed to fetch recipes");
@@ -40,7 +40,17 @@ document.addEventListener("DOMContentLoaded", () => {
             cardsBody.innerHTML = `<p class="no-results">No recipes found for this category.</p>`;
             return;
         }
-
+        
+        cardsBody.innerHTML = `<div class="card">
+            <div class="add-recipe">
+                <button class="new-recipe">
+                <a href="../html/new-recipe.html">
+                    <i class="fa-solid fa-plus"></i>
+                    Add New Recipe
+                </a>
+                </button>
+            </div>
+            </div>`;
         recipes.forEach((recipe) => {
             console.log("Displaying recipe:", recipe);
             const card = document.createElement("div");
