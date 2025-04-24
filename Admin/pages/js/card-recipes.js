@@ -171,6 +171,25 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+    // dropdown category selection
+    const dropdown = document.querySelector(".dropdown select");
+    if (dropdown) {
+        dropdown.addEventListener("change", () => {
+            const selectedCategory = dropdown.value.trim(); 
+            console.log("Selected category from dropdown:", selectedCategory);
+
+            if (selectedCategory === "All") {
+                displayRecipes(allRecipes); 
+            } 
+            else {
+                const filteredRecipes = allRecipes.filter((recipe) =>
+                    recipe.category.includes(selectedCategory) 
+                );
+                console.log("selected recipes: ", filteredRecipes)
+                displayRecipes(filteredRecipes); 
+            }
+        });
+    }
 
     
 });

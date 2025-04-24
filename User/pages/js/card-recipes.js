@@ -196,23 +196,23 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
-    // Select the dropdown element
-    const dropdown = document.querySelector(".dropdown select");
 
+    // dropdown category selection
+    const dropdown = document.querySelector(".dropdown select");
     if (dropdown) {
         dropdown.addEventListener("change", () => {
-            const selectedCategory = dropdown.value.trim(); // Get the selected category
+            const selectedCategory = dropdown.value.trim(); 
             console.log("Selected category from dropdown:", selectedCategory);
 
             if (selectedCategory === "All") {
-                displayRecipes(allRecipes); // Show all recipes
+                displayRecipes(allRecipes); 
             } 
             else {
                 const filteredRecipes = allRecipes.filter((recipe) =>
-                    recipe.category.includes(selectedCategory) // Filter recipes by category
+                    recipe.category.includes(selectedCategory) 
                 );
                 console.log("selected recipes: ", filteredRecipes)
-                displayRecipes(filteredRecipes); // Display the filtered recipes
+                displayRecipes(filteredRecipes); 
             }
         });
     }

@@ -93,6 +93,69 @@ document.addEventListener("DOMContentLoaded", () => {
         const cookingTimeDiv = document.getElementById("cooking-time");
         cookingTimeDiv.innerHTML = `${cookingTime}`;
 
+        const stars = document.querySelectorAll("#user-rating i");
+        const feedback = document.getElementById("rating-feedback");
+        let selectedRating = 0;
+
+        // get saved rating from local storage (avoid multiple ratings)
+        const savedRating = localStorage.getItem(`recipe-rating-${recipeId}`);
+        if (savedRating) {
+            selectedRating = parseInt(savedRating);
+            highlightStars(selectedRating);
+            feedback.textContent = `You rated this recipe ${selectedRating} star(s)!`;
+            disableStars(); // kill the stars' interactivity
+        }
+
+        // set rating
+        stars.forEach((star) => {
+            star.addEventListener("mouseover", () => {
+                highlightStars(star.dataset.value)
+            });
+
+            star.addEventListener("mouseout", () => {
+                // only reset stars if the rating still isn't set
+                if(selectedRating==0)
+                {
+                resetStars();
+                }
+            });
+
+            // set the rating on click
+            star.addEventListener("click", () => {
+                selectedRating = parseInt(star.dataset.value);
+                feedback.textContent = `You rated this recipe ${selectedRating} star(s)!`;
+                localStorage.setItem(`recipe-rating-${recipeId}`, selectedRating);
+                disableStars(); 
+                
+            });
+        });
+
+        function highlightStars(value) {
+            stars.forEach((star) => {
+                if (parseInt(star.dataset.value) <= value) 
+                {
+                    star.classList.add("highlighted");
+                } 
+                else 
+                {
+                    star.classList.remove("highlighted");
+                }
+            });
+        }
+
+        function resetStars() {
+            stars.forEach((star) => {
+                star.classList.remove("highlighted");
+            });
+        }
+
+        // kill the starts' interactivity
+        function disableStars() {
+            stars.forEach((star) => {
+                star.style.pointerEvents = "none"; 
+            });
+        }
+
 
         // Trigger the animation for the sidebar
         const sidebarElements = document.querySelectorAll(".sidebar-right li, .sidebar-right p");

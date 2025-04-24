@@ -69,6 +69,31 @@ body {
   color: var(--font-color);
 }
 
+.rating {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.rating i {
+  font-size: 24px;
+  color: #ccc; /* Default color for unselected stars */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.rating i.highlighted {
+  color: rgb(254, 216, 48); /* Yellow for highlighted stars */
+}
+
+.rating-feedback {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #2d1c0a;
+}
+
 .buttons {
   display: flex;
   gap: 10px;
@@ -105,7 +130,9 @@ body {
   margin: 24px 0 15px 0; /* Add 20px margin only to the top */
   color: var(--font-color);
 }
-
+.sidebar-right h2#helpful {
+  text-align: center;
+}
 .sidebar-right .firsth2 {
   margin : 0 0 15px 0; /* Remove top margin for the first h2 */
 }
