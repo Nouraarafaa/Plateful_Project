@@ -3,10 +3,10 @@
     "id": 1,
     "title": "Burger Sandwich",
     "description": "This is a short description about the recipe.",
-    "image": "../../../imgs/img-recipe.jpg",
+    "image": "../../../imgs/dishs/img-recipe.jpg",
     "rating": 4.6,
     "difficulty": "Easy",
-    "category": "Fast Food",
+    "category": ["Fast Food", "Western"],
     "cuisine": "American",
     "preparation_time": "10 minutes",
     "cooking_time": "20 minutes",
@@ -18,7 +18,7 @@
         "fat": 20,
         "fiber": 5
     },
-    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
     "descriptionCooking": "Crumble the bread into small pieces. Sprinkle with water, cover with a damp cloth and leave for 30 minutes. Heat 2-3 tbsp of oil in a deep pan. Add the garlic cloves, chopped onion, and your favorite spices. Add the bread and stir continuously for 5 minutes. Set the pan aside. In a separate frying pan, sauté the meat or any desired ingredients. Combine everything, stirring constantly for 15 minutes and add a grinding of black pepper. Add some broth or water if needed. Cook for about 20 minutes. It will be ready when the bread is soft and golden.",
     "ingrediants": [
         {
@@ -70,10 +70,10 @@
     "id": 2,
     "title": "Pasta",
     "description": "This is a short description about the recipe.",
-    "image": "../../../imgs/img-recipe-1.jpg",
+    "image": "../../../imgs/dishs/img-recipe-1.jpg",
     "rating": 4.6,
     "difficulty": "Medium",
-    "category": "Italian",
+    "category": ["Italian", "Pasta & Rice"],
     "cuisine": "Italian",
     "preparation_time": "15 minutes",
     "cooking_time": "25 minutes",
@@ -85,7 +85,7 @@
         "fat": 10,
         "fiber": 3
     },
-    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
     "descriptionCooking": "Cook the pasta according to package instructions. In a separate pan, sauté garlic and onion in olive oil. Add tomatoes and cook until soft. Mix in the cooked pasta and season with salt and pepper. Serve with grated cheese.",
     "ingrediants": [
         {
@@ -138,10 +138,10 @@
     "id": 3,
     "title": "Pizza",
     "description": "This is a short description about the recipe.",
-    "image": "../../../imgs/pizza.webp",
+    "image": "../../../imgs/dishs/pizza.webp",
     "rating": 4.6,
     "difficulty": "Medium",
-    "category": "Egyptian",
+    "category": ["Egyptian", "Italian", "Western","Fast Food"],
     "cuisine": "Italian",
     "preparation_time": "20 minutes",
     "cooking_time": "30 minutes",
@@ -153,7 +153,7 @@
         "fat": 25,
         "fiber": 4
     },
-    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
     "descriptionCooking": "Prepare the dough by mixing flour, water, yeast, and salt. Roll out the dough and place it on a baking sheet. Spread tomato sauce, add cheese and toppings of your choice. Bake in a preheated oven until golden brown.",
     "ingrediants": [
         {
@@ -200,10 +200,10 @@
     "id": 4,
     "title": "Salad",
     "description": "This is a short description about the recipe.",
-    "image": "../../../imgs/img-recipe-3.jpg",
+    "image": "../../../imgs/dishs/salad.jpg",
     "rating": 4.6,
     "difficulty": "Easy",
-    "category": "Healthy",
+    "category": ["Vegetarian", "Salads"],
     "cuisine": "Mediterranean",
     "preparation_time": "10 minutes",
     "cooking_time": "0 minutes",
@@ -215,7 +215,7 @@
         "fat": 10,
         "fiber": 2
     },
-    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
     "descriptionCooking": "Chop the vegetables and mix them in a bowl. Add olive oil, vinegar, salt, and pepper. Toss well and serve fresh.",
     "ingrediants": [
         {
@@ -263,10 +263,10 @@
     "id": 5,
     "title": "Sushi",
     "description": "This is a short description about the recipe.",
-    "image": "../../../imgs/img-recipe-4.jpg",
+    "image": "../../../imgs/dishs/img-recipe-4.jpg",
     "rating": 4.6,
     "difficulty": "Hard",
-    "category": "Japanese",
+    "category": ["Asian", "Seafood"],
     "cuisine": "Japanese",
     "preparation_time": "30 minutes",
     "cooking_time": "20 minutes",
@@ -278,7 +278,7 @@
         "fat": 5,
         "fiber": 1
     },
-    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
     "descriptionCooking": "Cook the rice and let it cool. Place a sheet of nori on a bamboo mat, spread rice evenly, and add fillings like fish and vegetables. Roll tightly and slice into pieces. Serve with soy sauce and wasabi.",
     "ingrediants": [
         {
@@ -334,11 +334,11 @@
     "id": 6,
     "title": "Tacos",
     "description": "This is a short description about the recipe.",
-    "image": "../../../imgs/img-recipe-5.jpg",
+    "image": "../../../imgs/dishs/tacos.jpg",
     "rating": 4.6,
     "difficulty": "Medium",
     "category": "Mexican",
-    "cuisine": "Mexican",
+    "cuisine": ["Fast Food", "Western"],
     "preparation_time": "15 minutes",
     "cooking_time": "15 minutes",
     "total_time": "30 minutes",
@@ -349,7 +349,7 @@
         "fat": 10,
         "fiber": 3
     },
-    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
     "descriptionCooking": "Cook the meat with spices. Warm the tortillas and fill them with meat, lettuce, cheese, and salsa. Roll and serve.",
     "ingrediants": [
         {
@@ -399,12 +399,81 @@
 },
 {
     "id": 7,
-    "title": "Steak",
+    "title": "Cinnamon Roll",
     "description": "This is a short description about the recipe.",
-    "image": "../../../imgs/img-recipe-6.jpg",
+    "image": "../../../imgs/dishs/cinnamon-roll.jpg",
     "rating": 4.6,
     "difficulty": "Medium",
-    "category": "Meat",
+    "category": ["Desserts"],
+    "cuisine": "American",
+    "preparation_time": "10 minutes",
+    "cooking_time": "20 minutes",
+    "total_time": "30 minutes",
+    "nutritional_info": {
+        "calories": 300,
+        "carbohydrates": 100,
+        "protein": 50,
+        "fat": 50,
+        "fiber": 0
+    },
+    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "descriptionCooking": "Prepare a soft dough with warm milk and butter. After rising, roll it out, spread with cinnamon sugar, then slice and let rise again. Bake until golden and enjoy warm.",
+    "ingrediants": [
+        {
+            "id": 1,
+            "name": "All-purpose Flour",
+            "quantity": "3 cups"
+        },
+        {
+            "id": 2,
+            "name": "Milk",
+            "quantity": "1 cup (warm)"
+        },
+        {
+            "id": 3,
+            "name": "Butter",
+            "quantity": "1/4 cup (melted + more for filling)"
+        },
+        {
+            "id": 4,
+            "name": "Brown Sugar",
+            "quantity": "1/2 cup (for filling)"
+        },
+        {
+            "id": 5,
+            "name": "Ground Cinnamon",
+            "quantity": "2 tbsp (for filling)"
+        }
+    ]
+    ,
+    "steps": [
+    {
+        "id": 1,
+        "description": "Mix warm milk, melted butter, and flour to form a soft dough. Let it rise until doubled."
+    },
+    {
+        "id": 2,
+        "description": "Roll out the dough, spread with butter, and sprinkle with brown sugar and cinnamon."
+    },
+    {
+        "id": 3,
+        "description": "Roll the dough into a log, slice into rolls, and let them rise again."
+    },
+    {
+        "id": 4,
+        "description": "Bake at 180°C (350°F) for 20–25 minutes until golden brown."
+    }
+]
+
+},
+{
+    "id": 8,
+    "title": "Steak",
+    "description": "This is a short description about the recipe.",
+    "image": "../../../imgs/dishs/steak.jpg",
+    "rating": 4.6,
+    "difficulty": "Medium",
+    "category": ["Grilled", "Western"],
     "cuisine": "American",
     "preparation_time": "10 minutes",
     "cooking_time": "20 minutes",
@@ -416,7 +485,7 @@
         "fat": 50,
         "fiber": 0
     },
-    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
     "descriptionCooking": "Season the steak with salt and pepper. Heat a skillet and add oil. Cook the steak for 5-7 minutes on each side for medium-rare. Let it rest before slicing.",
     "ingrediants": [
         {
@@ -456,6 +525,353 @@
         {
             "id": 4,
             "description": "Let it rest before slicing."
+        }
+    ]
+},
+{
+    "id": 9,
+    "title": "Blueberry Smoothie",
+    "description": "This is a short description about the recipe.",
+    "image": "../../../imgs/dishs/blueberry-smoothie.jpg",
+    "rating": 4.6,
+    "difficulty": "Medium",
+    "category": ["Drinks"],
+    "cuisine": "American",
+    "preparation_time": "10 minutes",
+    "cooking_time": "20 minutes",
+    "total_time": "30 minutes",
+    "nutritional_info": {
+        "calories": 700,
+        "carbohydrates": 0,
+        "protein": 50,
+        "fat": 50,
+        "fiber": 0
+    },
+    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "descriptionCooking": "Add blueberries, banana, Greek yogurt, and milk to a blender. Blend until smooth. Add honey if desired, blend again briefly, and enjoy cold.",
+    "ingrediants": [
+        {
+            "id": 1,
+            "name": "Blueberries",
+            "quantity": "1 cup (fresh or frozen)"
+        },
+        {
+            "id": 2,
+            "name": "Banana",
+            "quantity": "1 medium"
+        },
+        {
+            "id": 3,
+            "name": "Greek Yogurt",
+            "quantity": "1/2 cup"
+        },
+        {
+            "id": 4,
+            "name": "Milk",
+            "quantity": "1/2 cup"
+        }
+    ]
+    ,
+    "steps": [
+    {
+        "id": 1,
+        "description": "Add blueberries, banana, and Greek yogurt to a blender."
+    },
+    {
+        "id": 2,
+        "description": "Pour in the milk to help blend smoothly."
+    },
+    {
+        "id": 3,
+        "description": "Blend until smooth and creamy."
+    },
+    {
+        "id": 4,
+        "description": "Taste and optionally add honey, then blend again briefly. Serve cold."
+    }
+]
+
+},
+{
+    "id": 10,
+    "title": "Mushroom soup",
+    "description": "This is a short description about the recipe.",
+    "image": "../../../imgs/dishs/mushroom-soup.jpg",
+    "rating": 4.6,
+    "difficulty": "Medium",
+    "category": ["Soups"],
+    "cuisine": "American",
+    "preparation_time": "10 minutes",
+    "cooking_time": "30 minutes",
+    "total_time": "30 minutes",
+    "nutritional_info": {
+        "calories": 700,
+        "carbohydrates": 0,
+        "protein": 50,
+        "fat": 50,
+        "fiber": 0
+    },
+    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "descriptionCooking": "Sauté onion and garlic in butter, add mushrooms, and cook until golden. Pour in broth, simmer, then stir in cream. Blend if you like it smooth, then serve warm.",
+    "ingrediants": [
+        {
+            "id": 1,
+            "name": "Mushrooms",
+            "quantity": "2 cups (sliced)"
+        },
+        {
+            "id": 2,
+            "name": "Onion",
+            "quantity": "1 small (chopped)"
+        },
+        {
+            "id": 3,
+            "name": "Garlic",
+            "quantity": "2 cloves (minced)"
+        },
+        {
+            "id": 4,
+            "name": "Butter",
+            "quantity": "2 tbsp"
+        },
+        {
+            "id": 5,
+            "name": "Vegetable Broth",
+            "quantity": "2 cups"
+        },
+        {
+            "id": 6,
+            "name": "Heavy Cream",
+            "quantity": "1/2 cup"
+        }
+    ],
+    "steps": [
+        {
+            "id": 1,
+            "description": "Sauté onions and garlic in butter until soft."
+        },
+        {
+            "id": 2,
+            "description": "Add mushrooms and cook until browned."
+        },
+        {
+            "id": 3,
+            "description": "Pour in broth and simmer for 10–15 minutes."
+        },
+        {
+            "id": 4,
+            "description": "Stir in cream, blend partially if desired, and serve warm."
+        }
+    ]
+},
+{
+    "id": 11,
+    "title": "Lobster",
+    "description": "This is a short description about the recipe.",
+    "image": "../../../imgs/dishs/lobster.jpg",
+    "rating": 4.6,
+    "difficulty": "Medium",
+    "category": ["Seafood"],
+    "cuisine": "American",
+    "preparation_time": "10 minutes",
+    "cooking_time": "20 minutes",
+    "total_time": "30 minutes",
+    "nutritional_info": {
+        "calories": 700,
+        "carbohydrates": 0,
+        "protein": 50,
+        "fat": 50,
+        "fiber": 0
+    },
+    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "descriptionCooking": "Boil lobsters until bright red, then sauté in garlic butter. Serve with lemon slices for added freshness.",
+    "ingrediants": [
+        {
+            "id": 1,
+            "name": "Lobster",
+            "quantity": "2 (whole lobsters)"
+        },
+        {
+            "id": 2,
+            "name": "Butter",
+            "quantity": "4 tbsp"
+        },
+        {
+            "id": 3,
+            "name": "Garlic",
+            "quantity": "2 cloves (minced)"
+        },
+        {
+            "id": 4,
+            "name": "Lemon",
+            "quantity": "1 (sliced)"
+        }
+    ],
+    "steps": [
+        {
+            "id": 1,
+            "description": "Boil the lobsters in salted water for 8–10 minutes until bright red."
+        },
+        {
+            "id": 2,
+            "description": "Melt butter in a pan, then sauté garlic until fragrant."
+        },
+        {
+            "id": 3,
+            "description": "Add the cooked lobster to the pan and toss in the garlic butter."
+        },
+        {
+            "id": 4,
+            "description": "Serve with lemon slices and enjoy."
+        }
+    ]
+},
+{
+    "id": 12,
+    "title": "Ful",
+    "description": "This is a short description about the recipe.",
+    "image": "../../../imgs/dishs/ful.jpg",
+    "rating": 4.6,
+    "difficulty": "Medium",
+    "category": ["Egyptian", "Oriental"],
+    "cuisine": "American",
+    "preparation_time": "10 minutes",
+    "cooking_time": "60 minutes",
+    "total_time": "30 minutes",
+    "nutritional_info": {
+        "calories": 700,
+        "carbohydrates": 0,
+        "protein": 50,
+        "fat": 50,
+        "fiber": 0
+    },
+    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "descriptionCooking": "Cook the fava beans until tender, sauté garlic in olive oil, then mix everything together with lemon juice and salt. Serve with a drizzle of olive oil and fresh lemon slices.",
+    "ingrediants": [
+        {
+            "id": 1,
+            "name": "Fava Beans",
+            "quantity": "2 cups (soaked overnight)"
+        },
+        {
+            "id": 2,
+            "name": "Garlic",
+            "quantity": "3 cloves (minced)"
+        },
+        {
+            "id": 3,
+            "name": "Lemon Juice",
+            "quantity": "2 tbsp"
+        },
+        {
+            "id": 4,
+            "name": "Olive Oil",
+            "quantity": "2 tbsp"
+        },
+        {
+            "id": 5,
+            "name": "Salt",
+            "quantity": "to taste"
+        }
+    ],
+    "steps": [
+        {
+            "id": 1,
+            "description": "Cook the soaked fava beans in a pot of water for about 45 minutes until tender."
+        },
+        {
+            "id": 2,
+            "description": "In a separate pan, sauté garlic in olive oil until fragrant."
+        },
+        {
+            "id": 3,
+            "description": "Add the cooked fava beans to the pan with garlic, and stir in lemon juice and salt."
+        },
+        {
+            "id": 4,
+            "description": "Serve hot, garnished with additional olive oil and lemon slices."
+        }
+    ]
+},
+{
+    "id": 13,
+    "title": "A blocky cake",
+    "description": "Who knew that a cake with just 3 ingredients and instant preparation could cause so much frustration?",
+    "image": "../../../imgs/dishs/a-blocky-cake.jpeg",
+    "rating": 4.6,
+    "difficulty": "Medium",
+    "category": ["Desserts"],
+    "cuisine": "American",
+    "preparation_time": "10 minutes",
+    "cooking_time": "45 minutes (instant, if u do it right)",
+    "total_time": "30 minutes",
+    "nutritional_info": {
+        "calories": 700,
+        "carbohydrates": 0,
+        "protein": 50,
+        "fat": 50,
+        "fiber": 0
+    },
+    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "descriptionCooking": "Preheat the oven and prepare the cake batter. Divide and color the batter to represent Minecraft’s iconic cake layers. Bake and allow the cake to cool before serving.",
+    "ingrediants": [
+        {
+            "id": 1,
+            "name": "Flour",
+            "quantity": "2 cups"
+        },
+        {
+            "id": 2,
+            "name": "Sugar",
+            "quantity": "1 cup"
+        },
+        {
+            "id": 3,
+            "name": "Eggs",
+            "quantity": "3"
+        },
+        {
+            "id": 4,
+            "name": "Butter",
+            "quantity": "1/2 cup"
+        },
+        {
+            "id": 5,
+            "name": "Baking Powder",
+            "quantity": "1 tsp"
+        },
+        {
+            "id": 6,
+            "name": "Vanilla Extract",
+            "quantity": "1 tsp"
+        },
+        {
+            "id": 7,
+            "name": "Milk",
+            "quantity": "1/2 cup"
+        },
+        {
+            "id": 8,
+            "name": "Food Coloring (green, brown, blue)",
+            "quantity": "as needed"
+        }
+    ],
+    "steps": [
+        {
+            "id": 1,
+            "description": "Preheat the oven to 350°F (175°C) and grease and flour a cake pan."
+        },
+        {
+            "id": 2,
+            "description": "Mix flour, sugar, baking powder, and eggs in a bowl. Add butter, milk, and vanilla extract, and mix until smooth."
+        },
+        {
+            "id": 3,
+            "description": "Divide the batter into three parts. Color one part green, one brown, and leave one part plain for the 'cake' part."
+        },
+        {
+            "id": 4,
+            "description": "Layer the colors in the cake pan: start with brown, then green, and the plain batter on top. Bake for 30–35 minutes, then let it cool before serving."
         }
     ]
 }
