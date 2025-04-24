@@ -161,10 +161,15 @@ button:hover{
   text-align: center;
   margin-top: 10px;
 }
-.reviews i:not(:last-child) {
-  color: rgb(254, 216, 48);
+.reviews .filled-star {
+  color: rgb(254, 216, 48); 
 }
-.reviews i:last-child{
+
+.reviews .half-star {
+  color: rgb(254, 216, 48); 
+}
+
+.reviews .empty-star {
   color: #2d1c0a5a;
 }
 .items {

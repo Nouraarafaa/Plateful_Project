@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         // Fetch recipes from JSON file and store them in localStorage
         console.log("Fetching recipes from JSON file...");
-        fetch("../../data/recipes.json")
+        fetch("/User/data/recipes.json")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Failed to fetch recipes");
@@ -221,16 +221,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function generateStars(rating) {
         const fullStars = Math.floor(rating);
-        const emptyStars = 5 - fullStars;
+        var halfStar = 0;
+        if (rating%1>=0.5)
+        {
+            halfStar=1;
+        }
+        const emptyStars = 5 - fullStars - halfStar;
         let starsHTML = "";
-
-        for (let i = 0; i < fullStars; i++) {
-            starsHTML += `<i class="fa-solid fa-star yellow"></i>`;
+    
+        for (let i = 0; i < fullStars; i++) 
+        {
+            starsHTML += `<i class="fa-solid fa-star filled-star"></i>`;
         }
-        for (let i = 0; i < emptyStars; i++) {
-            starsHTML += `<i class="fa-solid fa-star"></i>`;
+        if (halfStar) {
+            starsHTML += `<i class="fa-solid fa-star-half-stroke half-star"></i>`;
         }
-
+        for (let i = 0; i < emptyStars; i++) 
+        {
+            starsHTML += `<i class="fa-solid fa-star empty-star"></i>`;
+        }
+    
         return starsHTML;
     }
 
