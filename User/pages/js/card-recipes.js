@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     categoryItems.forEach((item) => {
         item.addEventListener("click", () => {
-            const selectedCategory = item.textContent.trim();
+            var selectedCategory = item.textContent.trim();
             categoryItems.forEach((el) => el.classList.remove("active"));
             item.classList.add("active");
 
@@ -167,6 +167,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 const selectedSubCategoriesNames = selectedSubCategories.map(
                     (subcategory) => subcategory.textContent.trim()
                 ); 
+                //removing the dropdown symbol
+                selectedCategory = selectedCategory.slice(0,-2)
+                selectedSubCategoriesNames.push(selectedCategory)
                 const filteredRecipes = allRecipes.filter((recipe) =>
                     selectedSubCategoriesNames.some((subcategoryName) =>
                         recipe.category.includes(subcategoryName)
@@ -193,6 +196,26 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+    // Select the dropdown element
+    const dropdown = document.querySelector(".dropdown select");
+
+    if (dropdown) {
+        dropdown.addEventListener("change", () => {
+            const selectedCategory = dropdown.value.trim(); // Get the selected category
+            console.log("Selected category from dropdown:", selectedCategory);
+
+            if (selectedCategory === "All") {
+                displayRecipes(allRecipes); // Show all recipes
+            } 
+            else {
+                const filteredRecipes = allRecipes.filter((recipe) =>
+                    recipe.category.includes(selectedCategory) // Filter recipes by category
+                );
+                console.log("selected recipes: ", filteredRecipes)
+                displayRecipes(filteredRecipes); // Display the filtered recipes
+            }
+        });
+    }
 
     
 

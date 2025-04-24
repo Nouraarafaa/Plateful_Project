@@ -141,6 +141,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 const selectedSubCategoriesNames = selectedSubCategories.map(
                     (subcategory) => subcategory.textContent.trim()
                 ); 
+                //removing the dropdown symbol
+                selectedCategory = selectedCategory.slice(0,-2)
+                selectedSubCategoriesNames.push(selectedCategory)
+                
                 const filteredRecipes = allRecipes.filter((recipe) =>
                     selectedSubCategoriesNames.some((subcategoryName) =>
                         recipe.category.includes(subcategoryName)
