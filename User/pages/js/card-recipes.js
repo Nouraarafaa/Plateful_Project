@@ -36,6 +36,23 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
+    //enabling the search bar
+    const searchInput = document.querySelector(".search input");
+    searchInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            const query = searchInput.value.trim().toLowerCase();
+            console.log(query)
+            
+            const filteredRecipes = allRecipes.filter((recipe) =>
+                recipe.title.toLowerCase().includes(query) 
+            );
+
+            console.log("Filtered recipes:", filteredRecipes); 
+
+            displayRecipes(filteredRecipes); 
+        }
+    });
+
     function displayRecipes(recipes) {
         const favourites = JSON.parse(localStorage.getItem("favourites")) || [];
         cardsBody.innerHTML = "";
@@ -193,4 +210,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         return starsHTML;
     }
+
+    
 });
