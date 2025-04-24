@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <h2>${recipe.title}</h2>
                     <p>${recipe.description}</p>
                     <div class="reviews">
-                        <span>${recipe.rating}</span>
+                        <span>${recipe.rating.toFixed(1)}</span>
                         <span>
                             ${generateStars(recipe.rating)}
                         </span>

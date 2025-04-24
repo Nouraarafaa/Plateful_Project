@@ -123,6 +123,16 @@ document.addEventListener("DOMContentLoaded", () => {
             // set the rating on click
             star.addEventListener("click", () => {
                 selectedRating = parseInt(star.dataset.value);
+                //update product rating
+                const sum = 5;
+                const weightedSum_0 = sum * recipe.rating;
+                recipe.rating = (weightedSum_0 + selectedRating)/(sum+1);
+                const updatedRecipes = recipes.map((r) =>
+                    r.id === recipeId ? { ...r, rating: recipe.rating } : r
+                );
+                //update in local storage
+                localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
+                
                 feedback.textContent = `You rated this recipe ${selectedRating} star(s)!`;
                 localStorage.setItem(`recipe-rating-${recipeId}`, selectedRating);
                 disableStars(); 
