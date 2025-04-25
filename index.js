@@ -47,6 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function displayTopDishes(topRecipes) {
+        if (!topRecipesBody) {
+            console.error("Error: .popular-dishes-section element not found in the DOM.");
+            return;
+        }
+
         topRecipesBody.innerHTML = `<h2>Our Popular Dishes</h2>`;
         const container = document.createElement("div");
         container.classList.add("dishes-container");
