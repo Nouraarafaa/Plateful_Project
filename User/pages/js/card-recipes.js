@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         text: "You can add it again anytime.",
                         icon: "warning",
                         confirmButtonText: "OK",
-                        confirmButtonColor: "#70974C"
+                        confirmButtonColor: "#2d1c0a"
                     });
                 } else {
                     favourites.push(recipe);
