@@ -7,14 +7,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (storedRecipes) {
         console.log("Loading recipes from localStorage...");
-        allRecipes = JSON.parse(storedRecipes);
+        allRecipes = JSON.parse(storedRecipes); 
 
         // Select and display top recipes
         const topRecipes = selectTopRecipes(allRecipes, 4);
         displayTopDishes(topRecipes);
     } else {
         console.log("Fetching recipes from JSON file...");
-        fetch("User/data/recipes.json")
+        fetch("./User/data/recipes.json")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Failed to fetch recipes");
