@@ -23,12 +23,13 @@
     cursor: pointer;
     transition: 0.4s;
     width: 260px;
+    border:2px solid;
 }
 .userBtn:hover,
 .adminBtn:hover {
   background-color: var(--bg-color);
   color: var(--font-color);
-  border: 2px solid var(--font-color);
+  border-color:var(--font-color);
 }
 .userBtn:hover a,
 .adminBtn:hover a {

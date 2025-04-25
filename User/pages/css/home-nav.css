@@ -134,11 +134,12 @@ li:hover .favourites i {
 .auth-btn1 a, .auth-btn2 a{
   color: var(--font-color);
   transition: 0.5s;
+  padding: 7px 10px;
+
 }
 .auth-btn1 a:hover , .auth-btn2 a:hover{
   color: var(--bg-color);
   background-color: var(--font-color);
-  padding: 7px 10px;
   border-radius: 10px;
 }
 .seperator{

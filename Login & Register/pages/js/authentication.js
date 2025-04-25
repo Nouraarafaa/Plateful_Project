@@ -1,51 +1,49 @@
+
 document.addEventListener("DOMContentLoaded", () => {
     const user = JSON.parse(localStorage.getItem("user"));
     const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
-    // Handle nav buttons visibility
-    document.getElementById("loginBtn").style.display = isLoggedIn ? "none" : "inline";
-    document.getElementById("registerBtn").style.display = isLoggedIn ? "none" : "inline";
-    document.getElementById("profileBtn").style.display = isLoggedIn ? "inline" : "none";
-    document.getElementById("contactBtn").style.display = isLoggedIn ? "inline" : "none";
-    document.getElementById("favouritesBtn").style.display = isLoggedIn ? "inline" : "none";
-    document.getElementById("logoutBtn").style.display = isLoggedIn ? "inline" : "none";
-    document.getElementById("getStartedBtn").style.display = isLoggedIn ? "none" : "inline";
-    
+    document.getElementById("loginBtn")?.style.display = isLoggedIn ? "none" : "inline";
+    document.getElementById("registerBtn")?.style.display = isLoggedIn ? "none" : "inline";
+    document.getElementById("profileBtn")?.style.display = isLoggedIn ? "inline" : "none";
+    document.getElementById("contactBtn")?.style.display = isLoggedIn ? "inline" : "none";
+    document.getElementById("favouritesBtn")?.style.display = isLoggedIn ? "inline" : "none";
+    document.getElementById("logoutBtn")?.style.display = isLoggedIn ? "inline" : "none";
+    document.getElementById("getStartedBtn")?.style.display = isLoggedIn ? "none" : "inline";
 });
 
 let users = JSON.parse(localStorage.getItem('users')) || [];
 
-document.getElementById('signup').addEventListener('click', function () {
+document.getElementById('signup').addEventListener('click', () => {
     document.getElementById('loginFormContainer').style.display = 'none';
     document.getElementById('registerFormContainer').style.display = 'block';
 });
 
-document.getElementById('signin').addEventListener('click', function () {
+document.getElementById('signin').addEventListener('click', () => {
     document.getElementById('loginFormContainer').style.display = 'block';
     document.getElementById('registerFormContainer').style.display = 'none';
 });
 
 document.getElementById('loginform').addEventListener('submit', function (event) {
     event.preventDefault();
-    var email = document.getElementById('loginEmail').value;
-    var password = document.getElementById('loginPassword').value;
+    const id = document.getElementById('AdminId').value.trim();
+    const password = document.getElementById('loginPassword').value.trim();
 
-    if (!validateEmail(email)) {
-        document.getElementById('loginErrorMessage').textContent = 'Invalid email format!';
-        document.getElementById('loginErrorMessage').style.display = 'block';
-        return;
-    }
-
-    var user = users.find(user =>
-        user.password === password &&
-        user.email.toLowerCase() === email.toLowerCase()
+    let user = users.find(u =>
+        u.password === password &&
+        (u.email.toLowerCase() === id.toLowerCase() || u.adminId?.toLowerCase() === id.toLowerCase())
     );
 
     if (user) {
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('isLoggedIn', 'true');
         document.getElementById('loginErrorMessage').style.display = 'none';
-        window.location.href = "../../../User/pages/html/about.html";
+
+        if (user.role === 'admin') {
+            window.location.href = "../html/adminAuth.html";
+        } else {
+            window.location.href = "../../../User/pages/html/about.html";
+        }
     } else {
         document.getElementById('loginErrorMessage').textContent = 'Invalid email or password';
         document.getElementById('loginErrorMessage').style.display = 'block';
@@ -55,45 +53,47 @@ document.getElementById('loginform').addEventListener('submit', function (event)
 document.getElementById('registerform').addEventListener('submit', function (event) {
     event.preventDefault();
 
-    var Fname = document.getElementById('registerFName').value.trim();
-    var Lname = document.getElementById('registerLName').value.trim();
-    var password = document.getElementById('registerPassword').value.trim();
-    var confirmPassword = document.getElementById('registerConfirmPassword').value.trim();
-    var phone = document.getElementById('registerPhone').value.trim();
-    var email = document.getElementById('registerEmail').value.trim();
+    const adminId = document.getElementById('adminId').value.trim();
+    const Fname = document.getElementById('registerFName').value.trim();
+    const Lname = document.getElementById('registerLName').value.trim();
+    const email = document.getElementById('registerEmail').value.trim();
+    const phone = document.getElementById('registerPhone').value.trim();
+    const password = document.getElementById('registerPassword').value.trim();
+    const confirmPassword = document.getElementById('registerConfirmPassword').value.trim();
 
     if (!validateEmail(email)) {
-        document.getElementById('registerErrorMessage').textContent = 'Invalid email format!';
-        document.getElementById('registerErrorMessage').style.display = 'block';
+        showError('registerErrorMessage', 'Invalid email format!');
         return;
     }
 
     if (!validatePassword(password)) {
-        document.getElementById('registerErrorMessage').innerHTML = 'Password must be at least 8 characters long<br>and include uppercase, lowercase, number, and <br> special character.';
-        document.getElementById('registerErrorMessage').style.display = 'block';
+        showError('registerErrorMessage', 'Password must be at least 8 characters long<br>and include uppercase, lowercase, number, and <br> special character.');
         return;
     }
 
     if (password !== confirmPassword) {
-        document.getElementById('registerErrorMessage').textContent = 'Passwords do not match!';
-        document.getElementById('registerErrorMessage').style.display = 'block';
+        showError('registerErrorMessage', 'Passwords do not match!');
         return;
     }
 
-    var userExists = users.find(user => user.email.toLowerCase() === email.toLowerCase());
+    const userExists = users.some(user =>
+        user.email.toLowerCase() === email.toLowerCase() ||
+        (adminId && user.adminId?.toLowerCase() === adminId.toLowerCase())
+    );
 
     if (userExists) {
-        document.getElementById('registerErrorMessage').textContent = 'Email is already registered';
-        document.getElementById('registerErrorMessage').style.display = 'block';
+        showError('registerErrorMessage', 'Email or Admin ID is already registered');
         return;
     }
 
-    var newUser = {
+    const newUser = {
+        adminId: adminId || null,
         firstName: Fname,
         lastName: Lname,
         email,
         phone,
-        password
+        password,
+        role: adminId ? "admin" : "user"
     };
 
     users.push(newUser);
@@ -101,29 +101,29 @@ document.getElementById('registerform').addEventListener('submit', function (eve
     localStorage.setItem('user', JSON.stringify(newUser));
     localStorage.setItem("isLoggedIn", "true");
 
-    // Show success and switch to login form
     Swal.fire({
         title: "Registration Successful!",
         text: "You are now logged in.",
         icon: "success",
         confirmButtonText: "OK",
         confirmButtonColor: "#70974C"
+    }).then(() => {
+        if (newUser.role === 'admin') {
+            window.location.href = "../html/adminAuth.html";
+        } else {
+            window.location.href = "../../../User/pages/html/about.html";
+        }
     });
-    window.location.href = "../../../User/pages/html/about.html";
-    // Update navbar buttons
-    document.getElementById("loginBtn").style.display = "none";
-    document.getElementById("seperator").style.display = "none";
-    document.getElementById("registerBtn").style.display = "none";
-    document.getElementById("profileBtn").style.display = "inline";
-    document.getElementById("logoutBtn").style.display = "inline";
-    document.getElementById("getStartedBtn").style.display = "none";
 
-    document.getElementById('registerErrorMessage').style.display = 'none';
-    document.getElementById('registerFormContainer').style.display = 'none';
-    document.getElementById('loginFormContainer').style.display = 'block';
     document.getElementById('registerform').reset();
-
+    document.getElementById('registerErrorMessage').style.display = 'none';
 });
+
+function showError(id, message) {
+    const el = document.getElementById(id);
+    el.innerHTML = message;
+    el.style.display = 'block';
+}
 
 function logout() {
     localStorage.removeItem("user");
@@ -132,7 +132,7 @@ function logout() {
 }
 
 function validateEmail(email) {
-    var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     return regex.test(email);
 }
 
@@ -140,4 +140,3 @@ function validatePassword(password) {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
     return regex.test(password);
 }
-
