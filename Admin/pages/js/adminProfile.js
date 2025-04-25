@@ -51,17 +51,3 @@ function saveProfile() {
 
   Swal.fire("Success", "Profile saved successfully", "success");
 }
-
-function logout() {
-  // Clear logged-in admin data from localStorage
-  localStorage.removeItem("loggedInAdmin");
-
-  // Set admin to false
-  localStorage.setItem("admin", "false");
-
-  // Redirect to login page
-  window.location.href = "../../../Login & Register/pages/html/authentication.html";
-
-  // Log the admin value from localStorage for debugging
-  console.log(localStorage.getItem("admin"));
-}
