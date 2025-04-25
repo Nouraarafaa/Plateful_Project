@@ -125,9 +125,6 @@ footer hr{
 }
 
 @media (max-width: 750px){
-    footer{
-        margin-top: 30px;
-    }
     footer h2 {
         font-size: 16px;
     }
