@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         // Fetch recipes from JSON file and store them in localStorage
         console.log("Fetching recipes from JSON file...");
-        fetch("/User/data/recipes.json")
+        fetch("../../data/recipes.json")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Failed to fetch recipes");
