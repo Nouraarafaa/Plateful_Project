@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const customerLocation = document.querySelector(".customer-location");
     const customerFeedback = document.querySelector(".customer-feedback");
 
-    const testimonials = [
+    // Full testimonials list
+    const allTestimonials = [
         {
             name: "John Doe",
             location: "United States",
@@ -37,27 +38,82 @@ document.addEventListener("DOMContentLoaded", () => {
         },
     ];
 
+    let testimonials = [...allTestimonials]; // Default to all testimonials
+    let filteredImages = [...images]; // Default to all images
     let currentIndex = 0;
+
+    // Function to filter testimonials and images for small screens
+    function filterTestimonialsForSmallScreens() {
+        if (window.innerWidth <= 768) {
+            console.log("Small screen detected. Filtering testimonials...");
+            testimonials = allTestimonials.filter(
+                (testimonial) =>
+                    testimonial.name !== "Smith Johnson" &&
+                    testimonial.name !== "Emily Davis"
+            );
+
+            // Filter images to match the filtered testimonials
+            filteredImages = Array.from(images).filter((img, index) => {
+                const testimonial = allTestimonials[index];
+                return (
+                    testimonial.name !== "Smith Johnson" &&
+                    testimonial.name !== "Emily Davis"
+                );
+            });
+
+            // Hide images that are not part of the filtered testimonials
+            images.forEach((img) => {
+                img.style.display = "none"; // Hide all images by default
+            });
+            filteredImages.forEach((img) => {
+                img.style.display = "block"; // Show only filtered images
+            });
+        } else {
+            console.log("Large screen detected. Restoring all testimonials...");
+            testimonials = [...allTestimonials]; // Restore all testimonials
+            filteredImages = [...images]; // Restore all images
+
+            // Show all images
+            images.forEach((img) => {
+                img.style.display = "block";
+            });
+        }
+        console.log("Filtered testimonials:", testimonials);
+        currentIndex = 0; // Reset index
+        updateCarousel(); // Update the carousel
+    }
 
     function updateCarousel() {
         // Remove active class from all images
-        images.forEach(img => img.classList.remove("active"));
+        filteredImages.forEach(img => img.classList.remove("active"));
 
         // Add active class to the current image
-        images[currentIndex].classList.add("active");
+        if (filteredImages[currentIndex] && testimonials[currentIndex]) {
+            filteredImages[currentIndex].classList.add("active");
+        }
 
-        // Update testimonial content
-        customerName.textContent = testimonials[currentIndex].name;
-        customerLocation.textContent = testimonials[currentIndex].location;
-        customerFeedback.textContent = testimonials[currentIndex].feedback;
+        // Update testimonial content only if the testimonial exists
+        if (testimonials[currentIndex]) {
+            customerName.textContent = testimonials[currentIndex].name;
+            customerLocation.textContent = testimonials[currentIndex].location;
+            customerFeedback.textContent = testimonials[currentIndex].feedback;
+        } else {
+            // Clear the testimonial content if no testimonial exists
+            customerName.textContent = "";
+            customerLocation.textContent = "";
+            customerFeedback.textContent = "";
+        }
 
         // Move to the next index
         currentIndex = (currentIndex + 1) % testimonials.length;
     }
 
     // Initial update
-    updateCarousel();
+    filterTestimonialsForSmallScreens();
 
     // Switch every 2 seconds
     setInterval(updateCarousel, 2000);
+
+    // Listen for window resize to adjust testimonials
+    window.addEventListener("resize", filterTestimonialsForSmallScreens);
 });
