@@ -18,7 +18,7 @@
         "fat": 20,
         "fiber": 5
     },
-    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
     "descriptionCooking": "Crumble the bread into small pieces. Sprinkle with water, cover with a damp cloth and leave for 30 minutes. Heat 2-3 tbsp of oil in a deep pan. Add the garlic cloves, chopped onion, and your favorite spices. Add the bread and stir continuously for 5 minutes. Set the pan aside. In a separate frying pan, sauté the meat or any desired ingredients. Combine everything, stirring constantly for 15 minutes and add a grinding of black pepper. Add some broth or water if needed. Cook for about 20 minutes. It will be ready when the bread is soft and golden.",
     "ingrediants": [
         {
@@ -73,7 +73,7 @@
     "image": "../../../imgs/dishs/img-recipe-1.jpg",
     "rating": 3.8,
     "difficulty": "Medium",
-    "category": ["Italian", "Pasta & Rice"],
+    "category": "Italian",
     "cuisine": "Italian",
     "preparation_time": "15 minutes",
     "cooking_time": "25 minutes",
@@ -85,7 +85,7 @@
         "fat": 10,
         "fiber": 3
     },
-    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
     "descriptionCooking": "Cook the pasta according to package instructions. In a separate pan, sauté garlic and onion in olive oil. Add tomatoes and cook until soft. Mix in the cooked pasta and season with salt and pepper. Serve with grated cheese.",
     "ingrediants": [
         {
@@ -138,7 +138,7 @@
     "id": 3,
     "title": "Pizza",
     "description": "This is a short description about the recipe.",
-    "image": "../../../imgs/dishs/pizza.webp",
+    "image": "../../../imgs/pizza.webp",
     "rating": 4.6,
     "difficulty": "Medium",
     "category": ["Egyptian", "Italian", "Fast Food"],
@@ -153,7 +153,7 @@
         "fat": 25,
         "fiber": 4
     },
-    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
     "descriptionCooking": "Prepare the dough by mixing flour, water, yeast, and salt. Roll out the dough and place it on a baking sheet. Spread tomato sauce, add cheese and toppings of your choice. Bake in a preheated oven until golden brown.",
     "ingrediants": [
         {
@@ -215,7 +215,7 @@
         "fat": 10,
         "fiber": 2
     },
-    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
     "descriptionCooking": "Chop the vegetables and mix them in a bowl. Add olive oil, vinegar, salt, and pepper. Toss well and serve fresh.",
     "ingrediants": [
         {
@@ -266,7 +266,7 @@
     "image": "../../../imgs/dishs/img-recipe-4.jpg",
     "rating": 3.8,
     "difficulty": "Hard",
-    "category": ["Asian", "Seafood"],
+    "category": "Japanese",
     "cuisine": "Japanese",
     "preparation_time": "30 minutes",
     "cooking_time": "20 minutes",
@@ -278,7 +278,7 @@
         "fat": 5,
         "fiber": 1
     },
-    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
     "descriptionCooking": "Cook the rice and let it cool. Place a sheet of nori on a bamboo mat, spread rice evenly, and add fillings like fish and vegetables. Roll tightly and slice into pieces. Serve with soy sauce and wasabi.",
     "ingrediants": [
         {
@@ -349,7 +349,7 @@
         "fat": 10,
         "fiber": 3
     },
-    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
     "descriptionCooking": "Cook the meat with spices. Warm the tortillas and fill them with meat, lettuce, cheese, and salsa. Roll and serve.",
     "ingrediants": [
         {
@@ -473,7 +473,7 @@
     "image": "../../../imgs/dishs/steak.jpg",
     "rating": 3.8,
     "difficulty": "Medium",
-    "category": ["Grilled", "Western"],
+    "category": "Meat",
     "cuisine": "American",
     "preparation_time": "10 minutes",
     "cooking_time": "20 minutes",
@@ -485,7 +485,7 @@
         "fat": 50,
         "fiber": 0
     },
-    "watchVideo": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
+    "Watch Video": "https://www.bbc.co.uk/food/recipes/beef_and_mustard_pie_58002",
     "descriptionCooking": "Season the steak with salt and pepper. Heat a skillet and add oil. Cook the steak for 5-7 minutes on each side for medium-rare. Let it rest before slicing.",
     "ingrediants": [
         {

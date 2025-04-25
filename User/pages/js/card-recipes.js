@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // ===============================
+    // Your recipe-loading logic below
+    // ===============================
+
     const cardsBody = document.querySelector(".cards-body");
-    const categoryItems = document.querySelectorAll(".category-item, .subcategory-item");
+    const categoryItems = document.querySelectorAll(".category-item");
     let allRecipes = [];
 
     // Check if recipes exist in localStorage
@@ -98,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         favButtons.forEach((button) => {
             button.addEventListener("click", () => {
                 const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-
+        
                 if (!isLoggedIn) {
                     Swal.fire({
                         icon: "warning",
@@ -111,22 +115,22 @@ document.addEventListener("DOMContentLoaded", () => {
                     });
                     return;
                 }
-
+        
                 let favourites = JSON.parse(localStorage.getItem("favourites")) || [];
                 const recipeId = parseInt(button.getAttribute("data-id"));
                 const recipe = allRecipes.find((r) => r.id === recipeId);
-
+        
                 if (button.classList.contains("active")) {
                     favourites = favourites.filter((fav) => fav.id !== recipeId);
                     localStorage.setItem("favourites", JSON.stringify(favourites));
                     button.classList.remove("active");
-
+        
                     Swal.fire({
                         title: "Recipe removed from your favourites.",
                         text: "You can add it again anytime.",
                         icon: "warning",
                         confirmButtonText: "OK",
-                        confirmButtonColor: "#70974C"
+                        confirmButtonColor: "#2d1c0a"
                     });
                 } else {
                     favourites.push(recipe);
@@ -134,16 +138,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     button.classList.add("active");
 
                     Swal.fire({
-                        position: "top-end",
+                        position: "center",
                         icon: "success",
-                        title: "Item has been added Successfully to Favourites!",
+                        title: "Recipe has been added to your Favourites Successfully!",
                         showConfirmButton: false,
                         timer: 1500,
-                        color:"#70974C",
                     });
                 }
             });
         });
+        
     }
 
     categoryItems.forEach((item) => {
@@ -153,7 +157,6 @@ document.addEventListener("DOMContentLoaded", () => {
             item.classList.add("active");
 
             if (selectedCategory === "All") {
-                item.classList.add("active");
                 displayRecipes(allRecipes);
             }
             else if(item.id === "parent")
@@ -183,14 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const parentCategory = item.closest(".subcategory-menu").previousElementSibling;
                 parentCategory.classList.add("active");
                 const filteredRecipes = allRecipes.filter(
-                    (recipe) => recipe.category.includes(selectedCategory)
-                );
-                displayRecipes(filteredRecipes);
-            }
-            else {
-                item.classList.add("active");
-                const filteredRecipes = allRecipes.filter(
-                    (recipe) => recipe.category.includes(selectedCategory)
+                    (recipe) => recipe.category === selectedCategory
                 );
                 displayRecipes(filteredRecipes);
             }

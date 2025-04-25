@@ -66,11 +66,11 @@ document.addEventListener("DOMContentLoaded", () => {
     
                 swalWithBootstrapButtons.fire({
                     title: "Are you sure?",
-                    text: "You won't be able to revert this!",
+                    text: "Do you want to remove this recipe from your favourites!",
                     icon: "warning",
                     showCancelButton: true,
-                    confirmButtonText: "Yes, Remove it!",
-                    cancelButtonText: "No, cancel!",
+                    confirmButtonText: "Yes",
+                    cancelButtonText: "No",
                     reverseButtons: true
                 }).then((result) => {
                     if (result.isConfirmed) {
@@ -86,7 +86,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         swalWithBootstrapButtons.fire({
                             title: "Deleted!",
                             text: "The recipe has been removed from your favourites.",
-                            icon: "success"
+                            icon: "success",
+                            showConfirmButton: false, // Remove the OK button
+                            timer: 1500 // Set the timer to 1.5 seconds
                         });
     
                         // If no favourites remain
@@ -97,7 +99,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         swalWithBootstrapButtons.fire({
                             title: "Cancelled",
                             text: "Your favourite recipe is safe 😊",
-                            icon: "error"
+                            icon: "error",
+                            showConfirmButton: false, // Remove the OK button
+                            timer: 1500 // Set the timer to 1.5 seconds
                         });
                     }
                 });

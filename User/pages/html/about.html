@@ -25,14 +25,21 @@
         <ul class="nav-links">
           <li><a href="../../../index.html">Home</a></li>
           <li><a href="../html/about.html">About</a></li>
-          <li><a href="../html/card-recipes.html">Recipes</a></li>
-          <li id="contactBtn"><a href="../html/contact.html">Contact us</a></li>
+
+          <li id="userRecipes"><a href="../html/card-recipes.html">Recipes</a></li>
+          <li id="adminRecipes" style="display:none;"><a href="../../../Admin/pages/html/card-recipes.html">Recipes</a></li>
+
+          <li id="contactBtn" id="userContact"><a href="../html/contact.html">Contact us</a></li>
+          <li id="contactBtn" id="adminContact" style="display:none;"><a href="../../../Admin/pages/html/contact.html">Contact us</a></li>
+
           <li id="favouritesBtn"><a class="favourites" href="../html/favourites.html">
               <i class="fa-solid fa-heart"></i></a>
           </li>
+
           <li id="profileBtn"><a href="../html/profile.html">
               <i class="fa-solid fa-user"></i>
             </a></li>
+
           <div class="seperator">
             <span>|</span>
           </div>
@@ -94,6 +101,7 @@
     <script src="../js/footer.js"></script>
     <script src="../../../index.js"></script>
     <script src="./../../../Login & Register/pages/js/authentication.js"></script>
+    <script src="./../../../Login & Register/pages/js/adminAuthentication.js"></script>
 </body>
 
 </html>
