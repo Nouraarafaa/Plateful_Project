@@ -58,15 +58,9 @@ document.getElementById("loginform").addEventListener("submit", function (e) {
   const validAdmin = admins.find(admin => admin.adminId === adminId && admin.password === password);
 
   if (validAdmin) {
-      // Set the admin variable to true
-      const admin = true;
-
-      // Store the admin status in localStorage
-      localStorage.setItem("admin", admin);
-
       Swal.fire("Welcome", `Hello, Admin ${validAdmin.firstName}!`, "success").then(() => {
           localStorage.setItem("loggedInAdmin", JSON.stringify(validAdmin));
-          window.location.href = "../../../Admin/pages/html/card-recipes.html"; // Redirect to admin dashboard
+          window.location.href = "../../../Admin/pages/html/adminProfile.html"; // Redirect to admin dashboard
       });
   } else {
       Swal.fire("Error", "Invalid Admin ID or password!", "error");
