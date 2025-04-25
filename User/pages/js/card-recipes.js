@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         title: "Login Required",
                         text: "You must log in first to add recipes to favourites.",
                         confirmButtonText: "Login",
-                        confirmButtonColor: "#70974C"
+                        confirmButtonColor: "#2d1c0a"
                     }).then(() => {
                         window.location.href = "../../../Login & Register/pages/html/userAuth.html"; 
                     });
@@ -134,12 +134,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     button.classList.add("active");
 
                     Swal.fire({
-                        position: "top-end",
+                        position: "center",
                         icon: "success",
-                        title: "Item has been added Successfully to Favourites!",
+                        title: "Recipe has been added to your Favourites Successfully!",
                         showConfirmButton: false,
                         timer: 1500,
-                        color:"#70974C",
                     });
                 }
             });
