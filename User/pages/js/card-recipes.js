@@ -7,22 +7,55 @@ document.addEventListener("DOMContentLoaded", () => {
     const categoryItems = document.querySelectorAll(".category-item");
     let allRecipes = [];
 
-    fetch("../../data/recipes.json")
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error("Failed to fetch recipes");
-            }
-            return response.json();
-        })
-        .then((recipes) => {
-            console.log("Recipes fetched:", recipes);
-            allRecipes = recipes;
-            displayRecipes(allRecipes);
-        })
-        .catch((error) => {
-            console.error("Error loading recipes:", error);
-            cardsBody.innerHTML = "<p>Failed to load recipes. Please try again later.</p>";
-        });
+    // Check if recipes exist in localStorage
+    const storedRecipes = localStorage.getItem("recipes");
+
+    if (storedRecipes) {
+        // Load recipes from localStorage
+        console.log("Loading recipes from localStorage...");
+        allRecipes = JSON.parse(storedRecipes);
+        displayRecipes(allRecipes);
+    } else {
+        // Fetch recipes from JSON file and store them in localStorage
+        console.log("Fetching recipes from JSON file...");
+        fetch("../../data/recipes.json")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to fetch recipes");
+                }
+                return response.json();
+            })
+            .then((recipes) => {
+                console.log("Recipes fetched:", recipes);
+                allRecipes = recipes;
+
+                // update local storage
+                localStorage.setItem("recipes", JSON.stringify(allRecipes));
+
+                displayRecipes(allRecipes);
+            })
+            .catch((error) => {
+                console.error("Error loading recipes:", error);
+                cardsBody.innerHTML = "<p>Failed to load recipes. Please try again later.</p>";
+            });
+    }
+
+    //enabling the search bar
+    const searchInput = document.querySelector(".search input");
+    searchInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            const query = searchInput.value.trim().toLowerCase();
+            console.log(query)
+            
+            const filteredRecipes = allRecipes.filter((recipe) =>
+                recipe.title.toLowerCase().includes(query) 
+            );
+
+            console.log("Filtered recipes:", filteredRecipes); 
+
+            displayRecipes(filteredRecipes); 
+        }
+    });
 
     function displayRecipes(recipes) {
         const favourites = JSON.parse(localStorage.getItem("favourites")) || [];
@@ -48,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <h2>${recipe.title}</h2>
                     <p>${recipe.description}</p>
                     <div class="reviews">
-                        <span>${recipe.rating}</span>
+                        <span>${recipe.rating.toFixed(1)}</span>
                         <span>
                             ${generateStars(recipe.rating)}
                         </span>
@@ -97,20 +130,19 @@ document.addEventListener("DOMContentLoaded", () => {
                         text: "You can add it again anytime.",
                         icon: "warning",
                         confirmButtonText: "OK",
-                        confirmButtonColor: "#70974C"
+                        confirmButtonColor: "#2d1c0a"
                     });
                 } else {
                     favourites.push(recipe);
                     localStorage.setItem("favourites", JSON.stringify(favourites));
                     button.classList.add("active");
-        
+
                     Swal.fire({
-                        position: "top-end",
+                        position: "center",
                         icon: "success",
-                        title: "Item has been added Successfully to Favourites!",
+                        title: "Recipe has been added to your Favourites Successfully!",
                         showConfirmButton: false,
                         timer: 1500,
-                        color:"#70974C",
                     });
                 }
             });
@@ -120,13 +152,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
     categoryItems.forEach((item) => {
         item.addEventListener("click", () => {
-            const selectedCategory = item.textContent.trim();
+            var selectedCategory = item.textContent.trim();
             categoryItems.forEach((el) => el.classList.remove("active"));
             item.classList.add("active");
 
             if (selectedCategory === "All") {
                 displayRecipes(allRecipes);
-            } else {
+            }
+            else if(item.id === "parent")
+            {
+                item.classList.add("active");
+                //check if a recipe includes a category from the selected ones (subs)
+                const selectedSubCategories = Array.from(item.nextElementSibling.childNodes).filter(
+                    (child) => child.nodeType === 1 && child.classList.contains("subcategory-item") // Filter only elements with the class "subcategory-item"
+                );
+
+                const selectedSubCategoriesNames = selectedSubCategories.map(
+                    (subcategory) => subcategory.textContent.trim()
+                ); 
+                //removing the dropdown symbol
+                selectedCategory = selectedCategory.slice(0,-2)
+                selectedSubCategoriesNames.push(selectedCategory)
+                const filteredRecipes = allRecipes.filter((recipe) =>
+                    selectedSubCategoriesNames.some((subcategoryName) =>
+                        recipe.category.includes(subcategoryName)
+                    )
+                );
+                displayRecipes(filteredRecipes);
+
+            }
+            else if(item.classList[0] === "subcategory-item")
+            {
+                const parentCategory = item.closest(".subcategory-menu").previousElementSibling;
+                parentCategory.classList.add("active");
                 const filteredRecipes = allRecipes.filter(
                     (recipe) => recipe.category === selectedCategory
                 );
@@ -135,18 +193,52 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // dropdown category selection
+    const dropdown = document.querySelector(".dropdown select");
+    if (dropdown) {
+        dropdown.addEventListener("change", () => {
+            const selectedCategory = dropdown.value.trim(); 
+            console.log("Selected category from dropdown:", selectedCategory);
+
+            if (selectedCategory === "All") {
+                displayRecipes(allRecipes); 
+            } 
+            else {
+                const filteredRecipes = allRecipes.filter((recipe) =>
+                    recipe.category.includes(selectedCategory) 
+                );
+                console.log("selected recipes: ", filteredRecipes)
+                displayRecipes(filteredRecipes); 
+            }
+        });
+    }
+
+    
+
     function generateStars(rating) {
         const fullStars = Math.floor(rating);
-        const emptyStars = 5 - fullStars;
+        var halfStar = 0;
+        if (rating%1>=0.5)
+        {
+            halfStar=1;
+        }
+        const emptyStars = 5 - fullStars - halfStar;
         let starsHTML = "";
-
-        for (let i = 0; i < fullStars; i++) {
-            starsHTML += `<i class="fa-solid fa-star yellow"></i>`;
+    
+        for (let i = 0; i < fullStars; i++) 
+        {
+            starsHTML += `<i class="fa-solid fa-star filled-star"></i>`;
         }
-        for (let i = 0; i < emptyStars; i++) {
-            starsHTML += `<i class="fa-solid fa-star"></i>`;
+        if (halfStar) {
+            starsHTML += `<i class="fa-solid fa-star-half-stroke half-star"></i>`;
         }
-
+        for (let i = 0; i < emptyStars; i++) 
+        {
+            starsHTML += `<i class="fa-solid fa-star empty-star"></i>`;
+        }
+    
         return starsHTML;
     }
+
+    
 });

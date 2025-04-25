@@ -41,10 +41,10 @@
 </nav>
   <div class="auth">
     <div class="Authcontainer">
-      <button class="adminBtn">
+      <button class="adminBtn" onclick="setRole('admin')">
         <a href="../html/adminAuth.html">Continue as an Admin</a>
       </button>
-      <button class="userBtn">
+      <button class="userBtn" onclick="setRole('user')">
         <a href="../html/userAuth.html">Continue as a User</a>
       </button>
     </div>
@@ -54,6 +54,7 @@
       <img src="../../../imgs/authentication.svg" alt="Delicious Food">
     </div>
   </div>
+  <script src="../js/authentication.js"></script>
 </body>
 
 </html>
