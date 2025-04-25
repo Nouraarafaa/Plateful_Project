@@ -21,6 +21,29 @@ document.getElementById("registerform").addEventListener("submit", function (e) 
   const password = document.getElementById("registerPassword").value;
   const confirmPassword = document.getElementById("registerConfirmPassword").value;
 
+  
+  const adminIdPattern = /^[a-zA-Z0-9]{8}$/;
+  if (!adminIdPattern.test(adminId)) {
+      Swal.fire("Error", "Admin ID must be 8 characters and alphanumeric.", "error");
+      return;
+  }
+
+  const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  if (!emailPattern.test(email)) {
+      Swal.fire("Error", "Please enter a valid email address!", "error");
+      return;
+  }
+  // Password strength check (at least 8 characters, one uppercase, one number)
+  const passwordStrengthPattern = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+  if (!passwordStrengthPattern.test(password)) {
+      Swal.fire("Error", "Password must be at least 8 characters, contain one uppercase letter, and one number.", "error");
+      return;
+  }
+  const phonePattern = /^[0-9]{11}$/;
+  if (!phonePattern.test(phone)) {
+      Swal.fire("Error", "Please enter a valid phone number (11 digits).", "error");
+      return;
+  }
   // Password check
   if (password !== confirmPassword) {
       Swal.fire("Error", "Passwords do not match!", "error");
