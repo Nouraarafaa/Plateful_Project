@@ -96,12 +96,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const contactBtn = document.getElementById("contactBtn");
         if (profileBtn) {
             profileBtn.querySelector("a").setAttribute("href", "../../../Admin/pages/html/adminProfile.html");
-           }
+        }
         if (recipes) {
-         recipes.querySelector("a").setAttribute("href", "../../../Admin/pages/html/card-recipes.html");
+            recipes.querySelector("a").setAttribute("href", "../../../Admin/pages/html/card-recipes.html");
         }
         if (contactBtn) {
-         recipes.querySelector("a").setAttribute("href", "../../../Admin/pages/html/contact.html");
+            recipes.querySelector("a").setAttribute("href", "../../../Admin/pages/html/contact.html");
         }
 
         const loginBtn = document.getElementById("loginBtn");
