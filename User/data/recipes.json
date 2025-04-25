@@ -596,7 +596,7 @@
     "id": 10,
     "title": "Mushroom soup",
     "description": "This is a short description about the recipe.",
-    "image": "../../../imgs/dishs/mushroom-soup.jpg",
+    "image": "./imgs/dishs/mushroom-soup.jpg",
     "rating": 4.4,
     "difficulty": "Medium",
     "category": ["Soups"],
