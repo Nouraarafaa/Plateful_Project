@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rochester&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/all.min.css">
+  <link rel="stylesheet" href="../../../User/pages/css/home-nav.css">
+  <link rel="stylesheet" href="../../../User/pages/css/footer.css">
+  <link rel="stylesheet" href="../../../User/pages/css/profile.css">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+  <link rel="shortcut icon" href="../../../imgs/logo-favicon.png" type="image/x-icon">
+  
+  <title>User Profile</title>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <img src="../../../imgs/logo.png" alt="Logo">
+    </div>
+    <ul class="nav-links">
+      <li><a href="../../../index.html">Home</a></li>
+      <li><a href="../html/about.html">About</a></li>
+      <li><a href="../html/card-recipes.html">Recipes</a></li>
+      <li id="contactBtn"><a href="../html/contact.html">Contact us</a></li>
+      <li id="favouritesBtn"><a class="favourites" href="../html/favourites.html">
+          <i class="fa-solid fa-heart"></i></a>
+      </li>
+      <li id="profileBtn"><a href="./adminProfile.html">
+          <i class="fa-solid fa-user"></i>
+        </a></li>
+      <div class="seperator">
+        <span>|</span>
+      </div>
+      <li id="loginBtn" class="auth-btn1"><a href="../../../Login & Register/pages/html/authentication.html">Login</a></li>
+      <li id="registerBtn" class="auth-btn2"><a href="../../../Login & Register/pages/html/authentication.html">Register</a>
+      </li>
+    </ul>
+
+    <div class="menu-container">
+      <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+      <label for="menu-toggle" class="menu-icon">☰</label>
+      <ul class="mobile-nav">
+        <div class="names">
+          <li><a href="../../../index.html">Home</a></li>
+          <li><a href="../html/about.html">About</a></li>
+          <li><a href="../html/card-recipes.html">Recipes</a></li>
+          <li><a href="../html/contact.html" class="protected-link">Contact us</a></li>
+          <li id="profileBtn"><a class="protected-link" href="./adminProfile.html">
+              <i class="fa-solid fa-user"></i>
+            </a></li>
+
+        </div>
+        <div class="icons">
+          <li id="profileBtn"><a href="../html/profile.html">
+              <i class="fa-solid fa-user"></i>
+            </a></li>
+          <li><a href="../../../Login & Register/pages/html/authentication.html">Login</a></li>
+          <li><a href="../../../Login & Register/pages/html/authentication.html">Register</a></li>
+        </div>
+      </ul>
+    </div>
+  </nav>
+
+<section>
+  <div class="profile-container">
+    <div class="profile-image">
+      <img src="../../../imgs/user.jpg" alt="Profile Picture" class="profile-img">
+      <div><strong id="profileFullName">John David</strong></div>
+      <div id="profileEmail">JohnDavid@gmail.com</div>
+    </div>
+    <div class="profile-info">
+      <h2>Profile Settings</h2>
+      <div class="form-group">
+        <label for="ID">Admin ID</label>
+        <p id="ID">11</p>
+      </div>
+      <div class="form-group">
+        <label for="first-name">First Name</label>
+        <p id="profileFirstName">John</p>
+      </div>
+      <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <p id="profileLastName">David</p>
+      </div>
+      <div class="form-group">
+        <label for="phone">Mobile Number</label>
+        <p id="profilePhone">01234567899</p>
+      </div>
+
+      <div class="password">
+        <div class="form-group">
+          <label for="password">Change Password</label>
+          <input type="password" id="oldPassword" placeholder="Old Password">
+          <input type="password" id="newPassword" placeholder="New Password">
+          <button type="submit" class="pass" onclick="changePassword()">Change Password</button>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button class="save" onclick="saveProfile()">Save Profile</button>
+        <button onclick="logout()" id="logoutBtn">Log Out</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <script src="../js/adminProfile.js"></script>
+  <script src="../../../Login & Register/pages/js/adminAuth.js"></script>
+  <script src="../../../index.js"></script>
+</body>
+
+</html>
