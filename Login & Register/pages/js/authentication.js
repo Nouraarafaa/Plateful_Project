@@ -77,7 +77,8 @@ document.getElementById("loginform").addEventListener("submit", function (e) {
     if (validUser) {
         Swal.fire("Welcome", `Hello, ${validUser.firstName}!`, "success").then(() => {
             localStorage.setItem("loggedInUser", JSON.stringify(validUser));
-            window.location.href = "../../../User/pages/html/card-recipes.html"; // Redirect to user profile
+            localStorage.setItem("loggedInRole", "user"); // Store role
+            window.location.href = "../../../User/pages/html/profile.html"; // Redirect to user profile
         });
     } else {
         Swal.fire("Error", "Invalid E-mail or password!", "error");

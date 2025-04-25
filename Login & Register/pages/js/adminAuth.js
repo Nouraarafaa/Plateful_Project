@@ -79,7 +79,8 @@ document.getElementById("loginform").addEventListener("submit", function (e) {
     if (validAdmin) {
         Swal.fire("Welcome", `Hello, Admin ${validAdmin.firstName}!`, "success").then(() => {
             localStorage.setItem("loggedInAdmin", JSON.stringify(validAdmin));
-            window.location.href = "../../../Admin/pages/html/adminProfile.html"; // Redirect to admin dashboard
+            localStorage.setItem("loggedInRole", "admin"); // Store role
+            window.location.href = "../../../Admin/pages/html/adminProfile.html"; // Redirect to admin profile
         });
     } else {
         Swal.fire("Error", "Invalid Admin ID or password!", "error");
