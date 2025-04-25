@@ -401,7 +401,7 @@
     "id": 7,
     "title": "Cinnamon Roll",
     "description": "This is a short description about the recipe.",
-    "image": "../../../imgs/dishs/cinnamon-roll.jpg",
+    "image": "../../../imgs/dishs/cinnamon-roll.JPG",
     "rating": 4.2,
     "difficulty": "Medium",
     "category": ["Desserts"],
