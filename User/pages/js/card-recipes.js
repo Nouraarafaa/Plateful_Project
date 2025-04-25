@@ -97,20 +97,19 @@ document.addEventListener("DOMContentLoaded", () => {
                         text: "You can add it again anytime.",
                         icon: "warning",
                         confirmButtonText: "OK",
-                        confirmButtonColor: "#70974C"
+                        confirmButtonColor: "#2d1c0a"
                     });
                 } else {
                     favourites.push(recipe);
                     localStorage.setItem("favourites", JSON.stringify(favourites));
                     button.classList.add("active");
-        
+
                     Swal.fire({
-                        position: "top-end",
+                        position: "center",
                         icon: "success",
-                        title: "Item has been added Successfully to Favourites!",
+                        title: "Recipe has been added to your Favourites Successfully!",
                         showConfirmButton: false,
                         timer: 1500,
-                        color:"#70974C",
                     });
                 }
             });
