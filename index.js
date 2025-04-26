@@ -83,6 +83,9 @@ document.addEventListener("DOMContentLoaded", () => {
         getStartedBtn.style.display = "none"; // Hide the button
     }
 
+});
+
+document.addEventListener("DOMContentLoaded", () => {
     // Navigation bar
     let currentPage = window.location.pathname;
 
