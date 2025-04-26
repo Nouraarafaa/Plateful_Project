@@ -53,7 +53,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (profileBtn) profileBtn.style.display = "none";
         if (recipesBtn) recipesBtn.querySelector("a").setAttribute("href", "../../../User/pages/html/card-recipes.html");
         if (contactBtn) contactBtn.querySelector("a").setAttribute("href", "../../../User/pages/html/contact.html");
-        //this new
+    }
+
+    // new
+    if (!loggedInUser && !loggedInAdmin) {
+        if (profileBtn) profileBtn.style.display = "none";
         if (favouritesBtn) favouritesBtn.style.display = "none";
     }
 
@@ -63,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         logoutBtn.addEventListener("click", logout);
     }
 
-    //this new
+    //new
     const currentPath = window.location.pathname;
     const basePath = currentPath.substring(0, currentPath.lastIndexOf("/") + 1);
 
