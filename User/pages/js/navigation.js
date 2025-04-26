@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const registerBtn = document.getElementById("registerBtn");
     const separator = document.querySelector(".seperator");
     const favoriteIcons = document.querySelectorAll(".favourites"); // Select all favorite icons
+    const favouritesBtn = document.getElementById("favouritesBtn");
 
     if (loggedInAdmin) {
         // Admin navigation links
@@ -52,6 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (profileBtn) profileBtn.style.display = "none";
         if (recipesBtn) recipesBtn.querySelector("a").setAttribute("href", "../../../User/pages/html/card-recipes.html");
         if (contactBtn) contactBtn.querySelector("a").setAttribute("href", "../../../User/pages/html/contact.html");
+        //this new
+        if (favouritesBtn) favouritesBtn.style.display = "none";
     }
 
     // Attach the logout function to the logout button
@@ -59,6 +62,18 @@ document.addEventListener("DOMContentLoaded", () => {
     if (logoutBtn) {
         logoutBtn.addEventListener("click", logout);
     }
+
+    //this new
+    const currentPath = window.location.pathname;
+    const basePath = currentPath.substring(0, currentPath.lastIndexOf("/") + 1);
+
+    const navLinks = document.querySelectorAll(".nav-links a");
+    navLinks.forEach(link => {
+        const href = link.getAttribute("href");
+        if (!href.startsWith("http") && !href.startsWith("#")) {
+            link.setAttribute("href", basePath + href);
+        }
+    });
 });
 
 function logout() {
