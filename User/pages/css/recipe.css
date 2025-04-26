@@ -279,6 +279,14 @@ body {
     margin-left: 20px;
     margin-right: 20px;
   }
+  .gif-column {
+    display: none;
+  }
+  .recipe-image {
+    margin: auto;
+    width: 80%;
+    height: auto; /* Adjust height for smaller screens */
+  }
 }
 
 @media (max-width: 576px) {
@@ -299,5 +307,13 @@ body {
 
   .sidebar-right {
     padding: 10px;
+  }
+  .gif-column {
+    display: none;
+  }
+  .recipe-image {
+    margin: auto;
+    width: 80%;
+    height: auto; /* Adjust height for smaller screens */
   }
 }

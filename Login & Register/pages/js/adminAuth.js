@@ -59,10 +59,19 @@ document.getElementById("registerform").addEventListener("submit", function (e) 
     admins.push({ adminId, firstName, lastName, email, phone, password, isAdmin: true });
     localStorage.setItem("admins", JSON.stringify(admins));
 
-    Swal.fire("Success", "Admin registered successfully!", "success").then(() => {
+    Swal.fire({
+        title: "Success",
+        text: "Admin registered successfully!",
+        icon: "success",
+        confirmButtonText: "OK",
+        customClass: {
+            confirmButton: "my-swal-button"
+        }
+    }).then(() => {
         document.getElementById("registerform").reset();
         document.getElementById("signin").click(); // Switch to login
     });
+    
 });
 
 // Login form submission
@@ -134,9 +143,19 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.removeItem("loggedInRole");
             localStorage.removeItem("loggedInAdmin");
             localStorage.removeItem("loggedInUser");
-            Swal.fire("Logged Out", "See you next time!", "success").then(() => {
+
+            Swal.fire({
+                title: "Logged Out",
+                text: "See you next time!",
+                icon: "success",
+                confirmButtonText: "OK",
+                customClass: {
+                    confirmButton: "my-swal-button" 
+                }
+            }).then(() => {
                 window.location.href = "../../../index.html";
             });
         });
     }
 });
+

@@ -53,10 +53,19 @@ document.getElementById("registerform").addEventListener("submit", function (e) 
 
     users.push({ firstName, lastName, email, phone, password });
     localStorage.setItem("users", JSON.stringify(users));
-    Swal.fire("Success", "Registered successfully!", "success").then(() => {
+    Swal.fire({
+        title: "Success",
+        text: "Registered successfully!",
+        icon: "success",
+        confirmButtonText: "OK",
+        customClass: {
+            confirmButton: "my-swal-button"
+        }
+    }).then(() => {
         document.getElementById("registerform").reset();
         document.getElementById("signin").click(); 
     });
+    
 });
 
 document.getElementById("loginform").addEventListener("submit", function (e) {
@@ -78,14 +87,21 @@ document.getElementById("loginform").addEventListener("submit", function (e) {
         localStorage.setItem("loggedInUser", JSON.stringify(validUser));
         localStorage.setItem("loggedInRole", "user"); // Store role
         console.log("Logged in user stored in localStorage:", localStorage.getItem("loggedInUser")); // Debugging log
-        Swal.fire("Welcome", `Hello, ${validUser.firstName}!`, "success").then(() => {
-            window.location.href = "../../../User/pages/html/profile.html"; // Redirect to user profile
+        Swal.fire({
+            title: "Welcome",
+            text: `Hello, ${validUser.firstName}!`,
+            icon: "success",
+            confirmButtonText: "OK",
+            customClass: {
+                confirmButton: "my-swal-button"
+            }
+        }).then(() => {
+            window.location.href = "../../../User/pages/html/card-recipes.html";
         });
     } else {
         Swal.fire("Error", "Invalid E-mail or password!", "error");
     }
 });
-
 document.addEventListener("DOMContentLoaded", () => {
     const logoutBtn = document.getElementById("logoutBtn");
     if (logoutBtn) {
@@ -94,7 +110,16 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.removeItem("loggedInRole");
             localStorage.removeItem("loggedInAdmin");
             localStorage.removeItem("loggedInUser");
-            Swal.fire("Logged Out", "See you next time!", "success").then(() => {
+
+            Swal.fire({
+                title: "Logged Out",
+                text: "See you next time!",
+                icon: "success",
+                confirmButtonText: "OK",
+                customClass: {
+                    confirmButton: "my-swal-button"
+                }
+            }).then(() => {
                 window.location.href = "../../../index.html";
             });
         });
