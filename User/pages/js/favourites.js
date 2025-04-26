@@ -3,7 +3,16 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Logged in user in favourites.js:", loggedInUser);
 
     if (!loggedInUser) {
-        Swal.fire("Login Required", "Please log in to access your favourites.", "warning").then(() => {
+        Swal.fire({
+            title: "Login Required",
+            text: "Please log in to access your favourites.",
+            icon: "warning",
+            showCancelButton: false, 
+            confirmButtonText: "Login",
+            customClass: {
+                confirmButton: "swal-login-btn"
+            },
+        }).then(() => {
             window.location.href = "../../../Login & Register/pages/html/authentication.html";
         });
         return;
@@ -78,6 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     showCancelButton: true,
                     confirmButtonText: "Yes",
                     cancelButtonText: "No",
+                    customClass: {
+                        confirmButton: "swal-confirm-btn",
+                        cancelButton: "swal-cancel-btn"
+                    },
                 }).then((result) => {
                     if (result.isConfirmed) {
                         const updatedFavourites = favourites.filter((fav) => fav.id !== recipeId);
@@ -90,7 +103,14 @@ document.addEventListener("DOMContentLoaded", () => {
                             favContainer.innerHTML = `<p class="no-results">No recipes were added to your favourites.</p>`;
                         }
 
-                        Swal.fire("Deleted!", "The recipe has been removed from your favourites.", "success");
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "The recipe has been removed from your favourites.",
+                            text: "You can add it back later if you want.",
+                            showConfirmButton: false,
+                            timer: 1800,
+                        });
                     }
                 });
             });

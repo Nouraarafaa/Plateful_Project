@@ -135,7 +135,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         text: "You can add it again anytime.",
                         icon: "warning",
                         confirmButtonText: "OK",
-                        confirmButtonColor: "#2d1c0a"
+                        confirmButtonColor: "#2d1c0a",
+                        customClass: {
+                            confirmButton: "swal-remove-btn"
+                        },
                     });
                 } else {
                     // Add to favourites

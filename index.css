@@ -99,6 +99,7 @@ a{
   background-color:var(--bg-color); 
   color: var(--font-color);
   border-color:var(--font-color);
+  font-weight: bold;
 }
 
 .start:hover a {
