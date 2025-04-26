@@ -1,29 +1,45 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const favContainer = document.querySelector(".recipes");
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    console.log("Logged in user in favourites.js:", loggedInUser);
 
-    // Fetch favourites from JSON using AJAX
+    if (!loggedInUser) {
+        Swal.fire("Login Required", "Please log in to access your favourites.", "warning").then(() => {
+            window.location.href = "../../../Login & Register/pages/html/authentication.html";
+        });
+        return;
+    }
+
+    const favContainer = document.querySelector(".recipes");
+    const userFavouritesKey = `favourites_${loggedInUser.email}`;
+    const favourites = JSON.parse(localStorage.getItem(userFavouritesKey)) || [];
+    console.log("User favourites key:", userFavouritesKey);
+    console.log("Favourites data:", favourites);
+
     fetchFavourites();
 
     function fetchFavourites() {
-        // Simulate an AJAX call to fetch recipes
         const xhr = new XMLHttpRequest();
         xhr.open("GET", "../../data/recipes.json", true); // JSON file
         xhr.onload = function () {
             if (xhr.status === 200) {
                 const recipes = JSON.parse(xhr.responseText);
-                const favourites = JSON.parse(localStorage.getItem("favourites")) || [];
+                console.log("Recipes loaded from JSON:", recipes);
 
-                // Filter recipes to only include favourites
+                if (!Array.isArray(recipes)) {
+                    favContainer.innerHTML = `<p class="error">Failed to load recipes. Please try again later.</p>`;
+                    return;
+                }
+
                 const favouriteRecipes = recipes.filter((recipe) =>
                     favourites.some((fav) => fav.id === recipe.id)
                 );
+                console.log("Filtered favourite recipes:", favouriteRecipes);
 
                 if (favouriteRecipes.length === 0) {
                     favContainer.innerHTML = `<p class="no-results">No recipes were added to your favourites.</p>`;
                     return;
                 }
 
-                // Render favourite recipes
                 favouriteRecipes.forEach((recipe) => {
                     const recipeCard = document.createElement("div");
                     recipeCard.classList.add("recipe-card");
@@ -38,8 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     favContainer.appendChild(recipeCard);
                 });
 
-                // Add event listeners to remove buttons
-                addRemoveListeners(favourites);
+                addRemoveListeners(favourites, userFavouritesKey);
             } else {
                 favContainer.innerHTML = `<p class="error">Failed to load recipes. Please try again later.</p>`;
             }
@@ -50,59 +65,32 @@ document.addEventListener("DOMContentLoaded", () => {
         xhr.send();
     }
 
-    function addRemoveListeners(favourites) {
+    function addRemoveListeners(favourites, userFavouritesKey) {
         const removeButtons = document.querySelectorAll(".remove-btn");
         removeButtons.forEach((button) => {
             button.addEventListener("click", (event) => {
                 const recipeId = parseInt(button.getAttribute("data-id"));
-    
-                const swalWithBootstrapButtons = Swal.mixin({
-                    customClass: {
-                        confirmButton: "btn btn-success",
-                        cancelButton: "btn btn-danger"
-                    },
-                    buttonsStyling: false
-                });
-    
-                swalWithBootstrapButtons.fire({
+
+                Swal.fire({
                     title: "Are you sure?",
-                    text: "Do you want to remove this recipe from your favourites!",
+                    text: "Do you want to remove this recipe from your favourites?",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonText: "Yes",
                     cancelButtonText: "No",
-                    reverseButtons: true
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        // Remove from localStorage
-                        let updatedFavourites = favourites.filter((fav) => fav.id !== recipeId);
-                        localStorage.setItem("favourites", JSON.stringify(updatedFavourites));
-    
-                        // Remove the recipe card
+                        const updatedFavourites = favourites.filter((fav) => fav.id !== recipeId);
+                        localStorage.setItem(userFavouritesKey, JSON.stringify(updatedFavourites));
+
                         const recipeCard = button.closest(".recipe-card");
                         recipeCard.remove();
-    
-                        // Show success message
-                        swalWithBootstrapButtons.fire({
-                            title: "Deleted!",
-                            text: "The recipe has been removed from your favourites.",
-                            icon: "success",
-                            showConfirmButton: false, // Remove the OK button
-                            timer: 1500 // Set the timer to 1.5 seconds
-                        });
-    
-                        // If no favourites remain
+
                         if (updatedFavourites.length === 0) {
                             favContainer.innerHTML = `<p class="no-results">No recipes were added to your favourites.</p>`;
                         }
-                    } else if (result.dismiss === Swal.DismissReason.cancel) {
-                        swalWithBootstrapButtons.fire({
-                            title: "Cancelled",
-                            text: "Your favourite recipe is safe 😊",
-                            icon: "error",
-                            showConfirmButton: false, // Remove the OK button
-                            timer: 1500 // Set the timer to 1.5 seconds
-                        });
+
+                        Swal.fire("Deleted!", "The recipe has been removed from your favourites.", "success");
                     }
                 });
             });

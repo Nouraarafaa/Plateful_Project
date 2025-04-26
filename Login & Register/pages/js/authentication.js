@@ -53,7 +53,6 @@ document.getElementById("registerform").addEventListener("submit", function (e) 
 
     users.push({ firstName, lastName, email, phone, password });
     localStorage.setItem("users", JSON.stringify(users));
-
     Swal.fire("Success", "Registered successfully!", "success").then(() => {
         document.getElementById("registerform").reset();
         document.getElementById("signin").click(); 
@@ -75,12 +74,29 @@ document.getElementById("loginform").addEventListener("submit", function (e) {
     const validUser = users.find(user => user.email === email && user.password === password);
 
     if (validUser) {
+        console.log("Valid user found:", validUser); // Debugging log
+        localStorage.setItem("loggedInUser", JSON.stringify(validUser));
+        localStorage.setItem("loggedInRole", "user"); // Store role
+        console.log("Logged in user stored in localStorage:", localStorage.getItem("loggedInUser")); // Debugging log
         Swal.fire("Welcome", `Hello, ${validUser.firstName}!`, "success").then(() => {
-            localStorage.setItem("loggedInUser", JSON.stringify(validUser));
-            localStorage.setItem("loggedInRole", "user"); // Store role
             window.location.href = "../../../User/pages/html/profile.html"; // Redirect to user profile
         });
     } else {
         Swal.fire("Error", "Invalid E-mail or password!", "error");
+    }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+            console.log("Logout function triggered"); // Debugging log
+            localStorage.removeItem("loggedInRole");
+            localStorage.removeItem("loggedInAdmin");
+            localStorage.removeItem("loggedInUser");
+            Swal.fire("Logged Out", "See you next time!", "success").then(() => {
+                window.location.href = "../../../index.html";
+            });
+        });
     }
 });

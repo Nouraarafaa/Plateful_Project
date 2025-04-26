@@ -1,19 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let allRecipes = [];
-    const storedRecipes = localStorage.getItem("recipes");
+    let popularR = [];
+    const storedR = localStorage.getItem("popularR");
 
     // Declare topRecipesBody at the top
     const topRecipesBody = document.querySelector(".popular-dishes-section");
 
-    if (storedRecipes) {
-        console.log("Loading recipes from localStorage...");
-        allRecipes = JSON.parse(storedRecipes); 
+    if (!topRecipesBody) {
+        console.error("Error: .popular-dishes-section element not found in the DOM.");
+        return;
+    }
+
+    if (storedR) {
+        popularR = JSON.parse(storedR);
 
         // Select and display top recipes
-        const topRecipes = selectTopRecipes(allRecipes, 4);
+        const topRecipes = selectTopRecipes(popularR, 4);
         displayTopDishes(topRecipes);
     } else {
-        console.log("Fetching recipes from JSON file...");
         fetch("./User/data/recipes.json")
             .then((response) => {
                 if (!response.ok) {
@@ -22,36 +25,29 @@ document.addEventListener("DOMContentLoaded", () => {
                 return response.json();
             })
             .then((recipes) => {
-                console.log("Recipes fetched:", recipes);
-                allRecipes = recipes;
+                popularR = recipes;
 
                 // Update local storage
-                localStorage.setItem("recipes", JSON.stringify(allRecipes));
+                localStorage.setItem("popularR", JSON.stringify(popularR));
 
                 // Select and display top recipes
-                const topRecipes = selectTopRecipes(allRecipes, 4);
+                const topRecipes = selectTopRecipes(popularR, 4);
                 displayTopDishes(topRecipes);
             })
             .catch((error) => {
-                console.error("Error loading recipes:", error);
+                console.error("Error fetching recipes:", error);
                 topRecipesBody.innerHTML = "<p>Failed to load recipes. Please try again later.</p>";
             });
     }
 
-    function selectTopRecipes(allRecipes, n) {
+    function selectTopRecipes(popularR, n) {
         // Sort the recipes by rating in descending order
-        const sortedRecipes = allRecipes.sort((a, b) => b.rating - a.rating);
-
+        const sortedRecipes = [...popularR].sort((a, b) => b.rating - a.rating);
         // Select the top n recipes
         return sortedRecipes.slice(0, n);
     }
 
     function displayTopDishes(topRecipes) {
-        if (!topRecipesBody) {
-            console.error("Error: .popular-dishes-section element not found in the DOM.");
-            return;
-        }
-
         topRecipesBody.innerHTML = `<h2>Our Popular Dishes</h2>`;
         const container = document.createElement("div");
         container.classList.add("dishes-container");
@@ -111,5 +107,4 @@ document.addEventListener("DOMContentLoaded", () => {
             link.classList.add('active');
         }
     });
-
 });

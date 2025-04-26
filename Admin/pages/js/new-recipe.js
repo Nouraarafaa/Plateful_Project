@@ -145,7 +145,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     // Update local storage
                     localStorage.setItem("recipes", JSON.stringify(recipes));
             
-                    alert("New recipe added successfully!");
+                    // Show success message
+                    Swal.fire({
+                        title: "Success!",
+                        text: "New recipe added successfully!",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        confirmButtonColor: "#3085d6"
+                    });
             
                     // Reset the form
                     form.reset();
@@ -172,8 +179,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Update local storage
                 localStorage.setItem("recipes", JSON.stringify(recipes));
             
-                alert("New recipe added successfully!");
-            
+                // Show success message
+                Swal.fire({
+                    title: "Success!",
+                    text: "New recipe is added successfully!",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    confirmButtonColor: "#2D1C0A"
+                });
                 // Reset the form
                 form.reset();
             }

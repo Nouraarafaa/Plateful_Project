@@ -127,12 +127,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-const logoutBtn = document.getElementById("logoutBtn");
-if (logoutBtn) {
-    logoutBtn.addEventListener("click", () => {
-        localStorage.removeItem("loggedInAdmin");
-        Swal.fire("Logged Out", "See you next time!", "success").then(() => {
-            window.location.href = "../../../index.html";
+document.addEventListener("DOMContentLoaded", () => {
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+            localStorage.removeItem("loggedInRole");
+            localStorage.removeItem("loggedInAdmin");
+            localStorage.removeItem("loggedInUser");
+            Swal.fire("Logged Out", "See you next time!", "success").then(() => {
+                window.location.href = "../../../index.html";
+            });
         });
-    });
-}
+    }
+});
