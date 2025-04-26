@@ -83,37 +83,33 @@ document.addEventListener("DOMContentLoaded", () => {
         getStartedBtn.style.display = "none"; // Hide the button
     }
 
+
 });
-
 document.addEventListener("DOMContentLoaded", () => {
-    // Navigation bar
+    // Part for making navbar links active
     let currentPage = window.location.pathname;
-
-    // Extract just the file name 
     currentPage = currentPage.substring(currentPage.lastIndexOf('/') + 1);
 
-    // If empty, assume it's index.html
     if (currentPage === '') {
         currentPage = 'index.html';
     }
 
-    // Select all navigation links
+    // Select all navigation links (both desktop and mobile)
     const navLinks = document.querySelectorAll('nav a');
 
-    // Reset all links by removing the "active" class
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-    });
-
-    // Loop through each link and add the "active" class if it matches the current page
     navLinks.forEach(link => {
         const linkHref = link.getAttribute('href');
 
-        // Skip this link if it goes to index.html and has class "btn"
-        if (linkHref.includes('index.html') && link.classList.contains('auth-btn')) return;
+        // Normalize link href to just file name
+        const normalizedHref = linkHref.substring(linkHref.lastIndexOf('/') + 1);
 
-        if (linkHref.includes(currentPage)) {
+        // Remove any previous active
+        link.classList.remove('active');
+
+        // Check if the normalized link matches the current page
+        if (normalizedHref === currentPage) {
             link.classList.add('active');
         }
     });
+
 });
