@@ -36,7 +36,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 <label for="recipe-name">Recipe Name:</label>
                 <input type="text" id="recipe-name" name="recipe-name" placeholder="It may be called..." required>
 
+                <div class="image-edit-container">
+                    <div class="image-edit">
+                        <label for="recipe-image">Recipe Image:</label>
+                        <input type="file" id="recipe-image" name="recipe-image">
+                    </div>
+                </div>
+
                 <label for="recipe-name">Recipe Description:</label>
+                <input type="text" id="recipe-desc" name="recipe-desc" placeholder="How would you describe it?" required>
+
+                <label for="How to prepare the recipe">How to prepare:</label>
+                <textarea id="How to prepare the recipe" name="How to prepare the recipe" placeholder="step 1\nstep2\nstep3\netc..."></textarea>
+
+                <label for="recipe-ingredients">Ingredients:</label>
+                <textarea id="recipe-ingredients" name="recipe-ingredients" placeholder="ingredient1: this much\ningredient2: that much\netc..."></textarea>
+
+                <label for="recipe-time">Cooking time (mins):</label>
+                <input type="text" id="recipe-time" name="recipe-time" placeholder="10 minutes" required>
+
+                                <label for="recipe-name">Recipe Description:</label>
                 <input type="text" id="recipe-desc" name="recipe-desc" placeholder="How would you describe it?" required>
 
                 <label for="recipe-nut">Nutritional information:</label>
@@ -62,22 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         <input type="number" id="recipe-nut-fiber" name="recipe-nut-fiber" placeholder="10" required>
                     </div>
                 </div>
-
-                <div class="image-edit-container">
-                    <div class="image-edit">
-                        <label for="recipe-image">Recipe Image:</label>
-                        <input type="file" id="recipe-image" name="recipe-image">
-                    </div>
-                </div>
-                <label for="How to prepare the recipe">How to prepare:</label>
-                <textarea id="How to prepare the recipe" name="How to prepare the recipe" placeholder="step 1\nstep2\nstep3\netc..."></textarea>
-
-                <label for="recipe-ingredients">Ingredients:</label>
-                <textarea id="recipe-ingredients" name="recipe-ingredients" placeholder="ingredient1: this much\ningredient2: that much\netc..."></textarea>
-
-                <label for="recipe-time">Cooking time (mins):</label>
-                <input type="text" id="recipe-time" name="recipe-time" placeholder="10 minutes" required>
-
 
                 <label for="recipe-video">Recipe Video URL:</label>
                 <input type="url" id="recipe-video" name="recipe-video" placeholder="https://www.website.com (don’t forget the &quot;https://&quot;)"">
