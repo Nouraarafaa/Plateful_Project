@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const topRecipes = selectTopRecipes(popularR, 4);
         displayTopDishes(topRecipes);
     } else {
-        fetch("./User/data/recipes.json")
+        fetch("./popularR.json")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Failed to fetch recipes");
