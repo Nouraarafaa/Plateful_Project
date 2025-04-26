@@ -13,7 +13,7 @@ body{
     max-width: 800px;
     background: #ffffff58;
     border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
   
   .edit-container h1 {
@@ -33,6 +33,7 @@ body{
     font-size: 16px;
     color: var(--font-color);
     font-weight: bold;
+    
   }
   
   .edit-form input,
@@ -75,6 +76,11 @@ body{
     color: var(--font-color);
     text-decoration: none;
   }
+
+  .image-edit label {
+  display: block; /* Ensure the label is on its own line */
+  margin-bottom: 10px; /* Add margin below the label */
+  }
   
   .image-edit-container {
     display: flex;
@@ -102,3 +108,46 @@ body{
     flex-direction: column;
     gap: 10px; 
   }
+
+/* Container for nutritional information */
+.nutritional-info-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Individual nutritional info box */
+.nutritional-info-box {
+  flex: 1 1 calc(50% - 20px); /* Two columns layout */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+/* Labels inside the nutritional info box */
+.nutritional-info-box label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+}
+
+/* Inputs inside the nutritional info box */
+.nutritional-info-box input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Input focus effect */
+.nutritional-info-box input:focus {
+  border-color: #2d1c0a; /* Dark brown color */
+  box-shadow: 0 0 5px rgba(45, 28, 10, 0.2);
+}

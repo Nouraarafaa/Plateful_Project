@@ -56,8 +56,30 @@ document.addEventListener("DOMContentLoaded", () => {
                 <label for="recipe-name">Recipe Name:</label>
                 <input type="text" id="recipe-name" name="recipe-name" value="${recipeToEdit.title}" placeholder="It may be called..." required>
 
+                <div class="image-edit-container">
+                    <div class="image-preview">
+                        <img src="${recipeToEdit.image}" alt="Recipe Image">
+                    </div>
+                    <div class="image-edit">
+                        <label for="recipe-image">Recipe Image:</label>
+                        <input type="file" id="recipe-image" name="recipe-image">
+                    </div>
+                </div>
+
                 <label for="recipe-desc">Recipe Description:</label>
                 <input type="text" id="recipe-desc" name="recipe-desc" value="${recipeToEdit.description}" placeholder="How would you describe it?" required>
+
+                <label for="How to prepare the recipe">How to prepare:</label>
+                <textarea id="How to prepare the recipe" name="How to prepare the recipe" placeholder="step 1\nstep2\nstep3\netc...">${recipeToEdit.steps.map(step => step.description).join('\n')}</textarea>
+
+                <label for="recipe-ingredients">Ingredients:</label>
+                <textarea id="recipe-ingredients" name="recipe-ingredients" placeholder="ingredient1: this much\ningredient2: that much\netc...">${recipeToEdit.ingrediants.map(ingredient => {
+    const { name, quantity } = ingredient;
+    return quantity ? `${name}: ${quantity}` : `${name}: no specified quantity`;
+}).join('\n')}</textarea>
+
+                <label for="recipe-time">Cooking time (mins):</label>
+                <input type="text" id="recipe-time" name="recipe-time" value="${recipeToEdit.cooking_time}" placeholder="10 minutes" required>
 
                 <label for="recipe-nut">Nutritional information:</label>
                 <div class="nutritional-info-container">
@@ -82,28 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         <input type="number" id="recipe-nut-fiber" name="recipe-nut-fiber" value="${recipeToEdit.nutritional_info.fiber}" placeholder="10" required>
                     </div>
                 </div>
-
-                <div class="image-edit-container">
-                    <div class="image-preview">
-                        <img src="${recipeToEdit.image}" alt="Recipe Image">
-                    </div>
-                    <div class="image-edit">
-                        <label for="recipe-image">Recipe Image:</label>
-                        <input type="file" id="recipe-image" name="recipe-image">
-                    </div>
-                </div>
-                <label for="How to prepare the recipe">How to prepare:</label>
-                
-                <textarea id="How to prepare the recipe" name="How to prepare the recipe" placeholder="step 1\nstep2\nstep3\netc...">${recipeToEdit.steps.map(step => step.description).join('\n')}</textarea>
-
-                <label for="recipe-ingredients">Ingredients:</label>
-                <textarea id="recipe-ingredients" name="recipe-ingredients" placeholder="ingredient1: this much\ningredient2: that much\netc...">${recipeToEdit.ingrediants.map(ingredient => {
-    const { name, quantity } = ingredient;
-    return quantity ? `${name}: ${quantity}` : `${name}: no specified quantity`;
-}).join('\n')}</textarea>
-
-                <label for="recipe-time">Cooking time (mins):</label>
-                <input type="text" id="recipe-time" name="recipe-time" value="${recipeToEdit.cooking_time}" placeholder="10 minutes" required>
 
                 <label for="recipe-video">Recipe Video URL:</label>
                 <input type="url" id="recipe-video" name="recipe-video" value="${recipeToEdit.watchVideo}" placeholder="https://www.website.com (don’t forget the &quot;https://&quot;)"">
@@ -152,9 +152,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 function saveUpdatedRecipe() {
+
+                    const swalWithBootstrapButtons = Swal.mixin({
+                        customClass: {
+                            confirmButton: 'btn btn-success',
+                            cancelButton: 'btn btn-danger'
+                        },
+                        buttonsStyling: false
+                    });
+
                     // Save the updated recipes array back to local storage
                     localStorage.setItem("recipes", JSON.stringify(recipes));
-                    alert("Recipe updated successfully!");
+                    // Show success message
+                    swalWithBootstrapButtons.fire({
+                        title: "Done!",
+                        text: "Recipe updated successfully!",
+                        icon: "success",
+                        showConfirmButton: false, // Remove the OK button
+                        timer: 1500 // Set the timer to 1.5 seconds
+                  });
                 }
                 const updatedTime = document.getElementById("recipe-time").value;
             const updatedVideo = document.getElementById("recipe-video").value;
@@ -171,7 +187,14 @@ document.addEventListener("DOMContentLoaded", () => {
             // Save the updated recipes array back to local storage
             localStorage.setItem("recipes", JSON.stringify(recipes));
 
-            alert("Recipe updated successfully!");
+            // Show success message
+            swalWithBootstrapButtons.fire({
+                title: "Done!",
+                text: "Recipe updated successfully!",
+                icon: "success",
+                showConfirmButton: false, // Remove the OK button
+                    timer: 1500 // Set the timer to 1.5 seconds
+            });
         });
     }
 });
