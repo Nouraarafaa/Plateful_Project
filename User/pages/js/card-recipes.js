@@ -54,7 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function displayRecipes(recipes) {
-        const favourites = JSON.parse(localStorage.getItem("favourites")) || [];
+        const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+        const userFavouritesKey = loggedInUser ? `favourites_${loggedInUser.email}` : "favourites";
+        const favourites = JSON.parse(localStorage.getItem(userFavouritesKey)) || [];
+    
         cardsBody.innerHTML = "";
     
         if (recipes.length === 0) {

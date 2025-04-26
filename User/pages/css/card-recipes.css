@@ -121,6 +121,7 @@ button {
   color: var(--font-color);
   border: 1px solid var(--font-color);
   transition: 0.3s;
+  font-weight: bold;
 }
 
 a {

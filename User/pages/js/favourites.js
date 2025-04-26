@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     recipeCard.innerHTML = `
                         <img src="${recipe.image}" alt="${recipe.title}">
                         <h3>${recipe.title}</h3>
-                        <button><a href="../html/recipe.html?id=${recipe.id}">View Recipe</a></button>
+                        <button class="view-recipe-btn"><a href="../html/recipe.html?id=${recipe.id}">View Recipe</a></button>
                         <button class="remove-btn" data-id="${recipe.id}">Remove</button>
                     `;
 
