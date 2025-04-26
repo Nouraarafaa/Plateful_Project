@@ -111,9 +111,10 @@ document.addEventListener("DOMContentLoaded", () => {
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#d33",
-            cancelButtonColor: "#3085d6",
+            cancelButtonColor: "#70974C",
             confirmButtonText: "Yes, delete it!",
             cancelButtonText: "Cancel",
+            
         }).then((result) => {
             if (result.isConfirmed) {
                 // Remove the recipe from the recipes array
@@ -129,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     title: "Deleted!",
                     text: "The recipe has been deleted successfully.",
                     icon: "success",
-                    confirmButtonColor: "#3085d6",
+                    confirmButtonColor: "#2d1c0a",
                 });
             }
         });

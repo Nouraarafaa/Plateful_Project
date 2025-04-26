@@ -87,3 +87,20 @@ h2 {
     background-color: #d33;
     border: 1px solid #d33;
 }
+
+.swal-ok-btn {
+    background-color: var(--font-color);
+    color: var(--bg-color);
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+  
+  .swal-ok-btn:hover {
+    background-color: rgba(255, 255, 255, 0.587);
+    color: var(--font-color);
+    border: 1px solid var(--font-color);
+    transition: 0.3s;
+    font-weight: bold;
+  }
+  

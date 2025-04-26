@@ -52,7 +52,9 @@ window.addEventListener("DOMContentLoaded", () => {
                         text: "The complaint has been removed.",
                         icon: "success",
                         confirmButtonText: "OK",
-                        confirmButtonColor: "#70974C"
+                        customClass: {
+                            confirmButton: "swal-ok-btn"
+                        },
                     });
                 }
             });

@@ -151,7 +151,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         text: "New recipe added successfully!",
                         icon: "success",
                         confirmButtonText: "OK",
-                        confirmButtonColor: "#3085d6"
+                    customClass: {
+                        confirmButton: "swal-ok-btn"
+                    },
                     });
             
                     // Reset the form
@@ -185,7 +187,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     text: "New recipe is added successfully!",
                     icon: "success",
                     confirmButtonText: "OK",
-                    confirmButtonColor: "#2D1C0A"
+                    customClass: {
+                        confirmButton: "swal-ok-btn"
+                    },
                 });
                 // Reset the form
                 form.reset();
