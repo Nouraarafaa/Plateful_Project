@@ -7,12 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const storedRecipes = localStorage.getItem("recipes");
 
     if (storedRecipes) {
-        // Load recipes from localStorage
         console.log("Loading recipes from localStorage...");
         allRecipes = JSON.parse(storedRecipes);
         displayRecipes(allRecipes);
     } else {
-        // Fetch recipes from JSON file and store them in localStorage
         console.log("Fetching recipes from JSON file...");
         fetch("../../data/recipes.json")
             .then((response) => {
@@ -24,10 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .then((recipes) => {
                 console.log("Recipes fetched:", recipes);
                 allRecipes = recipes;
-
-                // update local storage
                 localStorage.setItem("recipes", JSON.stringify(allRecipes));
-
                 displayRecipes(allRecipes);
             })
             .catch((error) => {
@@ -35,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 cardsBody.innerHTML = "<p>Failed to load recipes. Please try again later.</p>";
             });
     }
-
     //enabling the search bar
     const searchInput = document.querySelector(".search input");
     searchInput.addEventListener("keydown", (event) => {
@@ -254,6 +248,4 @@ document.addEventListener("DOMContentLoaded", () => {
     
         return starsHTML;
     }
-
-    
 });
