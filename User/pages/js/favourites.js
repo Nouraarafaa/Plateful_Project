@@ -12,8 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
             customClass: {
                 confirmButton: "swal-login-btn"
             },
-        }).then(() => {
+        }).then((result) => {
+            if (result.isConfirmed) {
             window.location.href = "../../../Login & Register/pages/html/authentication.html";
+            }
         });
         return;
     }

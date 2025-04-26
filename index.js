@@ -73,11 +73,16 @@ document.addEventListener("DOMContentLoaded", () => {
         // Append the container to the topRecipesBody
         topRecipesBody.appendChild(container);
     }
-});
 
-document.addEventListener("DOMContentLoaded", () => {
+    // Hide "Get Started" button if the user is logged in
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    const getStartedBtn = document.getElementById("getStartedBtn");
+
+    if (loggedInUser && getStartedBtn) {
+        getStartedBtn.style.display = "none"; // Hide the button
+    }
+
     // Navigation bar
-    // Get the current page name from the URL
     let currentPage = window.location.pathname;
 
     // Extract just the file name 
