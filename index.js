@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let allRecipes = [];
-    const storedR = localStorage.getItem("recipes");
+    let popularR = [];
+    const storedR = localStorage.getItem("popularR");
 
     // Declare topRecipesBody at the top
     const topRecipesBody = document.querySelector(".popular-dishes-section");
@@ -11,13 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (storedR) {
-        allRecipes = JSON.parse(storedR);
+        popularR = JSON.parse(storedR);
 
         // Select and display top recipes
-        const topRecipes = selectTopRecipes(allRecipes, 4);
+        const topRecipes = selectTopRecipes(popularR, 4);
         displayTopDishes(topRecipes);
     } else {
-        fetch("User/data/recipes.json")
+        fetch("./popularR.json")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Failed to fetch recipes");
@@ -25,13 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 return response.json();
             })
             .then((recipes) => {
-                allRecipes = recipes;
+                popularR = recipes;
 
                 // Update local storage
-                localStorage.setItem("recipes", JSON.stringify(allRecipes));
+                localStorage.setItem("popularR", JSON.stringify(popularR));
 
                 // Select and display top recipes
-                const topRecipes = selectTopRecipes(allRecipes, 4);
+                const topRecipes = selectTopRecipes(popularR, 4);
                 displayTopDishes(topRecipes);
             })
             .catch((error) => {
@@ -40,9 +40,9 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    function selectTopRecipes(recipes, n) {
+    function selectTopRecipes(popularR, n) {
         // Sort the recipes by rating in descending order
-        const sortedRecipes = [...recipes].sort((a, b) => b.rating - a.rating);
+        const sortedRecipes = [...popularR].sort((a, b) => b.rating - a.rating);
         // Select the top n recipes
         return sortedRecipes.slice(0, n);
     }
@@ -57,8 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("Displaying recipe:", recipe);
             const dish = document.createElement("div");
             dish.classList.add("dish");
-            const adjustedImage = recipe.image.replace(/^(\.\.\/)+/, './');
-            const imageSrc = adjustedImage || "/Plateful_Project/imgs/dishs/img-recipe-1.jpg";
+            const imageSrc = recipe.image || "./imgs/dishs/img-recipe-1.jpg";
             dish.innerHTML = `
                 <img src="${imageSrc}" alt="${recipe.title}">
                 <div class="dish-overlay">
@@ -74,9 +73,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // Append the container to the topRecipesBody
         topRecipesBody.appendChild(container);
     }
+});
 
+document.addEventListener("DOMContentLoaded", () => {
     // Navigation bar
-
     // Get the current page name from the URL
     let currentPage = window.location.pathname;
 
