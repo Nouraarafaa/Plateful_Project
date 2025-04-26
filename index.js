@@ -57,10 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("Displaying recipe:", recipe);
             const dish = document.createElement("div");
             dish.classList.add("dish");
-
+            const imageSrc = recipe.image || "./imgs/dishs/img-recipe-1.jpg";
             dish.innerHTML = `
-                <img src="${recipe.image}" alt="${recipe.title}">
-
+                <img src="${imageSrc}" alt="${recipe.title}">
                 <div class="dish-overlay">
                     <h3>${recipe.title}</h3>
                     <p>Tastes good</p>
