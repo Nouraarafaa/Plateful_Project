@@ -39,7 +39,13 @@ function saveProfile() {
 
   localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
 
-  Swal.fire("Success", "Profile updated successfully!", "success");
+  Swal.fire({
+    icon: "success",
+    title: "Profile updated successfully!",
+    showConfirmButton: false,
+    timer: 1800,
+});
+  
 }
 
 // Change Password (optional function)
@@ -53,8 +59,24 @@ function changePassword() {
       loggedInUser.password = newPassword;
       localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
 
-      Swal.fire("Success", "Password changed successfully!", "success");
+      Swal.fire({
+        icon: "success",
+        title: "Password changed successfully!",
+        text: "Please save your profile.",
+        confirmButtonText: "OK",
+            customClass: {
+                confirmButton: "swal-ok-btn"
+            },
+    });
   } else {
-      Swal.fire("Error", "Incorrect old password!", "error");
+      Swal.fire({
+        icon: "warning",
+        title: "Incorrect old password!",
+        text: "Please try again",
+        confirmButtonText: "OK",
+            customClass: {
+                confirmButton: "swal-ok-btn"
+            },
+    });
   }
 }
