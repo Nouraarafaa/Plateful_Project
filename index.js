@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let popularR = [];
-    const storedR = localStorage.getItem("popularR");
+    let allRecipes = [];
+    const storedR = localStorage.getItem("recipes");
 
     // Declare topRecipesBody at the top
     const topRecipesBody = document.querySelector(".popular-dishes-section");
@@ -11,13 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (storedR) {
-        popularR = JSON.parse(storedR);
+        allRecipes = JSON.parse(storedR);
 
         // Select and display top recipes
-        const topRecipes = selectTopRecipes(popularR, 4);
+        const topRecipes = selectTopRecipes(allRecipes, 4);
         displayTopDishes(topRecipes);
     } else {
-        fetch("./popularR.json")
+        fetch("User/data/recipes.json")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Failed to fetch recipes");
@@ -25,13 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 return response.json();
             })
             .then((recipes) => {
-                popularR = recipes;
+                allRecipes = recipes;
 
                 // Update local storage
-                localStorage.setItem("popularR", JSON.stringify(popularR));
+                localStorage.setItem("recipes", JSON.stringify(allRecipes));
 
                 // Select and display top recipes
-                const topRecipes = selectTopRecipes(popularR, 4);
+                const topRecipes = selectTopRecipes(allRecipes, 4);
                 displayTopDishes(topRecipes);
             })
             .catch((error) => {
@@ -40,9 +40,9 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    function selectTopRecipes(popularR, n) {
+    function selectTopRecipes(recipes, n) {
         // Sort the recipes by rating in descending order
-        const sortedRecipes = [...popularR].sort((a, b) => b.rating - a.rating);
+        const sortedRecipes = [...recipes].sort((a, b) => b.rating - a.rating);
         // Select the top n recipes
         return sortedRecipes.slice(0, n);
     }
