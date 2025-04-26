@@ -57,7 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("Displaying recipe:", recipe);
             const dish = document.createElement("div");
             dish.classList.add("dish");
-            const imageSrc = recipe.image || "./imgs/dishs/img-recipe-1.jpg";
+            const adjustedImage = recipe.image.replace(/^(\.\.\/)+/, './');
+            const imageSrc = adjustedImage || "/Plateful_Project/imgs/dishs/img-recipe-1.jpg";
             dish.innerHTML = `
                 <img src="${imageSrc}" alt="${recipe.title}">
                 <div class="dish-overlay">
