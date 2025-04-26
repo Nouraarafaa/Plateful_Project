@@ -22,7 +22,9 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
         text: "We will reply soon",
         icon: "success",
         confirmButtonText: "OK",
-        confirmButtonColor: "#70974C"
+        customClass: {
+            confirmButton: "swal-ok-btn"
+        },
     });
 
 });
