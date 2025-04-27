@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (storedRecipes) {
         // Use recipes from local storage
         allRecipes = JSON.parse(storedRecipes);
-        console.log("Loaded recipes from local storage:", allRecipes);
+        // console.log("Loaded recipes from local storage:", allRecipes);
         displayRecipes(allRecipes);
     } else {
         // Fetch recipes from JSON file and save to local storage
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return response.json();
             })
             .then((recipes) => {
-                console.log("Recipes fetched:", recipes);
+                // console.log("Recipes fetched:", recipes);
                 allRecipes = recipes;
                 localStorage.setItem("recipes", JSON.stringify(allRecipes));
                 displayRecipes(allRecipes);
@@ -37,13 +37,13 @@ document.addEventListener("DOMContentLoaded", () => {
     searchInput.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
             const query = searchInput.value.trim().toLowerCase();
-            console.log(query)
+            // console.log(query)
             
             const filteredRecipes = allRecipes.filter((recipe) =>
                 recipe.title.toLowerCase().includes(query) 
             );
 
-            console.log("Filtered recipes:", filteredRecipes); 
+            // console.log("Filtered recipes:", filteredRecipes); 
 
             displayRecipes(filteredRecipes); 
         }
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             </div>`;
         recipes.forEach((recipe) => {
-            console.log("Displaying recipe:", recipe);
+            // console.log("Displaying recipe:", recipe);
             const card = document.createElement("div");
             card.classList.add("card");
 
@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (dropdown) {
         dropdown.addEventListener("change", () => {
             const selectedCategory = dropdown.value.trim(); 
-            console.log("Selected category from dropdown:", selectedCategory);
+            // console.log("Selected category from dropdown:", selectedCategory);
 
             if (selectedCategory === "All") {
                 displayRecipes(allRecipes); 
@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const filteredRecipes = allRecipes.filter((recipe) =>
                     recipe.category.includes(selectedCategory) 
                 );
-                console.log("selected recipes: ", filteredRecipes)
+                // console.log("selected recipes: ", filteredRecipes)
                 displayRecipes(filteredRecipes); 
             }
         });

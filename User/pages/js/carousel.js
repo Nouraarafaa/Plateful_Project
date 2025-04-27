@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Function to filter testimonials and images for small screens
     function filterTestimonialsForSmallScreens() {
         if (window.innerWidth <= 768) {
-            console.log("Small screen detected. Filtering testimonials...");
+            // console.log("Small screen detected. Filtering testimonials...");
             testimonials = allTestimonials.filter(
                 (testimonial) =>
                     testimonial.name !== "Smith Johnson" &&
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 img.style.display = "block"; // Show only filtered images
             });
         } else {
-            console.log("Large screen detected. Restoring all testimonials...");
+            // console.log("Large screen detected. Restoring all testimonials...");
             testimonials = [...allTestimonials]; // Restore all testimonials
             filteredImages = [...images]; // Restore all images
 
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 img.style.display = "block";
             });
         }
-        console.log("Filtered testimonials:", testimonials);
+        // console.log("Filtered testimonials:", testimonials);
         currentIndex = 0; // Reset index
         updateCarousel(); // Update the carousel
     }
