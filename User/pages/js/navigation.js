@@ -8,20 +8,37 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginBtn = document.getElementById("loginBtn");
     const registerBtn = document.getElementById("registerBtn");
     const separator = document.querySelector(".seperator");
-    const favoriteIcons = document.querySelectorAll(".favourites"); // Select all favorite icons
+    const favoriteIcons = document.querySelectorAll(".favourites");
     const favouritesBtn = document.getElementById("favouritesBtn");
 
-    // Apply logic for admin users
+    // Get the current page
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
     if (loggedInAdmin) {
         // Admin navigation links
         if (profileBtn) {
-            profileBtn.querySelector("a").setAttribute("href", "../../../Admin/pages/html/adminProfile.html");
+            profileBtn.querySelector("a").setAttribute(
+                "href",
+                currentPage === "index.html"
+                    ? "./Admin/pages/html/adminProfile.html"
+                    : "../../../Admin/pages/html/adminProfile.html"
+            );
         }
         if (recipesBtn) {
-            recipesBtn.querySelector("a").setAttribute("href", "../../../Admin/pages/html/card-recipes.html");
+            recipesBtn.querySelector("a").setAttribute(
+                "href",
+                currentPage === "index.html"
+                    ? "./Admin/pages/html/card-recipes.html"
+                    : "../../../Admin/pages/html/card-recipes.html"
+            );
         }
         if (contactBtn) {
-            contactBtn.querySelector("a").setAttribute("href", "../../../Admin/pages/html/contact.html");
+            contactBtn.querySelector("a").setAttribute(
+                "href",
+                currentPage === "index.html"
+                    ? "./Admin/pages/html/contact.html"
+                    : "../../../Admin/pages/html/contact.html"
+            );
         }
 
         // Hide login and register buttons for admin
@@ -33,31 +50,56 @@ document.addEventListener("DOMContentLoaded", () => {
         favoriteIcons.forEach(icon => {
             icon.style.display = "none";
         });
-    } 
-    // Apply logic for regular users
-    else if (loggedInUser) {
+    } else if (loggedInUser) {
         // User navigation links
         if (profileBtn) {
-            profileBtn.querySelector("a").setAttribute("href", "../../../User/pages/html/profile.html");
+            profileBtn.querySelector("a").setAttribute(
+                "href",
+                currentPage === "index.html"
+                    ? "./User/pages/html/profile.html"
+                    : "../../../User/pages/html/profile.html"
+            );
         }
         if (recipesBtn) {
-            recipesBtn.querySelector("a").setAttribute("href", "../../../User/pages/html/card-recipes.html");
+            recipesBtn.querySelector("a").setAttribute(
+                "href",
+                currentPage === "index.html"
+                    ? "./User/pages/html/card-recipes.html"
+                    : "../../../User/pages/html/card-recipes.html"
+            );
         }
         if (contactBtn) {
-            contactBtn.querySelector("a").setAttribute("href", "../../../User/pages/html/contact.html");
+            contactBtn.querySelector("a").setAttribute(
+                "href",
+                currentPage === "index.html"
+                    ? "./User/pages/html/contact.html"
+                    : "../../../User/pages/html/contact.html"
+            );
         }
 
         // Hide login and register buttons for user
         if (loginBtn) loginBtn.style.display = "none";
         if (registerBtn) registerBtn.style.display = "none";
         if (separator) separator.style.display = "none";
-    } 
-    // Apply logic for guests
-    else {
+    } else {
         // Default navigation for guests
         if (profileBtn) profileBtn.style.display = "none";
-        if (recipesBtn) recipesBtn.querySelector("a").setAttribute("href", "../../../User/pages/html/card-recipes.html");
-        if (contactBtn) contactBtn.querySelector("a").setAttribute("href", "../../../User/pages/html/contact.html");
+        if (recipesBtn) {
+            recipesBtn.querySelector("a").setAttribute(
+                "href",
+                currentPage === "index.html"
+                    ? "./User/pages/html/card-recipes.html"
+                    : "../../../User/pages/html/card-recipes.html"
+            );
+        }
+        if (contactBtn) {
+            contactBtn.querySelector("a").setAttribute(
+                "href",
+                currentPage === "index.html"
+                    ? "./User/pages/html/contact.html"
+                    : "../../../User/pages/html/contact.html"
+            );
+        }
     }
 
     // Additional logic for guests

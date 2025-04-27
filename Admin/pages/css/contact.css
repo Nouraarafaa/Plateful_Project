@@ -29,7 +29,15 @@ h2 {
     font-weight: bold;
     color: var(--font-color);
 }
-
+#Complaint {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    padding: 40px;
+    text-align: center;
+}
 
 .complaint-card {
     width: 400px;
@@ -74,7 +82,12 @@ h2 {
     transition: all 0.3s ease;
 }
 
-
+p.no-complaints-message {
+    text-align: center;
+    font-size: 25px;
+    color: #2d1c0a;
+    margin-top: 50px;
+  }
 .replyBttn:hover {
     color: var(--font-color);
     background-color: var(--bg-color);

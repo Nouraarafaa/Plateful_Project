@@ -102,26 +102,3 @@ document.getElementById("loginform").addEventListener("submit", function (e) {
         Swal.fire("Error", "Invalid E-mail or password!", "error");
     }
 });
-document.addEventListener("DOMContentLoaded", () => {
-    const logoutBtn = document.getElementById("logoutBtn");
-    if (logoutBtn) {
-        logoutBtn.addEventListener("click", () => {
-            console.log("Logout function triggered"); // Debugging log
-            localStorage.removeItem("loggedInRole");
-            localStorage.removeItem("loggedInAdmin");
-            localStorage.removeItem("loggedInUser");
-
-            Swal.fire({
-                title: "Logged Out",
-                text: "See you next time!",
-                icon: "success",
-                confirmButtonText: "OK",
-                customClass: {
-                    confirmButton: "my-swal-button"
-                }
-            }).then(() => {
-                window.location.href = "../../../index.html";
-            });
-        });
-    }
-});

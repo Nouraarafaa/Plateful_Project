@@ -89,73 +89,10 @@ document.getElementById("loginform").addEventListener("submit", function (e) {
         Swal.fire("Welcome", `Hello, Admin ${validAdmin.firstName}!`, "success").then(() => {
             localStorage.setItem("loggedInAdmin", JSON.stringify(validAdmin));
             localStorage.setItem("loggedInRole", "admin"); // Store role
-            window.location.href = "../../../Admin/pages/html/adminProfile.html"; // Redirect to admin profile
+            window.location.href = "../../../Admin/pages/html/card-recipes.html";
         });
     } else {
         Swal.fire("Error", "Invalid Admin ID or password!", "error");
-    }
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const currentAdmin = JSON.parse(localStorage.getItem("loggedInAdmin"));
-
-    if (currentAdmin && currentAdmin.isAdmin) {
-        const profileBtn = document.getElementById("profileBtn");
-        const recipes = document.getElementById("recipes");
-        const contactBtn = document.getElementById("contactBtn");
-        if (profileBtn) {
-            profileBtn.querySelector("a").setAttribute("href", "../../../Admin/pages/html/adminProfile.html");
-        }
-        if (recipes) {
-            recipes.querySelector("a").setAttribute("href", "../../../Admin/pages/html/card-recipes.html");
-        }
-        if (contactBtn) {
-            recipes.querySelector("a").setAttribute("href", "../../../Admin/pages/html/contact.html");
-        }
-
-        const loginBtn = document.getElementById("loginBtn");
-        const registerBtn = document.getElementById("registerBtn");
-        const separator = document.getElementById("seperator");
-
-        if (loginBtn) loginBtn.style.display = "none";
-        if (registerBtn) registerBtn.style.display = "none";
-        if (separator) separator.style.display = "none";
-
-        const mobileNavLinks = document.querySelectorAll(".mobile-nav li a");
-        mobileNavLinks.forEach(link => {
-            if (link.textContent.includes("Login")) {
-                link.parentElement.style.display = "none";
-            }
-            if (link.textContent.includes("Register")) {
-                link.parentElement.style.display = "none";
-            }
-            if (link.querySelector(".fa-user")) {
-                link.setAttribute("href", "../../../Admin/pages/html/adminProfile.html");
-            }
-        });
-    }
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const logoutBtn = document.getElementById("logoutBtn");
-    if (logoutBtn) {
-        logoutBtn.addEventListener("click", () => {
-            localStorage.removeItem("loggedInRole");
-            localStorage.removeItem("loggedInAdmin");
-            localStorage.removeItem("loggedInUser");
-
-            Swal.fire({
-                title: "Logged Out",
-                text: "See you next time!",
-                icon: "success",
-                confirmButtonText: "OK",
-                customClass: {
-                    confirmButton: "my-swal-button" 
-                }
-            }).then(() => {
-                window.location.href = "../../../index.html";
-            });
-        });
     }
 });
 

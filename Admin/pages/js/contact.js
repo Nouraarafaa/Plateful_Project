@@ -1,6 +1,21 @@
 window.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("Complaint");
+    if (!container) {
+        console.error("Error: #Complaint element not found in the DOM.");
+        return;
+    }
+
     let complaints = JSON.parse(localStorage.getItem("complaints")) || [];
+
+    // Check if there are no complaints
+    if (complaints.length === 0) {
+        container.innerHTML = ""; // Clear any existing content
+        const noComplaintsMessage = document.createElement("p");
+        noComplaintsMessage.textContent = "No user complaints yet.";
+        noComplaintsMessage.classList.add("no-complaints-message");
+        container.appendChild(noComplaintsMessage);
+        return;
+    }
 
     complaints.forEach(({ name, email, message }) => {
         const card = document.createElement("div");
@@ -46,6 +61,14 @@ window.addEventListener("DOMContentLoaded", () => {
                     localStorage.setItem("complaints", JSON.stringify(complaints));
 
                     card.remove();
+
+                    // Check if there are no complaints left
+                    if (complaints.length === 0) {
+                        const noComplaintsMessage = document.createElement("p");
+                        noComplaintsMessage.textContent = "No user complaints yet.";
+                        noComplaintsMessage.classList.add("no-complaints-message");
+                        container.appendChild(noComplaintsMessage);
+                    }
 
                     Swal.fire({
                         title: "Deleted!",
