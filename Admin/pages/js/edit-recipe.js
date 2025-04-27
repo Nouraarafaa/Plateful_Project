@@ -52,7 +52,62 @@ document.addEventListener("DOMContentLoaded", () => {
         editCont.innerHTML = `
             <h1>Edit Recipe</h1>
             <form class="edit-form" method="POST" id="edit-recipe-form">
-                <!-- Form fields here -->
+
+                <label for="recipe-name">Recipe Name:</label>
+                <input type="text" id="recipe-name" name="recipe-name" value="${recipeToEdit.title}" placeholder="It may be called..." required>
+
+                <div class="image-edit-container">
+                    <div class="image-preview">
+                        <img src="${recipeToEdit.image}" alt="Recipe Image">
+                    </div>
+                    <div class="image-edit">
+                        <label for="recipe-image">Recipe Image:</label>
+                        <input type="file" id="recipe-image" name="recipe-image">
+                    </div>
+                </div>
+
+                <label for="recipe-desc">Recipe Description:</label>
+                <input type="text" id="recipe-desc" name="recipe-desc" value="${recipeToEdit.description}" placeholder="How would you describe it?" required>
+
+                <label for="How to prepare the recipe">How to prepare:</label>
+                <textarea id="How to prepare the recipe" name="How to prepare the recipe" placeholder="step 1\nstep2\nstep3\netc...">${recipeToEdit.steps.map(step => step.description).join('\n')}</textarea>
+
+                <label for="recipe-ingredients">Ingredients:</label>
+                <textarea id="recipe-ingredients" name="recipe-ingredients" placeholder="ingredient1: this much\ningredient2: that much\netc...">${recipeToEdit.ingrediants.map(ingredient => {
+    const { name, quantity } = ingredient;
+    return quantity ? `${name}: ${quantity}` : `${name}: no specified quantity`;
+}).join('\n')}</textarea>
+
+                <label for="recipe-time">Cooking time (mins):</label>
+                <input type="text" id="recipe-time" name="recipe-time" value="${recipeToEdit.cooking_time}" placeholder="10 minutes" required>
+
+                <label for="recipe-nut">Nutritional information:</label>
+                <div class="nutritional-info-container">
+                    <div class="nutritional-info-box">
+                        <label for="recipe-nut-calories">Calories (kcal):</label>
+                        <input type="number" id="recipe-nut-calories" name="recipe-nut-calories" value="${recipeToEdit.nutritional_info.calories}" placeholder="10" required>
+                    </div>
+                    <div class="nutritional-info-box">
+                        <label for="recipe-nut-carbohydrates">Carbohydrates (g):</label>
+                        <input type="number" id="recipe-nut-carbohydrates" name="recipe-nut-carbohydrates" value="${recipeToEdit.nutritional_info.carbohydrates}" placeholder="10" required>
+                    </div>
+                    <div class="nutritional-info-box">
+                        <label for="recipe-nut-protein">Protein (g):</label>
+                        <input type="number" id="recipe-nut-protein" name="recipe-nut-protein" value="${recipeToEdit.nutritional_info.protein}" placeholder="10" required>
+                    </div>
+                    <div class="nutritional-info-box">
+                        <label for="recipe-nut-fat">Fat (g):</label>
+                        <input type="number" id="recipe-nut-fat" name="recipe-nut-fat" value="${recipeToEdit.nutritional_info.fat}" placeholder="10" required>
+                    </div>
+                    <div class="nutritional-info-box">
+                        <label for="recipe-nut-fiber">Fiber (g):</label>
+                        <input type="number" id="recipe-nut-fiber" name="recipe-nut-fiber" value="${recipeToEdit.nutritional_info.fiber}" placeholder="10" required>
+                    </div>
+                </div>
+
+                <label for="recipe-video">Recipe Video URL:</label>
+                <input type="url" id="recipe-video" name="recipe-video" value="${recipeToEdit.watchVideo}" placeholder="https://www.website.com (don’t forget the &quot;https://&quot;)"">
+
                 <button type="submit" class="save">Save Changes</button>
             </form>
         `;
@@ -84,48 +139,62 @@ document.addEventListener("DOMContentLoaded", () => {
                 fiber: parseInt(document.getElementById("recipe-nut-fiber").value, 10)
             };
 
-            const updatedTime = document.getElementById("recipe-time").value;
+            const imageInput = document.getElementById("recipe-image");
+                if (imageInput.files && imageInput.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        recipeToEdit.image = e.target.result; // Save the Base64 string
+                        saveUpdatedRecipe();
+                    };
+                    reader.readAsDataURL(imageInput.files[0]); // Convert the file to a Base64 string
+                } else {
+                    saveUpdatedRecipe();
+                }
+
+                function saveUpdatedRecipe() {
+
+                    const swalWithBootstrapButtons = Swal.mixin({
+                        customClass: {
+                            confirmButton: 'btn btn-success',
+                            cancelButton: 'btn btn-danger'
+                        },
+                        buttonsStyling: false
+                    });
+
+                    // Save the updated recipes array back to local storage
+                    localStorage.setItem("recipes", JSON.stringify(recipes));
+                    // Show success message
+                    swalWithBootstrapButtons.fire({
+                        title: "Done!",
+                        text: "Recipe updated successfully!",
+                        icon: "success",
+                        showConfirmButton: false, // Remove the OK button
+                        timer: 1500 // Set the timer to 1.5 seconds
+                  });
+                }
+                const updatedTime = document.getElementById("recipe-time").value;
             const updatedVideo = document.getElementById("recipe-video").value;
 
-            const imageInput = document.getElementById("recipe-image");
-            if (imageInput.files && imageInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    recipeToEdit.image = e.target.result; // Save the Base64 string
-                    saveUpdatedRecipe();
-                };
-                reader.readAsDataURL(imageInput.files[0]); // Convert the file to a Base64 string
-            } else {
-                saveUpdatedRecipe();
-            }
+            // Update the recipe object
+            recipeToEdit.title = updatedTitle;
+            recipeToEdit.description = updatedDesc
+            recipeToEdit.nutritional_info = updatedNutritionalInfo
+            recipeToEdit.steps = updatedSteps;
+            recipeToEdit.ingrediants = updatedIngredients;
+            recipeToEdit.cooking_time = updatedTime;
+            recipeToEdit.watchVideo = updatedVideo;
 
-            function saveUpdatedRecipe() {
-                // Update the recipe object
-                recipeToEdit.title = updatedTitle;
-                recipeToEdit.description = updatedDesc;
-                recipeToEdit.nutritional_info = updatedNutritionalInfo;
-                recipeToEdit.steps = updatedSteps;
-                recipeToEdit.ingrediants = updatedIngredients;
-                recipeToEdit.cooking_time = updatedTime;
-                recipeToEdit.watchVideo = updatedVideo;
+            // Save the updated recipes array back to local storage
+            localStorage.setItem("recipes", JSON.stringify(recipes));
 
-                // Save the updated recipes array back to local storage
-                localStorage.setItem("recipes", JSON.stringify(recipes));
-
-                // Show success message
-                Swal.fire({
-                    title: "Done!",
-                    text: "Recipe updated successfully!",
-                    icon: "success",
-                    confirmButtonText: "OK",
-                    customClass: {
-                        confirmButton: "swal-ok-btn"
-                    },
-                }).then(() => {
-                    // Navigate to the recipes page
-                    window.location.href = "../html/card-recipes.html";
-                });
-            }
+            // Show success message
+            swalWithBootstrapButtons.fire({
+                title: "Done!",
+                text: "Recipe updated successfully!",
+                icon: "success",
+                showConfirmButton: false, // Remove the OK button
+                    timer: 1500 // Set the timer to 1.5 seconds
+            });
         });
     }
 });
