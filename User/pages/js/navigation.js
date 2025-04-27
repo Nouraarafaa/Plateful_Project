@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginBtns = document.querySelectorAll("#loginBtn"); // Select both desktop and mobile login buttons
     const registerBtns = document.querySelectorAll("#registerBtn"); // Select both desktop and mobile register buttons
     const separator = document.querySelector(".seperator");
+    const recipesBtn = document.querySelector("#recipes"); 
+    const contactBtn = document.querySelector("#contactBtn"); 
 
     const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
@@ -16,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (loggedInAdmin) {
         // Admin navigation links
         profileBtns.forEach(btn => btn.querySelector("a").setAttribute("href", `${basePath}Admin/pages/html/adminProfile.html`));
+        recipesBtn.forEach(btn => btn.querySelector("a").setAttribute("href", `${basePath}Admin/pages/html/card-recipes.html`));
+        contactBtn.forEach(btn => btn.querySelector("a").setAttribute("href", `${basePath}Admin/pages/html/contact.html`));
         favouritesBtns.forEach(btn => btn.style.display = "none");
 
         if (separator) separator.style.display = "none";
@@ -25,6 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (loggedInUser) {
         // User navigation links
         profileBtns.forEach(btn => btn.querySelector("a").setAttribute("href", `${basePath}User/pages/html/profile.html`));
+        recipesBtn.forEach(btn => btn.querySelector("a").setAttribute("href", `${basePath}User/pages/html/card-recipes.html`));
+        contactBtn.forEach(btn => btn.querySelector("a").setAttribute("href", `${basePath}User/pages/html/contact.html`));
         favouritesBtns.forEach(btn => btn.style.display = "block");
 
         if (separator) separator.style.display = "block";
