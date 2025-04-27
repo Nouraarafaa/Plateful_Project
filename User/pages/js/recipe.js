@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("recipe-image").src = recipe.image;
         document.getElementById("recipe-image").alt = recipe.title;
         document.getElementById("recipe-description").textContent = recipe.descriptionCooking;
-        document.getElementById("video-link").href = recipe["Watch Video"];
+        document.getElementById("video-link").href = recipe.watchVideo;
 
         // Populate the ingredients list
         const ingredientsList = document.getElementById("ingredients-list");
