@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginBtns = document.querySelectorAll("#loginBtn"); // Select both desktop and mobile login buttons
     const registerBtns = document.querySelectorAll("#registerBtn"); // Select both desktop and mobile register buttons
     const separator = document.querySelector(".seperator");
-    const recipesBtn = document.querySelector("#recipes"); 
-    const contactBtn = document.querySelector("#contactBtn"); 
+    const recipesBtn = document.querySelector("#recipes");
+    const contactBtn = document.querySelector("#contactBtn");
 
     const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
@@ -17,35 +17,67 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (loggedInAdmin) {
         // Admin navigation links
-        profileBtns.forEach(btn => btn.querySelector("a").setAttribute("href", `${basePath}Admin/pages/html/adminProfile.html`));
-        recipesBtn.forEach(btn => btn.querySelector("a").setAttribute("href", `${basePath}Admin/pages/html/card-recipes.html`));
-        contactBtn.forEach(btn => btn.querySelector("a").setAttribute("href", `${basePath}Admin/pages/html/contact.html`));
-        favouritesBtns.forEach(btn => btn.style.display = "none");
-
-        if (separator) separator.style.display = "none";
-
-        loginBtns.forEach(btn => btn.style.display = "none");
-        registerBtns.forEach(btn => btn.style.display = "none");
+        if (profileBtns.length > 0) {
+            profileBtns.forEach(btn => btn.querySelector("a").setAttribute("href", `${basePath}Admin/pages/html/adminProfile.html`));
+        }
+        if (recipesBtn) {
+            recipesBtn.setAttribute("href", `${basePath}Admin/pages/html/card-recipes.html`);
+        }
+        if (contactBtn) {
+            contactBtn.setAttribute("href", `${basePath}Admin/pages/html/contact.html`);
+        }
+        if (favouritesBtns.length > 0) {
+            favouritesBtns.forEach(btn => btn.style.display = "none");
+        }
+        if (separator) {
+            separator.style.display = "none";
+        }
+        if (loginBtns.length > 0) {
+            loginBtns.forEach(btn => btn.style.display = "none");
+        }
+        if (registerBtns.length > 0) {
+            registerBtns.forEach(btn => btn.style.display = "none");
+        }
     } else if (loggedInUser) {
         // User navigation links
-        profileBtns.forEach(btn => btn.querySelector("a").setAttribute("href", `${basePath}User/pages/html/profile.html`));
-        recipesBtn.forEach(btn => btn.querySelector("a").setAttribute("href", `${basePath}User/pages/html/card-recipes.html`));
-        contactBtn.forEach(btn => btn.querySelector("a").setAttribute("href", `${basePath}User/pages/html/contact.html`));
-        favouritesBtns.forEach(btn => btn.style.display = "block");
-
-        if (separator) separator.style.display = "block";
-
-        loginBtns.forEach(btn => btn.style.display = "none");
-        registerBtns.forEach(btn => btn.style.display = "none");
+        if (profileBtns.length > 0) {
+            profileBtns.forEach(btn => btn.querySelector("a").setAttribute("href", `${basePath}User/pages/html/profile.html`));
+        }
+        if (recipesBtn) {
+            recipesBtn.setAttribute("href", `${basePath}User/pages/html/card-recipes.html`);
+        }
+        if (contactBtn) {
+            contactBtn.setAttribute("href", `${basePath}User/pages/html/contact.html`);
+        }
+        if (favouritesBtns.length > 0) {
+            favouritesBtns.forEach(btn => btn.style.display = "block");
+        }
+        if (separator) {
+            separator.style.display = "block";
+        }
+        if (loginBtns.length > 0) {
+            loginBtns.forEach(btn => btn.style.display = "none");
+        }
+        if (registerBtns.length > 0) {
+            registerBtns.forEach(btn => btn.style.display = "none");
+        }
     } else {
         // Default navigation for guests
-        profileBtns.forEach(btn => btn.style.display = "none");
-        favouritesBtns.forEach(btn => btn.style.display = "none");
-
-        loginBtns.forEach(btn => btn.style.display = "block");
-        registerBtns.forEach(btn => btn.style.display = "block");
-
-        if (separator) separator.style.display = "block";
+        if (profileBtns.length > 0) {
+            profileBtns.forEach(btn => btn.style.display = "none");
+        }
+        if (favouritesBtns.length > 0) {
+            favouritesBtns.forEach(btn => btn.style.display = "none");
+        }
+        if (loginBtns.length > 0) {
+            loginBtns.forEach(btn => btn.style.display = "block");
+        }
+        if (registerBtns.length > 0) {
+            registerBtns.forEach(btn => btn.style.display = "block");
+        }
+        if (separator) {
+            separator.style.display = "block";
+        }
     }
 
     // Synchronize desktop and mobile navigation
