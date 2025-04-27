@@ -7,81 +7,76 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginBtns = document.querySelectorAll("#loginBtn"); // Select both desktop and mobile login buttons
     const registerBtns = document.querySelectorAll("#registerBtn"); // Select both desktop and mobile register buttons
     const separator = document.querySelector(".seperator");
-    const recipesBtn = document.querySelector("#recipes");
-    const contactBtn = document.querySelector("#contactBtn");
 
-    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    const profileBtn = document.getElementById("profileBtn");
+    const recipesBtn = document.getElementById("recipes");
+    const contactBtn = document.getElementById("contactBtn");
+    const favoriteIcons = document.querySelectorAll(".favourites"); // Select all favorite icons
+    const favouritesBtn = document.getElementById("favouritesBtn");
 
-    // Determine the base path based on the current page
-    const basePath = currentPage === "index.html" ? "./" : "../../../";
-
+    // Apply logic for admin users
     if (loggedInAdmin) {
         // Admin navigation links
-        if (profileBtns.length > 0) {
-            profileBtns.forEach(btn => btn.querySelector("a").setAttribute("href", `${basePath}Admin/pages/html/adminProfile.html`));
+        profileBtns.forEach(btn => btn.querySelector("a").setAttribute("href", "../../../Admin/pages/html/adminProfile.html"));
+        favouritesBtns.forEach(btn => btn.style.display = "none");
+
+        if (profileBtn) {
+            profileBtn.querySelector("a").setAttribute("href", "../../../Admin/pages/html/adminProfile.html");
         }
         if (recipesBtn) {
-            recipesBtn.setAttribute("href", `${basePath}Admin/pages/html/card-recipes.html`);
+            recipesBtn.querySelector("a").setAttribute("href", "../../../Admin/pages/html/card-recipes.html");
         }
         if (contactBtn) {
-            contactBtn.setAttribute("href", `${basePath}Admin/pages/html/contact.html`);
+            contactBtn.querySelector("a").setAttribute("href", "../../../Admin/pages/html/contact.html");
         }
-        if (favouritesBtns.length > 0) {
-            favouritesBtns.forEach(btn => btn.style.display = "none");
-        }
-        if (separator) {
-            separator.style.display = "none";
-        }
-        if (loginBtns.length > 0) {
-            loginBtns.forEach(btn => btn.style.display = "none");
-        }
-        if (registerBtns.length > 0) {
-            registerBtns.forEach(btn => btn.style.display = "none");
-        }
-    } else if (loggedInUser) {
+
+        // Hide login and register buttons for admin
+        loginBtns.forEach(btn => btn.style.display = "none");
+        registerBtns.forEach(btn => btn.style.display = "none");
+        if (separator) separator.style.display = "none";
+
+        // Hide favorite icons for admin
+        favoriteIcons.forEach(icon => {
+            icon.style.display = "none";
+        });
+    } 
+    // Apply logic for regular users
+    else if (loggedInUser) {
         // User navigation links
-        if (profileBtns.length > 0) {
-            profileBtns.forEach(btn => btn.querySelector("a").setAttribute("href", `${basePath}User/pages/html/profile.html`));
+        profileBtns.forEach(btn => btn.querySelector("a").setAttribute("href", "../../../User/pages/html/profile.html"));
+
+        if (profileBtn) {
+            profileBtn.querySelector("a").setAttribute("href", "../../../User/pages/html/profile.html");
         }
         if (recipesBtn) {
-            recipesBtn.setAttribute("href", `${basePath}User/pages/html/card-recipes.html`);
+            recipesBtn.querySelector("a").setAttribute("href", "../../../User/pages/html/card-recipes.html");
         }
         if (contactBtn) {
-            contactBtn.setAttribute("href", `${basePath}User/pages/html/contact.html`);
+            contactBtn.querySelector("a").setAttribute("href", "../../../User/pages/html/contact.html");
         }
-        if (favouritesBtns.length > 0) {
-            favouritesBtns.forEach(btn => btn.style.display = "block");
-        }
-        if (separator) {
-            separator.style.display = "block";
-        }
-        if (loginBtns.length > 0) {
-            loginBtns.forEach(btn => btn.style.display = "none");
-        }
-        if (registerBtns.length > 0) {
-            registerBtns.forEach(btn => btn.style.display = "none");
-        }
-    } else {
+
+        // Hide login and register buttons for user
+        loginBtns.forEach(btn => btn.style.display = "none");
+        registerBtns.forEach(btn => btn.style.display = "none");
+        if (separator) separator.style.display = "none";
+    } 
+    // Apply logic for guests
+    else {
         // Default navigation for guests
-        if (profileBtns.length > 0) {
-            profileBtns.forEach(btn => btn.style.display = "none");
-        }
-        if (favouritesBtns.length > 0) {
-            favouritesBtns.forEach(btn => btn.style.display = "none");
-        }
-        if (loginBtns.length > 0) {
-            loginBtns.forEach(btn => btn.style.display = "block");
-        }
-        if (registerBtns.length > 0) {
-            registerBtns.forEach(btn => btn.style.display = "block");
-        }
-        if (separator) {
-            separator.style.display = "block";
-        }
+        profileBtns.forEach(btn => btn.style.display = "none");
+        favouritesBtns.forEach(btn => btn.style.display = "none");
+
+        if (profileBtn) profileBtn.style.display = "none";
+        if (recipesBtn) recipesBtn.querySelector("a").setAttribute("href", "../../../User/pages/html/card-recipes.html");
+        if (contactBtn) contactBtn.querySelector("a").setAttribute("href", "../../../User/pages/html/contact.html");
+
+        // Show login and register buttons for guests
+        loginBtns.forEach(btn => btn.style.display = "block");
+        registerBtns.forEach(btn => btn.style.display = "block");
     }
 
     // Synchronize desktop and mobile navigation
-    synchronizeNavigation(basePath);
+    synchronizeNavigation();
 
     // Highlight the active page in the navigation
     highlightActivePage();
@@ -94,14 +89,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Function to synchronize desktop and mobile navigation
-function synchronizeNavigation(basePath) {
+function synchronizeNavigation() {
     const desktopNavLinks = document.querySelectorAll(".nav-links a");
     const mobileNavLinks = document.querySelectorAll(".mobile-nav a");
 
     desktopNavLinks.forEach((desktopLink, index) => {
         if (mobileNavLinks[index]) {
-            const relativeHref = desktopLink.getAttribute("href");
-            mobileNavLinks[index].setAttribute("href", `${basePath}${relativeHref}`);
+            mobileNavLinks[index].setAttribute("href", desktopLink.getAttribute("href"));
         }
     });
 }
