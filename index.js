@@ -77,10 +77,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Hide "Get Started" button if the user is logged in
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    const loggedInAdmin = JSON.parse(localStorage.getItem("loggedInAdmin"));
     const getStartedBtn = document.getElementById("getStartedBtn");
 
-    if (loggedInUser && getStartedBtn) {
-        getStartedBtn.style.display = "none"; // Hide the button
+    if ((loggedInUser && getStartedBtn ) || (loggedInAdmin && getStartedBtn)) {
+        getStartedBtn.style.display = "none"; 
     }
 
 
