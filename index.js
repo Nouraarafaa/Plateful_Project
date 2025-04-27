@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         container.innerHTML = "";
 
         topRecipes.forEach((recipe) => {
-            console.log("Displaying recipe:", recipe);
+            // console.log("Displaying recipe:", recipe);
             const dish = document.createElement("div");
             dish.classList.add("dish");
             const adjustedImage = recipe.image.replace(/^(\.\.\/)+/, './');

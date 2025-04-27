@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const footerPlaceholder = document.getElementById("footer-placeholder");
     if (footerPlaceholder) {
-        fetch("../html/footer.html")
+        fetch("../../../User/pages/html/footer.html")
             .then(response => {
                 if (!response.ok) {
                     throw new Error("Failed to load footer");

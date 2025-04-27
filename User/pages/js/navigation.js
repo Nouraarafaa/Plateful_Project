@@ -2,13 +2,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const loggedInAdmin = JSON.parse(localStorage.getItem("loggedInAdmin"));
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
+    const profileBtns = document.querySelectorAll("#profileBtn"); // Select both desktop and mobile profile buttons
+    const favouritesBtns = document.querySelectorAll(".favourites"); // Select both desktop and mobile favorites buttons
+    const loginBtns = document.querySelectorAll("#loginBtn"); // Select both desktop and mobile login buttons
+    const registerBtns = document.querySelectorAll("#registerBtn"); // Select both desktop and mobile register buttons
+    const separator = document.querySelector(".seperator");
+
     const profileBtn = document.getElementById("profileBtn");
     const recipesBtn = document.getElementById("recipes");
     const contactBtn = document.getElementById("contactBtn");
+<<<<<<< HEAD
     const loginBtn = document.getElementById("loginBtn");
     const registerBtn = document.getElementById("registerBtn");
     const separator = document.querySelector(".seperator");
     const favoriteIcons = document.querySelectorAll(".favourites");
+=======
+    const favoriteIcons = document.querySelectorAll(".favourites"); // Select all favorite icons
+>>>>>>> 5b70aa2eda8cb24bffdfe0fcb4c9eb3e0ad9c572
     const favouritesBtn = document.getElementById("favouritesBtn");
 
     // Get the current page
@@ -16,6 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (loggedInAdmin) {
         // Admin navigation links
+        profileBtns.forEach(btn => btn.querySelector("a").setAttribute("href", "../../../Admin/pages/html/adminProfile.html"));
+        favouritesBtns.forEach(btn => btn.style.display = "none");
+
         if (profileBtn) {
             profileBtn.querySelector("a").setAttribute(
                 "href",
@@ -42,8 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Hide login and register buttons for admin
-        if (loginBtn) loginBtn.style.display = "none";
-        if (registerBtn) registerBtn.style.display = "none";
+        loginBtns.forEach(btn => btn.style.display = "none");
+        registerBtns.forEach(btn => btn.style.display = "none");
         if (separator) separator.style.display = "none";
 
         // Hide favorite icons for admin
@@ -52,6 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     } else if (loggedInUser) {
         // User navigation links
+        profileBtns.forEach(btn => btn.querySelector("a").setAttribute("href", "../../../User/pages/html/profile.html"));
+
         if (profileBtn) {
             profileBtn.querySelector("a").setAttribute(
                 "href",
@@ -78,12 +93,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Hide login and register buttons for user
-        if (loginBtn) loginBtn.style.display = "none";
-        if (registerBtn) registerBtn.style.display = "none";
+        loginBtns.forEach(btn => btn.style.display = "none");
+        registerBtns.forEach(btn => btn.style.display = "none");
         if (separator) separator.style.display = "none";
     } else {
         // Default navigation for guests
+        profileBtns.forEach(btn => btn.style.display = "none");
+        favouritesBtns.forEach(btn => btn.style.display = "none");
+
         if (profileBtn) profileBtn.style.display = "none";
+<<<<<<< HEAD
         if (recipesBtn) {
             recipesBtn.querySelector("a").setAttribute(
                 "href",
@@ -101,11 +120,14 @@ document.addEventListener("DOMContentLoaded", () => {
             );
         }
     }
+=======
+        if (recipesBtn) recipesBtn.querySelector("a").setAttribute("href", "../../../User/pages/html/card-recipes.html");
+        if (contactBtn) contactBtn.querySelector("a").setAttribute("href", "../../../User/pages/html/contact.html");
+>>>>>>> 5b70aa2eda8cb24bffdfe0fcb4c9eb3e0ad9c572
 
-    // Additional logic for guests
-    if (!loggedInUser && !loggedInAdmin) {
-        if (profileBtn) profileBtn.style.display = "none";
-        if (favouritesBtn) favouritesBtn.style.display = "none";
+        // Show login and register buttons for guests
+        loginBtns.forEach(btn => btn.style.display = "block");
+        registerBtns.forEach(btn => btn.style.display = "block");
     }
 
     // Synchronize desktop and mobile navigation
