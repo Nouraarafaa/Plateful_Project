@@ -42,9 +42,12 @@ INSTALLED_APPS = [
 
     'users.apps.UsersConfig',  
     'recipes.apps.RecipesConfig',
+    'contact',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -97,17 +100,11 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-INSTALLED_APPS += [
-    'corsheaders',
-]
 
-MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    ...
-]
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",  # Frontend URL
+    "http://127.0.0.1:5500",
 ]
 
 # Password validation

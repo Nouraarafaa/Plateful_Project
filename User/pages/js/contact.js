@@ -5,7 +5,7 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
     const email = e.target.email.value;
     const message = e.target.message.value;
 
-    fetch("http://localhost:8000/api/complaint/", {
+    fetch("http://127.0.0.1:8000/api/complaint/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
