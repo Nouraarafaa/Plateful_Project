@@ -1,3 +1,4 @@
+// Toggle between login and register forms
 document.getElementById("signup").addEventListener("click", () => {
     document.getElementById("loginFormContainer").style.display = "none";
     document.getElementById("registerFormContainer").style.display = "block";
@@ -8,6 +9,7 @@ document.getElementById("signin").addEventListener("click", () => {
     document.getElementById("loginFormContainer").style.display = "block";
 });
 
+// Register form submission
 document.getElementById("registerform").addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -18,87 +20,88 @@ document.getElementById("registerform").addEventListener("submit", function (e) 
     const password = document.getElementById("registerPassword").value;
     const confirmPassword = document.getElementById("registerConfirmPassword").value;
 
-    if (!firstName || !lastName || !email || !phone || !password || !confirmPassword) {
-        Swal.fire("Error", "All fields are required!", "error");
-        return;
-    }
-
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    if (!emailPattern.test(email)) {
-        Swal.fire("Error", "Please enter a valid email address!", "error");
-        return;
-    }
-    const passwordStrengthPattern = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
-    if (!passwordStrengthPattern.test(password)) {
-        Swal.fire("Error", "Password must be at least 8 characters, contain one uppercase letter, and one number.", "error");
-        return;
-    }
-    const phonePattern = /^[0-9]{11}$/;
-    if (!phonePattern.test(phone)) {
-        Swal.fire("Error", "Please enter a valid phone number (11 digits).", "error");
-        return;
-    }
     if (password !== confirmPassword) {
         Swal.fire("Error", "Passwords do not match!", "error");
         return;
     }
 
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const userExists = users.find(user => user.email === email);
-
-    if (userExists) {
-        Swal.fire("Error", "E-mail already exists!", "error");
-        return;
-    }
-
-    users.push({ firstName, lastName, email, phone, password });
-    localStorage.setItem("users", JSON.stringify(users));
-    Swal.fire({
-        title: "Success",
-        text: "Registered successfully!",
-        icon: "success",
-        confirmButtonText: "OK",
-        customClass: {
-            confirmButton: "my-swal-button"
-        }
-    }).then(() => {
-        document.getElementById("registerform").reset();
-        document.getElementById("signin").click(); 
-    });
-    
+    fetch("/auth/register/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            first_name: firstName,
+            last_name: lastName,
+            email: email,
+            phone: phone,
+            role: "user",
+            password: password,
+        }),
+    })
+        .then((response) => {
+            if (!response.ok) {
+                return response.json().then((data) => {
+                    throw new Error(data.detail || "Registration failed.");
+                });
+            }
+            return response.json();
+        })
+        .then(() => {
+            Swal.fire({
+                title: "Success",
+                text: "Registered successfully!",
+                icon: "success",
+                confirmButtonText: "OK",
+            }).then(() => {
+                document.getElementById("registerform").reset();
+                document.getElementById("signin").click(); // Switch to login
+            });
+        })
+        .catch((error) => {
+            Swal.fire("Error", error.message, "error");
+        });
 });
 
+// Login form submission
 document.getElementById("loginform").addEventListener("submit", function (e) {
     e.preventDefault();
 
     const email = document.getElementById("loginEmail").value.trim();
     const password = document.getElementById("loginPassword").value;
 
-    if (!email || !password) {
-        Swal.fire("Error", "Both E-mail and password are required!", "error");
-        return;
-    }
-
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const validUser = users.find(user => user.email === email && user.password === password);
-
-    if (validUser) {
-        console.log("Valid user found:", validUser); // Debugging log
-        localStorage.setItem("loggedInUser", JSON.stringify(validUser));
-        localStorage.setItem("loggedInRole", "user"); // Store role
-        console.log("Logged in user stored in localStorage:", localStorage.getItem("loggedInUser")); // Debugging log
-        Swal.fire({
-            title: "Welcome",
-            text: `Hello, ${validUser.firstName}!`,
-            icon: "success",
-            confirmButtonText: "OK",
-            customClass: {
-                confirmButton: "my-swal-button"
+    fetch("/auth/login/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            email: email,
+            password: password,
+        }),
+    })
+        .then((response) => {
+            if (!response.ok) {
+                return response.json().then((data) => {
+                    throw new Error(data.detail || "Login failed.");
+                });
             }
-        }).then(() => {
-            window.location.href = "../../../User/pages/html/card-recipes.html";
+            return response.json();
+        })
+        .then((data) => {
+            localStorage.setItem("access", data.access);
+            localStorage.setItem("refresh", data.refresh);
+            localStorage.setItem("loggedInRole", "user");
+            Swal.fire({
+                title: "Welcome",
+                text: `Hello, User!`,
+                icon: "success",
+                confirmButtonText: "OK",
+            }).then(() => {
+                window.location.href = "../../../User/pages/html/card-recipes.html";
+            });
+        })
+        .catch((error) => {
+            Swal.fire("Error", error.message, "error");
         });
-    } else {
-        Swal.fire("Error", "Invalid E-mail or password!", "error");
-    }
 });

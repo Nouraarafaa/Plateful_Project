@@ -1,28 +1,35 @@
-
 document.getElementById("contactForm").addEventListener("submit", function(e) {
-    e.preventDefault(); // prevent actual form submission
+    e.preventDefault();
+
     const name = e.target.name.value;
     const email = e.target.email.value;
     const message = e.target.message.value;
 
-    // Get current data or set empty array
-    let complaints = JSON.parse(localStorage.getItem("complaints")) || [];
-
-    // Add new complaint
-    complaints.push({ name, email, message });
-
-    // Save back to localStorage
-    localStorage.setItem("complaints", JSON.stringify(complaints));
-
-    // Optionally clear the form
-    e.target.reset();
-
-    Swal.fire({
-        title: "Message sent successfully!!",
-        text: "We will reply soon",
-        icon: "success",
-        confirmButtonText: "OK",
-        confirmButtonColor: "#70974C"
+    fetch("http://127.0.0.1:8000/api/complaint/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, email, message })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Failed to send message");
+        }
+        return response.json();
+    })
+    .then(data => {
+        e.target.reset();
+        Swal.fire({
+            title: "Message sent successfully!!",
+            text: "We will reply soon",
+            icon: "success",
+            confirmButtonText: "OK",
+            confirmButtonColor: "#70974C"
+        });
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        Swal.fire("Oops!", "Something went wrong. Try again later.", "error");
     });
-
 });
