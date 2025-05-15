@@ -1,0 +1,156 @@
+:root{
+  --bg-color: rgb(252, 247, 247);
+  --primary-color:#FCF7E4;
+  --secondary-color: #FCF7E4;
+  --font-color:#2d1c0a;
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+.footer h2 {
+  font-size: 20px;
+  color: var(--bg-color);
+}
+
+#home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  padding-inline: 100px;
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+
+#home .left {
+  width: 55%;
+}
+
+#home .left h2 {
+  font-family: 'Rochester', cursive;
+  font-size: 90px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--font-color);
+  line-height: 1.3;
+}
+
+
+#home .left p {
+  font-family: "Montserrat", sans-serif;
+  color: #2d1c0a;
+  padding-block: 15px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 1.6;
+  padding: 10px 20px;
+  background-size: 120%;
+  background-repeat: no-repeat;
+  background-position: center; 
+  border-radius: 10px; 
+  display: inline-block; 
+}
+#home span.highlight {
+  font-weight: bold;
+  font-size: 1.1em;
+
+}
+#home span.highlight_story {
+  font-size: 1.1em;
+  font-weight: bold;
+  position: relative;
+  z-index: 1; 
+
+}
+span.highlight_story::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.1em;
+  width: 100%;
+  height: 30%;
+  background-color: #8da478;
+  z-index: -1; 
+  border-radius: 2px; 
+}
+
+
+#home .right {
+  width: 40%;
+}
+
+/*The main image*/
+#home .right img {
+  width: 100%;
+  align-self: center;
+  margin-top: 10px;
+}
+
+#home .right:hover {
+  animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
+
+  75% {
+    transform: translateX(-5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+footer {
+  margin-top: 0;
+}
+
+@media screen and (max-width: 1024px) {
+  #home {
+    flex-direction: column-reverse;
+    padding-inline: 20px;
+    padding-top: 0;
+  }
+
+  #home .left {
+    width: 70%;
+    text-align: center;
+  }
+
+  #home .right {
+    width: 75%;
+  }
+
+  #home .right img {
+    width: 100%;
+    padding-block: 50px;
+    margin-top: 20px;
+  }
+}
+
+/* Media query for max-width 768px */
+@media screen and (max-width: 768px) {
+  #home{
+    padding-block: 20px;
+    padding-inline: 0;
+  }
+  #home .left h2 {
+    font-size: 50px;
+  }
+
+  #home .right img {
+    padding-block: 20px;
+  }
+}

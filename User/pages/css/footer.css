@@ -1,0 +1,168 @@
+:root{
+    --bg-color: rgb(252, 247, 247);
+    --primary-color:#FCF7E4;
+    --secondary-color: #FCF7E4;
+    --font-color:#2d1c0a;
+}
+
+/* Scrollbar styles for WebKit-based browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 12px; 
+    height: 12px; 
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color); 
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--font-color); 
+    border-radius: 10px;
+    border: 3px solid var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #d33; 
+}
+
+* {
+    scrollbar-width: thin; 
+    scrollbar-color: var(--font-color) var(--bg-color); 
+}
+
+footer{
+    font-family: "Montserrat", sans-serif;
+    color: var(--bg-color);
+    background-color: var(--font-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 8vw;
+    padding-top: 30px;
+    margin-top: 0px;
+}
+
+footer h2 {
+    font-size: 20px;
+    color: var(--bg-color);
+}
+
+footer li , footer p{
+    font-size: 15px;
+}
+
+.footer-copyright{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+footer img{
+    width: 90px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.footer-content{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 50px;
+}
+
+.footer-content-left , .footer-content-right , .footer-content-center{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.footer-content-left li, .footer-content-right li, .footer-content-center li{
+    list-style: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.footer-content-right h2, .footer-content-center h2{
+    color: var(--bg-color); /* Use the background color variable for contrast */
+    margin-bottom: 10px;
+}
+p .title{
+    text-align: start;
+}
+
+.footer-social-icons i{
+    width: 40px;
+    margin-right: 1px;
+    margin-top: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.footer-social-icons .bxl-facebook {
+    color: #1369da; 
+}
+
+.footer-social-icons .bxl-twitter {
+    color: #1DA1F2; 
+}
+
+.footer-social-icons .bxl-instagram {
+    color: #E4405F; 
+}
+
+.footer-social-icons .bxl-linkedin {
+    color: #0077B5; 
+}
+
+footer p {
+    color : var(--bg-color); 
+}
+
+footer hr{
+    width: 100%;
+    border: 1px solid var(--bg-color);
+    height: 1px;
+}
+
+.wave-image {
+    width: 100%; 
+    margin: 0;
+    padding: 0; 
+}
+
+.wave-image img {
+    display: block; 
+    width: 100%; 
+    height: auto; 
+}  
+.wave-footer {
+    width: 100%; 
+    margin: 0; 
+    padding: 0;
+    margin-top: 23px;
+}
+
+.wave-footer img {
+    display: block;
+    width: 100%; 
+    height: auto; 
+    rotate: 180deg; 
+}
+
+@media (max-width: 750px){
+    footer h2 {
+        font-size: 16px;
+    }
+    footer li , footer p{
+        font-size: 13px;
+    }
+
+    .footer-content{
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+    .footer-copyright{
+        font-size: 12px;
+    }
+}

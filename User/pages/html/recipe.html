@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/home-nav.css">
+  <link rel="stylesheet" href="../css/all.min.css">
+  <link rel="stylesheet" href="../css/recipe.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rochester&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+  <link rel="shortcut icon" href="../../../imgs/logo-favicon.png" type="image/x-icon">
+  <title>Recipes</title>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <img src="../../../imgs/Logo-brown.png" alt="Logo">
+    </div>
+    <ul class="nav-links">
+      <li><a href="../../../index.html">Home</a></li>
+      <li><a href="../html/about.html">About</a></li>
+      <li><a href="../html/card-recipes.html">Recipes</a></li>
+      <li id="contactBtn"><a href="../html/contact.html">Contact us</a></li>
+      <li id="favouritesBtn"><a class="favourites" href="../html/favourites.html">
+          <i class="fa-solid fa-heart"></i></a>
+      </li>
+      <li id="profileBtn"><a href="../html/profile.html">
+          <i class="fa-solid fa-user"></i>
+        </a></li>
+      <div class="seperator">
+        <span>|</span>
+      </div>
+      <li id="loginBtn" class="auth-btn1"><a href="../../../Login & Register/pages/html/authentication.html">Login</a></li>
+      <li id="registerBtn" class="auth-btn2"><a href="../../../Login & Register/pages/html/authentication.html">Register</a>
+      </li>
+    </ul>
+
+    <div class="menu-container">
+      <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+      <label for="menu-toggle" class="menu-icon">☰</label>
+      <ul class="mobile-nav">
+        <div class="names">
+            <li><a href="../../../index.html">Home</a></li>
+            <li><a href="../html/about.html">About</a></li>
+            <li><a href="../html/card-recipes.html">Recipes</a></li>
+            <li><a href="../html/contact.html">Contact us</a></li>
+        </div>
+        <div class="icons">
+            <li class="favourites"><a class="favourites" href="../html/favourites.html">
+                    <i class="fa-solid fa-heart"></i></a>
+            </li>
+            <li id="profileBtn"><a href="../html/profile.html">
+                    <i class="fa-solid fa-user"></i> </a>
+            </li>
+            <li id="loginBtn"><a href="../../../Login & Register/pages/html/authentication.html">Login</a></li>
+            <li id="registerBtn"><a href="../../../Login & Register/pages/html/authentication.html">Register</a></li>
+        </div>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="main-container">
+
+    <main class="content">
+      <h1 id="recipe-title">Loading...</h1>
+      <div class="recipe-container">
+        <div class="gif-column">
+          <img src="../../../imgs/Piza1.webp" alt="GIF 1" class="gif-circle">
+          <img src="../../../imgs/piza2.avif" alt="GIF 3" class="gif-circle">
+          <img src="../../../imgs/piza3.webp" alt="GIF 2" class="gif-circle">
+          <img src="../../../imgs/piza4.avif" alt="GIF 4" class="gif-circle">
+        </div>
+        <img id="recipe-image" src="" alt="Recipe Image" class="recipe-image">
+        <div class="gif-column">
+          <img src="../../../imgs/piza5.png" alt="GIF 1" class="gif-circle">
+          <img src="../../../imgs/piza6.jpg" alt="GIF 3" class="gif-circle">
+          <img src="../../../imgs/piza7.jpg" alt="GIF 2" class="gif-circle">
+          <img src="../../../imgs/piza8.avif" alt="GIF 4" class="gif-circle">
+        </div>
+      </div>
+      <p id="recipe-description" class="recipe-description"></p>
+      <div class="buttons">
+        <a id="video-link" href="#" target="_blank" class="video-btn">
+          <i class="fab fa-youtube"></i> Watch Video
+        </a>
+      </div>
+    </main>
+
+    <aside class="sidebar-right">
+      <h2 class="firsth2">Ingredients</h2>
+      <ul id="ingredients-list" class="ingredients-list"></ul>
+      <h2>Nutritional Information</h2>
+      <ul id="nutritional-info" class="nutritional-info"></ul>
+      <h2>Preparation Steps</h2>
+      <ol id="preparation-steps" class="preparation-steps"></ol>
+      <h2>Cooking Time</h2>
+      <p id="cooking-time" class="cooking-time"></p>
+      <h2 id="helpful">Helpful?</h2>
+      <div id="user-rating" class="rating">
+        <i class="fa-solid fa-star" data-value="1"></i>
+        <i class="fa-solid fa-star" data-value="2"></i>
+        <i class="fa-solid fa-star" data-value="3"></i>
+        <i class="fa-solid fa-star" data-value="4"></i>
+        <i class="fa-solid fa-star" data-value="5"></i>
+      </div>
+      <p id="rating-feedback" class="rating-feedback"></p>
+    </aside>
+
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../js/footer.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/recipe.js"></script>
+  <script src="../../../index.js"></script>
+  <script src="../../../Login & Register/pages/js/authentication.js"></script>
+  <script src="../../../Login & Register/pages/js/adminAuth.js"></script>
+  <script src="../js/DesktopNavigation.js"></script>
+
+</body>
+
+</html>

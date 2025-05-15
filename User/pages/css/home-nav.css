@@ -1,0 +1,232 @@
+:root{
+  --bg-color: white;
+  --primary-color:#70974C;
+  --secondary-color: #F7AF89;
+  --font-color:#2d1c0a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+nav {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 80px;
+  background-color: #5530081d;
+}
+
+.logo img {
+  height: 65px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li {
+  display: inline;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--font-color);
+  font-size: 17px;
+  font-weight: 500;
+  padding: 6px;
+  border-radius: 10px;
+  transition: 0.3s;
+
+}
+
+.nav-links a:hover {
+  background-color: var(--font-color);
+  color: var(--bg-color);
+}
+
+.nav-links a.active {
+  background-color:#2d1c0a;
+  color: var(--bg-color);
+}
+
+.favourites i {
+  color: var(--font-color);
+}
+
+li:hover .favourites i {
+  color: red;
+}
+
+.nav-links li a.favourites.active i {
+  color: red; 
+}
+
+.menu-container {
+  position: relative;
+  display: none;
+} 
+
+.menu-checkbox {
+  display: none;
+}
+
+.menu-icon {
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  top: 10px;
+  right: 30px;
+  z-index: 1001;
+  color: var(--font-color);
+  border-radius: 5px;
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 55px;
+  right: -100%;
+  width: 150px;
+  height: 350px;
+  background: rgba(0, 0, 0, 0.9);
+  border-radius:  20px 20px 20px 20px;
+  padding-inline: 20px;
+  transition: right 0.4s ease-in-out;
+  z-index: 1000;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  text-align: center;
+  
+}
+
+.names {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.icons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 12px;
+}
+
+.mobile-nav li a {
+  color: var(--bg-color);
+  font-size: 20px;
+  padding-block: 10px;
+  text-align: center;
+  gap: 20px;
+}
+
+.mobile-nav li a {
+  color: var(--bg-color);
+  font-size: 16px;
+}
+
+.menu-checkbox:checked + .menu-icon + .mobile-nav {
+  right: 20px;
+}
+.auth-btn1 a, .auth-btn2 a{
+  color: var(--font-color);
+  transition: 0.5s;
+  padding: 7px 10px;
+
+}
+.auth-btn1 a:hover , .auth-btn2 a:hover{
+  color: var(--bg-color);
+  background-color: var(--font-color);
+  border-radius: 10px;
+}
+.seperator{
+  color: var(--font-color);
+}
+@media (max-width: 768px) {
+  nav {
+    padding-inline: 40px;
+  }
+
+  .menu-container {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+  }
+  .menu-icon {
+    display: block;
+  }
+}
+.btn-success , .btn-danger{
+  margin-inline: 5px;
+  padding: 10px 15px;
+}
+.my-swal-button {
+  background-color: #2d1c0a !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 5px !important;
+  padding: 10px 20px !important;
+  font-size: 16px !important;
+  transition: background-color 0.3s ease;
+}
+
+.my-swal-button:hover {
+  background-color: #FCF7E4 !important;
+  color: #2d1c0a !important;
+}
+.swal-login-btn {
+  background-color: var(--font-color);
+  color: var(--bg-color);
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.swal-login-btn:hover {
+  background-color: rgba(255, 255, 255, 0.587);
+  color: var(--font-color);
+  border: 1px solid var(--font-color);
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.swal-confirm-btn {
+  background-color: var(--font-color);
+  color: var(--bg-color);
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.swal-confirm-btn:hover {
+  background-color: rgba(255, 255, 255, 0.587);
+  color: var(--font-color);
+  border: 1px solid var(--font-color);
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.swal-cancel-btn {
+  background-color: var(--font-color);
+  color: var(--bg-color);
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.swal-cancel-btn:hover {
+  background-color: rgba(255, 255, 255, 0.587);
+  color: var(--font-color);
+  border: 1px solid var(--font-color);
+  transition: 0.3s;
+  font-weight: bold;
+}

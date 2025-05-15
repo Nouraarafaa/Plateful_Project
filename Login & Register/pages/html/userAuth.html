@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="shortcut icon" href="../../../imgs/logo-favicon.png"
+            type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rochester&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="./../css/login.css">
+        <link rel="stylesheet" href="../../../User/pages/css/home-nav.css">
+        <link rel="stylesheet" href="../css/all.min.css">
+    </head>
+
+    <body>
+        <nav>
+            <div class="logo">
+                <img src="../../../imgs/Logo-brown.png" alt="Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../User/pages/html/about.html">About</a></li>
+                <li><a
+                        href="../../../user/pages/html/card-recipes.html">Recipes</a></li>
+            </ul>
+
+            <div class="menu-container">
+                <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+                <label for="menu-toggle" class="menu-icon">☰</label>
+                <ul class="mobile-nav">
+                    <div class="names">
+                        <li><a href="../../../index.html">Home</a></li>
+                        <li><a
+                                href="../../../User/pages/html/about.html">About</a></li>
+                        <li><a
+                                href="../../../User/pages/html/card-recipes.html">Recipes</a></li>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="form-container" id="loginFormContainer">
+                <h2>Log in to Plateful</h2>
+                <form id="loginform">
+                    <input type="email" name="email" id="loginEmail"
+                        placeholder="E-mail" required>
+                    <input type="password" name="password" id="loginPassword"
+                        placeholder="Password" required>
+                    <div class="error">
+                        <p id="loginErrorMessage" class="error-message"
+                            style="display: none;">Invalid E-mail or
+                            password!</p>
+                    </div>
+                    <div class="login-btn">
+                        <button id="login" type="submit">Login</button>
+                    </div>
+                </form>
+                <p>Don’t have an account?<a href="#"
+                        id="signup">Register</a></p>
+            </div>
+            <div class="form-container" id="registerFormContainer"
+                style="display: none;">
+                <h2>Register in Plateful</h2>
+                <form id="registerform">
+                    <input type="text" name="first_name" id="registerFName"
+                        placeholder="First Name" required>
+                    <input type="text" name="last_name" id="registerLName"
+                        placeholder="Last Name" required>
+                    <input type="email" name="email" id="registerEmail"
+                        placeholder="E-mail" required>
+                    <input type="tel" name="phone" id="registerPhone"
+                        placeholder="Phone Number" required>
+                    <input type="password" name="password" id="registerPassword"
+                        placeholder="Password" required>
+                    <input type="password" name="password"
+                        id="registerConfirmPassword"
+                        placeholder="Confirm Password" required>
+                    <div class="error">
+                        <p id="registerErrorMessage" class="error-message"
+                            style="display: none;">E-mail is already exists!</p>
+                    </div>
+                    <div class="register-btn">
+                        <button id="register" type="submit">Register</button>
+                    </div> </form>
+                <p>You have an account?<a href="#" id="signin">Log in</a></p>
+            </div>
+
+            <!-- Image Section -->
+            <div class="image-container">
+                <img src="../../../imgs/register.svg" alt="Delicious Food">
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="../js/authentication.js"></script>
+    </body>

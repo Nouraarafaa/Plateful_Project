@@ -1,0 +1,317 @@
+:root{
+  --bg-color: rgb(252, 247, 247);
+  --primary-color:#FCF7E4;
+  --secondary-color: #FCF7E4;
+  --font-color:#2d1c0a;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+  background-color:var(--bg-color);
+}
+
+.search{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  gap: 5px;
+}
+.search i{
+  color: var(--font-color);
+}
+
+.search input{
+  border: none;
+  width: 500px;
+  height: 30px;
+  border-radius: 20px;
+  padding: 8px;
+  color: var(--font-color);
+  outline: var(--primary-color);
+}
+.cards-body {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Always maintain 5 columns */
+  gap: 20px; /* Space between cards */
+  margin-top: 50px;
+  margin-inline: 30px;
+  justify-items: center; /* Center cards horizontally */
+  align-items: start; /* Align cards to the top */
+  min-height: 300px; /* Ensure the grid has a minimum height */
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.587);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  opacity: 1; /* Ensure cards are visible */
+  transform: scale(1); /* Ensure cards are scaled correctly */
+  transition: transform 0.5s ease-in-out; /* Smooth transition when hover ends */
+}
+.card:hover {
+  transform: scale(1.09);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+.card-image img {
+  margin: 10px;
+  width: 70%;
+  height: 90%;
+  border-radius:50% ;
+  object-fit: cover;
+  transition: transform 0.5s ease-in-out;
+}
+
+.card:hover .card-image img {
+  transform: rotate(360deg);
+}
+
+.card-content {
+  padding: 10px;
+}
+
+h2 {
+  color:var(--font-color);
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+p {
+  color:var(--font-color);
+  font-size: 14px;
+}
+
+.card-action {
+  padding: 10px;
+  border-radius: 0 0 12px 12px;
+}
+
+button {
+  border: none;
+  font-size: 14px;
+  padding: 8px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 500;
+  color:var(--bg-color);
+  background-color: var(--font-color);
+}
+
+.view-recipe-btn {
+  background-color: var(--font-color);
+  color: var(--bg-color);
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.view-recipe-btn:hover {
+  background-color: rgba(255, 255, 255, 0.587);
+  color: var(--font-color);
+  border: 1px solid var(--font-color);
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  color:var(--bg-color);}
+
+a:hover {
+  color: var(--bg-color);
+}
+
+button:hover{
+  color: var(--bg-color);
+  background-color:var(--primary-color);
+}
+.addFavourites{
+  background-color: transparent;
+  color: var(--font-color);
+  font-size: 18px;
+}
+.addFavourites:hover{
+  color: #AA080C;
+  background-color: transparent;
+}
+.addFavourites.active {
+  color: red;
+  background-color: transparent;}
+
+.addFavourites.active:hover {
+  opacity: 0.8;
+}
+.details {
+  text-align: center;
+  padding: 30px 10px 0 10px;
+  border-radius: 10px;
+}
+.reviews{
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}
+.reviews .filled-star {
+  color: rgb(254, 216, 48); 
+}
+
+.reviews .half-star {
+  color: rgb(254, 216, 48); 
+}
+
+.reviews .empty-star {
+  color: #2d1c0a5a;
+}
+.items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Style for category items */
+.category-item {
+  padding: 10px;
+  background: #ffffff97;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  color: var(--font-color);
+}
+
+.category-item:hover , .active{
+  background: var(--font-color);
+  color: var(--bg-color);
+  transition: 0.4s;
+}
+
+/* Style for active category */
+.category-item.active {
+  background: var(--font-color); 
+  color: var(--bg-color); 
+  font-weight: bold;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Hide dropdown by default */
+.dropdown {
+  display: none;
+}
+.category-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.subcategory-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--font-color);
+  border: 1px solid #ccc;
+  z-index: 10;
+}
+
+.category-dropdown:hover .subcategory-menu {
+  display: block;
+  margin-top: 10px;
+}
+
+.subcategory-item {
+  display: block;
+  padding: 8px 12px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: var(--bg-color);
+}
+
+.subcategory-item:hover {
+  background-color: var(--bg-color);
+  color: var(--font-color);
+}
+
+/* Style for no results message */
+.no-results {
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 50vh; /* Set the height to 50% of the viewport */
+  width: 100%; /* Ensure it spans the full width of the container */
+  text-align: center; /* Center the text */
+  font-size: 18px; /* Adjust font size */
+  color: var(--font-color); /* Use the font color variable */
+  font-weight: bold; /* Make the text bold */
+  grid-column: 1 / -1; /* Span all columns in the grid */
+}
+
+.swal-remove-btn {
+  background-color: var(--font-color);
+  color: var(--bg-color);
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.swal-remove-btn:hover {
+  background-color: rgba(255, 255, 255, 0.587);
+  color: var(--font-color);
+  border: 1px solid var(--font-color);
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+
+@media (max-width: 1300px) {
+  .search input{    
+  width: 70%;
+  }
+  .items {
+    display: none; /* Hide category links */
+  }
+
+  .dropdown {
+      display: block; /* Show dropdown */
+  }
+
+  .dropdown select {
+      width: 70%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+  }
+
+  .cards-body {
+    grid-template-columns: repeat(4, 1fr); /* Reduce to 4 columns */
+  }
+}
+/* For screens smaller than 992px */
+@media (max-width: 1000px) {
+  .cards-body {
+    grid-template-columns: repeat(3, 1fr); /* Reduce to 3 columns */
+  }
+}
+
+/* For screens smaller than 768px */
+@media (max-width: 830px) {
+  .cards-body {
+    grid-template-columns: repeat(2, 1fr); /* Reduce to 2 columns */
+  }
+}
+
+/* For screens smaller than 576px */
+@media (max-width: 576px) {
+  .cards-body {
+    grid-template-columns: 1fr; /* Single column */
+  }
+}

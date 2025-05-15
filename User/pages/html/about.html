@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../../imgs/logo-favicon.png"type="image/x-icon">
+    <link rel="stylesheet" href="../css/all.min.css">
+    <link rel="stylesheet" href="../css/home-nav.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/about.css">
+    <!-- Preloading Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rochester&display=swap" rel="stylesheet">
+
+    <title>About Us</title>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+          <img src="../../../imgs/Logo-brown.png" alt="Logo">
+        </div>
+        <ul class="nav-links">
+          <li><a href="../../../index.html">Home</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li id="recipes"><a href="./card-recipes.html">Recipes</a></li>
+          <li id="contactBtn" id="userContact"><a href="./contact.html">Contact us</a></li>
+          <li id="favouritesBtn"><a class="favourites" href="./favourites.html">
+              <i class="fa-solid fa-heart"></i></a>
+          </li>
+
+          <li id="profileBtn"><a href="./profile.html">
+              <i class="fa-solid fa-user"></i>
+            </a></li>
+
+          <div class="seperator">
+            <span>|</span>
+          </div>
+          <li id="loginBtn" class="auth-btn1"><a href="../../../Login & Register/pages/html/authentication.html">Login</a></li>
+          <li id="registerBtn" class="auth-btn2"><a href="../../../Login & Register/pages/html/authentication.html">Register</a>
+          </li>
+        </ul>
+    
+        <div class="menu-container">
+          <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+          <label for="menu-toggle" class="menu-icon">☰</label>
+          <ul class="mobile-nav">
+            <div class="names">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../html/about.html">About</a></li>
+                <li><a href="../html/card-recipes.html">Recipes</a></li>
+                <li><a href="../html/contact.html">Contact us</a></li>
+            </div>
+            <div class="icons">
+                <li class="favourites"><a class="favourites" href="../html/favourites.html">
+                        <i class="fa-solid fa-heart"></i></a>
+                </li>
+                <li id="profileBtn"><a href="../html/profile.html">
+                        <i class="fa-solid fa-user"></i> </a>
+                </li>
+                <li id="loginBtn"><a href="../../../Login & Register/pages/html/authentication.html">Login</a></li>
+                <li id="registerBtn"><a href="../../../Login & Register/pages/html/authentication.html">Register</a></li>
+            </div>
+          </ul>
+        </div>
+      </nav>
+
+    <section>
+        <!--Thr main page content code (what will be edited)-->
+        <div id="home" class="home">
+            <div class="left">
+                <h2>Plateful</h2>
+                <p>A <span class='highlight_story'>Recipe Finder</span> website that makes cooking <span class='highlight'>easy</span> and <span class='highlight'>enjoyable</span>.<br>
+                    <span class='highlight_story'>Discover</span> new dishes and follow step-by-step instructions to create meals you’ll <span class='highlight'>love</span>.<br> 
+                    <span class='highlight_story'>Search</span> by ingredients, cuisine, or cooking time to quickly find the perfect recipe for any occasion.<br>
+                    <span class='highlight'>Simple</span>, <span class='highlight'>fun</span>, and always has a <span class='highlight_story'>story</span>.
+                </p>
+            </div>
+            <div class="right">
+                <img src="../../../imgs/dish-2.png" alt="home-img">
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../js/navigation.js"></script>
+    <script src="../js/DesktopNavigation.js"></script>
+    <script src="../js/footer.js"></script>
+    <script src="../../../index.js"></script>
+    <script src="../../../Login & Register/pages/js/authentication.js"></script>
+    <script src="../../../Login & Register/pages/js/adminAuth.js"></script>
+</body>
+
+</html>

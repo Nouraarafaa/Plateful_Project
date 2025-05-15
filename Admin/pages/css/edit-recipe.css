@@ -1,0 +1,169 @@
+:root{
+  --bg-color: rgb(252, 247, 247);
+  --primary-color:rgba(255, 255, 255, 0.587);
+  --secondary-color: #FCF7E4;
+  --font-color:#2d1c0a;
+}
+body{
+  font-family: "Montserrat", sans-serif;
+}
+.edit-container {
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 800px;
+    background: #ffffff58;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .edit-container h1 {
+    text-align: center;
+    color: var(--font-color);
+    margin-bottom: 50px;
+    font-weight: bold;
+  }
+  
+  .edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .edit-form label {
+    font-size: 16px;
+    color: var(--font-color);
+    font-weight: bold;
+    
+  }
+  
+  .edit-form input,
+  .edit-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--font-color);
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+    color: var(--font-color);
+    background-color: #fff;
+  }
+  
+  .edit-form textarea {
+    resize: none;
+    height: 100px;
+  }
+  
+  .edit-form button {
+    align-self: center;
+    padding: 10px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color:var(--font-color);
+    color:var(--bg-color);
+    transition : all 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  .edit-form button:hover{
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    border: 2px solid var(--font-color);
+  }
+
+  .edit-form button:hover a {
+    color: var(--font-color);
+    text-decoration: none;
+  }
+
+  .image-edit label {
+  display: block; /* Ensure the label is on its own line */
+  margin-bottom: 10px; /* Add margin below the label */
+  }
+  
+  .image-edit-container {
+    display: flex;
+    align-items: center; 
+    justify-content: flex-end; 
+    gap: 20px; 
+  }
+  
+  .image-preview {
+    order: 2; 
+    flex-shrink: 0;
+    margin-top: 30px;
+  }
+  
+  .image-preview img {
+    max-width: 150px; 
+    max-height: 150px; 
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .image-edit {
+    order: 1; 
+    flex-grow: 1;
+    flex-direction: column;
+    gap: 10px; 
+  }
+
+/* Container for nutritional information */
+.nutritional-info-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Individual nutritional info box */
+.nutritional-info-box {
+  flex: 1 1 calc(50% - 20px); /* Two columns layout */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+/* Labels inside the nutritional info box */
+.nutritional-info-box label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+}
+
+/* Inputs inside the nutritional info box */
+.nutritional-info-box input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Input focus effect */
+.nutritional-info-box input:focus {
+  border-color: #2d1c0a; /* Dark brown color */
+  box-shadow: 0 0 5px rgba(45, 28, 10, 0.2);
+}
+
+.swal-ok-btn {
+  background-color: var(--font-color);
+  color: var(--bg-color);
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.swal-ok-btn:hover {
+  background-color: rgba(255, 255, 255, 0.587);
+  color: var(--font-color);
+  border: 1px solid var(--font-color);
+  transition: 0.3s;
+  font-weight: bold;
+}
