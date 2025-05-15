@@ -53,7 +53,7 @@ document.getElementById("registerform").addEventListener("submit", function (e) 
         },
     });
 
-    fetch("/users/register/", {
+    fetch("http://127.0.0.1:8000/api/auth/register/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -95,7 +95,7 @@ document.getElementById("registerform").addEventListener("submit", function (e) 
 });
 
 // Login form submission
-document.getElementById("loginform").addEventListener("submit", function (e) {
+document.getElementById("loginform").addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const email = document.getElementById("AdminId").value.trim();
@@ -110,36 +110,35 @@ document.getElementById("loginform").addEventListener("submit", function (e) {
         },
     });
 
-    fetch("/users/login/", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "X-CSRFToken": csrfToken,
-        },
-        body: JSON.stringify({
-            email: email,
-            password: password,
-        }),
-    })
-        .then((response) => {
-            Swal.close();
-            if (!response.ok) {
-                return response.json().then((data) => {
-                    throw new Error(data.detail || "Login failed.");
-                });
-            }
-            return response.json();
-        })
-        .then((data) => {
-            sessionStorage.setItem("access", data.access);
-            sessionStorage.setItem("refresh", data.refresh);
-            sessionStorage.setItem("loggedInRole", "admin");
-            Swal.fire("Welcome", `Hello, Admin!`, "success").then(() => {
-                window.location.href = "../../../Admin/pages/html/card-recipes.html";
-            });
-        })
-        .catch((error) => {
-            Swal.close();
-            Swal.fire("Error", error.message, "error");
+    try {
+        const response = await fetch("http://127.0.0.1:8000/api/auth/login/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": csrfToken,
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+            }),
         });
+
+        Swal.close();
+
+        if (!response.ok) {
+            const data = await response.json();
+            throw new Error(data.detail || "Login failed.");
+        }
+
+        const data = await response.json();
+        sessionStorage.setItem("access", data.access);
+        sessionStorage.setItem("refresh", data.refresh);
+        sessionStorage.setItem("loggedInRole", "admin");
+
+        await Swal.fire("Welcome", `Hello, Admin!`, "success");
+        window.location.href = "../../../Admin/pages/html/card-recipes.html";
+    } catch (error) {
+        Swal.close();
+        await Swal.fire("Error", error.message, "error");
+    }
 });
