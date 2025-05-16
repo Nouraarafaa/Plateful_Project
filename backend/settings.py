@@ -4,10 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Complaint
 from .serializers import ComplaintSerializer
-from django.views.decorators.csrf import csrf_exempt
-from django.utils.decorators import method_decorator
 
-@method_decorator(csrf_exempt, name='dispatch')
 class ComplaintCreateView(APIView):
     def post(self, request):
         serializer = ComplaintSerializer(data=request.data)
@@ -25,3 +22,14 @@ class ComplaintListView(APIView):
 class ComplaintDeleteView(DestroyAPIView):
     queryset = Complaint.objects.all()
     serializer_class = ComplaintSerializer
+
+INSTALLED_APPS = [
+    # ...existing code...
+    'corsheaders',
+    # ...existing code...
+]
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    # ...existing code...
+]
+CORS_ALLOW_ALL_ORIGINS = True  # For development only!
