@@ -90,6 +90,14 @@ document.getElementById("loginform").addEventListener("submit", function (e) {
             localStorage.setItem("access", data.access);
             localStorage.setItem("refresh", data.refresh);
             localStorage.setItem("loggedInRole", "user");
+            // Store all user info in localStorage for navigation and profile
+            localStorage.setItem("loggedInUser", JSON.stringify({
+                firstName: data.first_name,
+                lastName: data.last_name,
+                email: data.email,
+                phone: data.phone,
+                userId: data.id
+            }));
             Swal.fire({
                 title: "Welcome",
                 text: `Hello, User!`,

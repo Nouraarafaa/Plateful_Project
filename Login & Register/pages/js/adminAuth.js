@@ -131,9 +131,17 @@ document.getElementById("loginform").addEventListener("submit", async function (
         }
 
         const data = await response.json();
-        sessionStorage.setItem("access", data.access);
-        sessionStorage.setItem("refresh", data.refresh);
-        sessionStorage.setItem("loggedInRole", "admin");
+        localStorage.setItem("access", data.access);
+        localStorage.setItem("refresh", data.refresh);
+        localStorage.setItem("loggedInRole", "admin");
+        // Store all admin info in localStorage for navigation and profile
+        localStorage.setItem("loggedInAdmin", JSON.stringify({
+            firstName: data.first_name,
+            lastName: data.last_name,
+            email: data.email,
+            phone: data.phone,
+            adminId: data.id
+        }));
 
         await Swal.fire("Welcome", `Hello, Admin!`, "success");
         window.location.href = "../../../Admin/pages/html/card-recipes.html";
