@@ -106,7 +106,7 @@ DATABASES = {
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:3000",  # Frontend URL
+    "http://127.0.0.1:3000",
     "http://127.0.0.1:5500",
 ]
 MIDDLEWARE.insert(1, 'corsheaders.middleware.CorsMiddleware')
