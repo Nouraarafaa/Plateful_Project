@@ -150,7 +150,7 @@ USE_TZ = True
 import os
 STATIC_URL = 'static/'
 
-STATIC_ROOT=os.path.join(BASE_DIR,'static')   ###joining the front_end with the back_end
+# STATIC_ROOT=os.path.join(BASE_DIR,'static')   ###joining the front_end with the back_end
 # STATICFILES_DIRS  = [os.path.join(BASE_DIR,'plateful_core/static')]   ###joining the front_end with the ba
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
