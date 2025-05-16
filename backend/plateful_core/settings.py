@@ -44,10 +44,6 @@ INSTALLED_APPS = [
     'recipes.apps.RecipesConfig',
     'contact',
     'corsheaders',
-    'users.apps.UsersConfig',  
-    'recipes.apps.RecipesConfig',
-    'contact',
-    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -112,8 +108,10 @@ DATABASES = {
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",  # Frontend URL
     "http://127.0.0.1:5500",
-MIDDLEWARE.insert(1, 'corsheaders.middleware.CorsMiddleware')
 ]
+MIDDLEWARE.insert(1, 'corsheaders.middleware.CorsMiddleware')
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 

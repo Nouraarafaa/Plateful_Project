@@ -9,14 +9,13 @@ __pycache__/
 */migrations/
 !*/migrations/__init__.py
 
-# SQLite database
-db.sqlite3
 
 # Virtual environment
 env/
 venv/
 ENV/
 .venv/
+venv/
 
 # VSCode settings
 .vscode/
