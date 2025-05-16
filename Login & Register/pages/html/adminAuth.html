@@ -44,7 +44,7 @@
         <div class="form-container" id="loginFormContainer">
             <h2>Log in to Plateful</h2>
             <form id="loginform">
-                <input type="text" name="id" id="AdminId" placeholder="Admin ID" required>
+                <input type="text" name="id" id="AdminId" placeholder="E-mail" required>
                 <input type="password" name="password" id="loginPassword" placeholder="Password" required>
                 <div class="error">
                     <p id="loginErrorMessage" class="error-message" style="display: none;">Invalid E-mail or password!
@@ -59,14 +59,14 @@
         <div class="form-container" id="registerFormContainer" style="display: none;">
             <h2>Register in Plateful</h2>
             <form id="registerform">
-                <input type="text" id="adminId" placeholder="Admin ID" required> <!-- This one can stay -->
+                <!-- <input type="text" id="adminId" placeholder="Admin ID" required> This one can stay -->
 
-                <input type="text" id="registerFName" placeholder="First Name" required>
-                <input type="text" id="registerLName" placeholder="Last Name" required>
-                <input type="email" id="registerEmail" placeholder="E-mail" required>
-                <input type="tel" id="registerPhone" placeholder="Phone Number" required>
-                <input type="password" id="registerPassword" placeholder="Password" required>
-                <input type="password" id="registerConfirmPassword" placeholder="Confirm Password" required>
+                <input type="text" id="registerFName" name="first_name" placeholder="First Name" required>
+                <input type="text" id="registerLName" name="last_name" placeholder="Last Name" required>
+                <input type="email" id="registerEmail" name="email" placeholder="E-mail" required>
+                <input type="tel" id="registerPhone" name="phone" placeholder="Phone Number" required>
+                <input type="password" id="registerPassword" name="password" placeholder="Password" required>
+                <input type="password" id="registerConfirmPassword" name="password" placeholder="Confirm Password" required>
 
                 <div class="error">
                     <p id="registerErrorMessage" class="error-message" style="display: none;">E-mail is already exists!

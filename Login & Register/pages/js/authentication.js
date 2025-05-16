@@ -10,7 +10,7 @@ document.getElementById("signin").addEventListener("click", () => {
 });
 
 // Register form submission
-document.getElementById("registerform").addEventListener("submit", function (e) {
+document.getElementById("registerform").addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const firstName = document.getElementById("registerFName").value.trim();
@@ -21,46 +21,44 @@ document.getElementById("registerform").addEventListener("submit", function (e) 
     const confirmPassword = document.getElementById("registerConfirmPassword").value;
 
     if (password !== confirmPassword) {
-        Swal.fire("Error", "Passwords do not match!", "error");
+        await Swal.fire("Error", "Passwords do not match!", "error");
         return;
     }
 
-    fetch("/auth/register/", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            first_name: firstName,
-            last_name: lastName,
-            email: email,
-            phone: phone,
-            role: "user",
-            password: password,
-        }),
-    })
-        .then((response) => {
-            if (!response.ok) {
-                return response.json().then((data) => {
-                    throw new Error(data.detail || "Registration failed.");
-                });
-            }
-            return response.json();
-        })
-        .then(() => {
-            Swal.fire({
-                title: "Success",
-                text: "Registered successfully!",
-                icon: "success",
-                confirmButtonText: "OK",
-            }).then(() => {
-                document.getElementById("registerform").reset();
-                document.getElementById("signin").click(); // Switch to login
-            });
-        })
-        .catch((error) => {
-            Swal.fire("Error", error.message, "error");
+    try {
+        const response = await fetch("http://127.0.0.1:8000/api/auth/register/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                first_name: firstName,
+                last_name: lastName,
+                email: email,
+                phone: phone,
+                role: "user",
+                password: password,
+            }),
         });
+
+        if (!response.ok) {
+            const data = await response.json();
+            throw new Error(data.detail || "Registration failed.");
+        }
+
+        await Swal.fire({
+            title: "Success",
+            text: "Registered successfully!",
+            icon: "success",
+            confirmButtonText: "OK",
+        });
+
+        document.getElementById("registerform").reset();
+        document.getElementById("signin").click(); // Switch to login
+    } catch (error) {
+        console.error(error);
+        await Swal.fire("Error", error.message, "error");
+    }
 });
 
 // Login form submission
@@ -70,7 +68,7 @@ document.getElementById("loginform").addEventListener("submit", function (e) {
     const email = document.getElementById("loginEmail").value.trim();
     const password = document.getElementById("loginPassword").value;
 
-    fetch("/auth/login/", {
+    fetch("http://127.0.0.1:8000/api/auth/login/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -92,6 +90,14 @@ document.getElementById("loginform").addEventListener("submit", function (e) {
             localStorage.setItem("access", data.access);
             localStorage.setItem("refresh", data.refresh);
             localStorage.setItem("loggedInRole", "user");
+            // Store all user info in localStorage for navigation and profile
+            localStorage.setItem("loggedInUser", JSON.stringify({
+                firstName: data.first_name,
+                lastName: data.last_name,
+                email: data.email,
+                phone: data.phone,
+                userId: data.id
+            }));
             Swal.fire({
                 title: "Welcome",
                 text: `Hello, User!`,
@@ -102,6 +108,7 @@ document.getElementById("loginform").addEventListener("submit", function (e) {
             });
         })
         .catch((error) => {
+            console.error(error); // Log error to console
             Swal.fire("Error", error.message, "error");
         });
 });
