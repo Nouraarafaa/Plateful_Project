@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 from datetime import timedelta
-    
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -39,6 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',   
+
+    'users.apps.UsersConfig',  
+    'recipes.apps.RecipesConfig',
+    'contact',
+    'corsheaders',
     'users.apps.UsersConfig',  
     'recipes.apps.RecipesConfig',
     'contact',
@@ -48,6 +53,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',  
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -102,12 +108,12 @@ DATABASES = {
     }
 }
 
-MIDDLEWARE.insert(1, 'corsheaders.middleware.CorsMiddleware')
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",  # Frontend URL
+    "http://127.0.0.1:5500",
+MIDDLEWARE.insert(1, 'corsheaders.middleware.CorsMiddleware')
 ]
-
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
