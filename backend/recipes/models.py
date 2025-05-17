@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import CustomUser
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
@@ -25,6 +26,13 @@ class Recipe(models.Model):
     ingredients = models.ManyToManyField(Ingredient)
     steps = models.ManyToManyField(Step)
 
+class Favorite(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='favorites')
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='favorited_by')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'recipe')
 
 #     from django.db import connection
 # with connection.cursor() as cursor:
