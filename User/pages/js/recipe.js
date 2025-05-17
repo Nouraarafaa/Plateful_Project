@@ -3,44 +3,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
     const recipeId = parseInt(params.get("id"));
 
-    // Check if recipes exist in local storage
-    const storedRecipes = localStorage.getItem("recipes");
+    // اجلب الوصفة مباشرة من الـ backend
+    fetch(`http://127.0.0.1:8000/api/recipes/${recipeId}/`)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Failed to fetch recipe");
+            }
+            return response.json();
+        })
+        .then((recipe) => {
+            displayRecipe(recipe);
+        })
+        .catch((error) => {
+            console.error("Error loading recipe:", error);
+            document.querySelector(".content").innerHTML = "<p>Failed to load recipe. Please try again later.</p>";
+            document.querySelector(".content").style.height = "50vh";
+        });
 
-    if (storedRecipes) {
-        // Use recipes from local storage
-        const recipes = JSON.parse(storedRecipes);
-        console.log("Loaded recipes from local storage:", recipes);
-
-        // Find and display the recipe
-        displayRecipe(recipes, recipeId);
-    } else {
-        // Fetch recipes from JSON file and save to local storage
-        fetch("http://127.0.0.1:8000/api/recipes/")
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Failed to fetch recipes");
-                }
-                return response.json();
-            })
-            .then((recipes) => {
-                console.log("Fetched recipes from JSON file:", recipes);
-
-                // Save recipes to local storage
-                localStorage.setItem("recipes", JSON.stringify(recipes));
-
-                // Find and display the recipe
-                displayRecipe(recipes, recipeId);
-            })
-            .catch((error) => {
-                console.error("Error loading recipes:", error);
-                document.querySelector(".content").innerHTML = "<p>Failed to load recipe. Please try again later.</p>";
-                document.querySelector(".content").style.height = "50vh";
-            });
-    }
-
-    function displayRecipe(recipes, recipeId) {
-        // Find the recipe with the matching ID
-        const recipe = recipes.find((r) => r.id === recipeId);
+    function displayRecipe(recipe) {
         if (!recipe) {
             console.error("Recipe not found");
             document.querySelector(".content").innerHTML = "<p>Recipe not found.</p>";
@@ -51,25 +31,24 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("recipe-title").textContent = recipe.title;
         document.getElementById("recipe-image").src = recipe.image;
         document.getElementById("recipe-image").alt = recipe.title;
-        document.getElementById("recipe-description").textContent = recipe.descriptionCooking;
-        document.getElementById("video-link").href = recipe.watchVideo;
+        document.getElementById("recipe-description").textContent = recipe.description; // أو recipe.descriptionCooking حسب اسم الحقل
+        document.getElementById("video-link").href = recipe.watch_video || recipe.Watchvideo || "#";
 
-        // Populate the ingredients list
+        // Ingredients
         const ingredientsList = document.getElementById("ingredients-list");
-        ingredientsList.innerHTML = ""; // Clear any existing content
-        recipe.ingrediants.forEach((ingredient) => {
+        ingredientsList.innerHTML = "";
+        (recipe.ingredients || []).forEach(ingredient => {
             const li = document.createElement("li");
-            li.textContent = ingredient.quantity? `${ingredient.name}: ${ingredient.quantity}`: `${ingredient.name}: unspecified quantity`;
+            li.textContent = ingredient.name ? `${ingredient.name} - ${ingredient.quantity}` : ingredient;
             ingredientsList.appendChild(li);
         });
 
-        // Populate the preparation steps
-        const preparationSteps = recipe.steps;
+        // Preparation Steps
         const stepsList = document.getElementById("preparation-steps");
-        stepsList.innerHTML = ""; // Clear any existing content
-        preparationSteps.forEach((step) => {
+        stepsList.innerHTML = "";
+        (recipe.steps || []).forEach(step => {
             const li = document.createElement("li");
-            li.textContent = step.description;
+            li.textContent = step.description || step;
 
             // Add click event to toggle completed state
             li.addEventListener("click", () => {
@@ -78,14 +57,15 @@ document.addEventListener("DOMContentLoaded", () => {
             stepsList.appendChild(li);
         });
 
-        // Populate the nutritional info
-        const nutritionalInfo = recipe.nutritional_info;
-        const nutritionalInfoDiv = document.getElementById("nutritional-info");
-        nutritionalInfoDiv.innerHTML = ""; // Clear any existing content
-        for (const [key, value] of Object.entries(nutritionalInfo)) {
-            const p = document.createElement("li");
-            p.textContent = `${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}`;
-            nutritionalInfoDiv.appendChild(p);
+        // Nutritional Info
+        const nutritionList = document.getElementById("nutritional-info");
+        nutritionList.innerHTML = "";
+        if (recipe.nutritional_info) {
+            Object.entries(recipe.nutritional_info).forEach(([key, value]) => {
+                const li = document.createElement("li");
+                li.textContent = `${key}: ${value}`;
+                nutritionList.appendChild(li);
+            });
         }
         
          // Populate the cooking time
@@ -127,12 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const sum = 5;
                 const weightedSum_0 = sum * recipe.rating;
                 recipe.rating = (weightedSum_0 + selectedRating)/(sum+1);
-                const updatedRecipes = recipes.map((r) =>
-                    r.id === recipeId ? { ...r, rating: recipe.rating } : r
-                );
-                //update in local storage
-                localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
-                
                 feedback.textContent = `You rated this recipe ${selectedRating} star(s)!`;
                 localStorage.setItem(`recipe-rating-${recipeId}`, selectedRating);
                 disableStars(); 

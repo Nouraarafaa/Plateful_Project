@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const topRecipesBody = document.querySelector(".popular-dishes-section");
 
     if (!topRecipesBody) {
-        console.error("Error: .popular-dishes-section element not found in the DOM.");
         return;
     }
 

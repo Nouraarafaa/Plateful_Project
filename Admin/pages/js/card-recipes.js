@@ -3,49 +3,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const categoryItems = document.querySelectorAll(".category-item, .subcategory-item");
     let allRecipes = [];
 
-    // Check if recipes exist in local storage
-    const storedRecipes = localStorage.getItem("recipes");
-
-    if (storedRecipes) {
-        // Use recipes from local storage
-        allRecipes = JSON.parse(storedRecipes);
-        // console.log("Loaded recipes from local storage:", allRecipes);
-        displayRecipes(allRecipes);
-    } else {
-        // Fetch recipes from JSON file and save to local storage
-        fetch("../../../User/data/recipes.json")
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Failed to fetch recipes");
-                }
-                return response.json();
-            })
-            .then((recipes) => {
-                // console.log("Recipes fetched:", recipes);
-                allRecipes = recipes;
-                localStorage.setItem("recipes", JSON.stringify(allRecipes));
-                displayRecipes(allRecipes);
-            })
-            .catch((error) => {
-                console.error("Error loading recipes:", error);
-                cardsBody.innerHTML = "<p>Failed to load recipes. Please try again later.</p>";
-            });
-    }
+    fetch("http://127.0.0.1:8000/api/recipes/")
+        .then((response) => response.json())
+        .then((data) => {
+            const recipes = Array.isArray(data) ? data : data.results;
+            allRecipes = recipes;
+            displayRecipes(allRecipes);
+        })
+        .catch((error) => {
+            console.error("Error loading recipes:", error);
+            cardsBody.innerHTML = "<p>Failed to load recipes. Please try again later.</p>";
+        });
 
     //enabling the search bar
     const searchInput = document.querySelector(".search input");
-    searchInput.addEventListener("keydown", (event) => {
+
+    searchInput.addEventListener("keydown", function(event) {
         if (event.key === "Enter") {
-            const query = searchInput.value.trim().toLowerCase();
-            // console.log(query)
-            
-            const filteredRecipes = allRecipes.filter((recipe) =>
-                recipe.title.toLowerCase().includes(query) 
-            );
-
-            // console.log("Filtered recipes:", filteredRecipes); 
-
-            displayRecipes(filteredRecipes); 
+            const query = searchInput.value.trim();
+            let url = "http://127.0.0.1:8000/api/recipes/";
+            if (query) {
+                url += `?search=${encodeURIComponent(query)}`;
+            }
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    const recipes = Array.isArray(data) ? data : data.results;
+                    displayRecipes(recipes);
+                });
         }
     });
 
@@ -69,11 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             </div>`;
         recipes.forEach((recipe) => {
-            // console.log("Displaying recipe:", recipe);
             const card = document.createElement("div");
             card.classList.add("card");
-
-            
 
             card.innerHTML = `
                 <button class="remove"> <i class="fa-solid fa-trash-can"></i> </button>
@@ -135,10 +117,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-
     categoryItems.forEach((item) => {
         item.addEventListener("click", () => {
-            const selectedCategory = item.textContent.trim();
+            var selectedCategory = item.textContent.trim();
             categoryItems.forEach((el) => el.classList.remove("active"));
             item.classList.add("active");
 
@@ -160,7 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 //removing the dropdown symbol
                 selectedCategory = selectedCategory.slice(0,-2)
                 selectedSubCategoriesNames.push(selectedCategory)
-                
                 const filteredRecipes = allRecipes.filter((recipe) =>
                     selectedSubCategoriesNames.some((subcategoryName) =>
                         recipe.category.includes(subcategoryName)
@@ -187,12 +167,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
     // dropdown category selection
     const dropdown = document.querySelector(".dropdown select");
     if (dropdown) {
         dropdown.addEventListener("change", () => {
             const selectedCategory = dropdown.value.trim(); 
-            // console.log("Selected category from dropdown:", selectedCategory);
 
             if (selectedCategory === "All") {
                 displayRecipes(allRecipes); 
@@ -201,7 +181,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const filteredRecipes = allRecipes.filter((recipe) =>
                     recipe.category.includes(selectedCategory) 
                 );
-                // console.log("selected recipes: ", filteredRecipes)
                 displayRecipes(filteredRecipes); 
             }
         });
