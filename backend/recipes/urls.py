@@ -4,7 +4,7 @@ from .views import RecipeViewSet, FavoriteViewSet
 
 router = DefaultRouter()
 router.register(r'recipes', RecipeViewSet)
-router.register(r'', FavoriteViewSet, basename='favorite')
+router.register(r'favourites', FavoriteViewSet, basename='favorite')
 
 urlpatterns = [
     path('', include(router.urls)),

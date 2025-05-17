@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const categoryItems = document.querySelectorAll(".category-item, .subcategory-item");
     let allRecipes = [];
 
-
     fetch("http://127.0.0.1:8000/api/recipes/")
         .then((response) => response.json())
         .then((data) => {
@@ -15,11 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Error loading recipes:", error);
             cardsBody.innerHTML = "<p>Failed to load recipes. Please try again later.</p>";
         });
-    
-    //enabling the search bar
-    const searchInput = document.querySelector(".search input");
 
-    searchInput.addEventListener("keydown", function(event) {
+    const searchInput = document.querySelector(".search input");
+    searchInput.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             const query = searchInput.value.trim();
             let url = "http://127.0.0.1:8000/api/recipes/";
@@ -37,52 +34,76 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function displayRecipes(recipes) {
         const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-        const userFavouritesKey = loggedInUser ? `favourites_${loggedInUser.email}` : "favourites";
-        const favourites = JSON.parse(localStorage.getItem(userFavouritesKey)) || [];
-    
+        const token = loggedInUser?.access;
+
         cardsBody.innerHTML = "";
-    
+
         if (recipes.length === 0) {
             cardsBody.innerHTML = `<p class="no-results">No recipes found for this category.</p>`;
             return;
         }
-    
+
+        if (!token) {
+            renderCards(recipes, []);
+            return;
+        }
+
+        // Get user favourites from API
+        fetch("http://127.0.0.1:8000/api/favourites/", {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(favourites => {
+                renderCards(recipes, favourites);
+            })
+            .catch(err => {
+                console.error("Failed to fetch favourites:", err);
+                renderCards(recipes, []);
+            });
+    }
+
+    function renderCards(recipes, favourites) {
+        cardsBody.innerHTML = "";
+
         recipes.forEach((recipe) => {
+            const fav = favourites.find(f => f.recipe === recipe.id);
+            const isFavourite = !!fav;
+
             const card = document.createElement("div");
             card.classList.add("card");
-    
-            const isFavourite = favourites.some((fav) => fav.id === recipe.id);
-    
+
             card.innerHTML = `
-            <div class="card-image">
-                <img src="${recipe.image}" alt="${recipe.title}">
-            </div>
-            <div class="card-content">
-                <h2>${recipe.title}</h2>
-                <p>${recipe.description}</p>
-                <div class="reviews">
-                    <span>${recipe.rating.toFixed(1)}</span>
-                    <span>
-                        ${generateStars(recipe.rating)}
-                    </span>
+                <div class="card-image">
+                    <img src="${recipe.image}" alt="${recipe.title}">
                 </div>
-            </div>
-            <div class="card-action">
-                <a href="../html/recipe.html?id=${recipe.id}" class="view-recipe-btn">View Recipe</a>
-                <button class="addFavourites ${isFavourite ? "active" : ""}" data-id="${recipe.id}">
-                    <i class="fa-solid fa-heart"></i>
-                </button>
-            </div>
+                <div class="card-content">
+                    <h2>${recipe.title}</h2>
+                    <p>${recipe.description}</p>
+                    <div class="reviews">
+                        <span>${recipe.rating.toFixed(1)}</span>
+                        <span>${generateStars(recipe.rating)}</span>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <a href="../html/recipe.html?id=${recipe.id}" class="view-recipe-btn">View Recipe</a>
+                    <button class="addFavourites ${isFavourite ? "active" : ""}" data-recipe-id="${recipe.id}" data-fav-id="${fav?.id || ""}">
+                        <i class="fa-solid fa-heart"></i>
+                    </button>
+                </div>
             `;
+
             cardsBody.appendChild(card);
         });
-    
-        // Add event listeners after rendering all cards
+
         const favButtons = document.querySelectorAll(".addFavourites");
         favButtons.forEach((button) => {
             button.addEventListener("click", () => {
                 const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-                if (!loggedInUser) {
+                if (!loggedInUser || !loggedInUser.access) {
                     Swal.fire({
                         icon: "warning",
                         title: "Login Required",
@@ -94,46 +115,62 @@ document.addEventListener("DOMContentLoaded", () => {
                     });
                     return;
                 }
-    
-                const userFavouritesKey = `favourites_${loggedInUser.email}`;
-                let favourites = JSON.parse(localStorage.getItem(userFavouritesKey)) || [];
-                const recipeId = parseInt(button.getAttribute("data-id"));
-                const recipe = recipes.find((r) => r.id === recipeId);
-    
-                if (!recipe) {
-                    console.error(`Recipe with ID ${recipeId} not found.`);
-                    return;
-                }
-    
+
+                const token = loggedInUser.access;
+                const recipeId = button.getAttribute("data-recipe-id");
+                const favId = button.getAttribute("data-fav-id");
+
                 if (button.classList.contains("active")) {
-                    // Remove from favourites
-                    favourites = favourites.filter((fav) => fav.id !== recipeId);
-                    localStorage.setItem(userFavouritesKey, JSON.stringify(favourites));
-                    button.classList.remove("active");
-    
-                    Swal.fire({
-                        title: "Recipe removed from your favourites.",
-                        text: "You can add it again anytime.",
-                        icon: "warning",
-                        confirmButtonText: "OK",
-                        confirmButtonColor: "#2d1c0a",
-                        customClass: {
-                            confirmButton: "swal-remove-btn"
-                        },
-                    });
+                    // Remove from favourites (DELETE)
+                    fetch(`http://127.0.0.1:8000/api/favourites/${favId}/`, {
+                        method: "DELETE",
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    })
+                        .then((res) => {
+                            if (!res.ok) throw new Error("Failed to remove favourite");
+                            button.classList.remove("active");
+                            button.removeAttribute("data-fav-id");
+                            Swal.fire({
+                                title: "Recipe removed from your favourites.",
+                                text: "You can add it again anytime.",
+                                icon: "warning",
+                                confirmButtonText: "OK",
+                                confirmButtonColor: "#2d1c0a"
+                            });
+                        })
+                        .catch(err => {
+                            console.error(err);
+                            Swal.fire("Error", "Could not remove from favourites", "error");
+                        });
+
                 } else {
-                    // Add to favourites
-                    favourites.push(recipe);
-                    localStorage.setItem(userFavouritesKey, JSON.stringify(favourites));
-                    button.classList.add("active");
-    
-                    Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: "Recipe has been added to your Favourites Successfully!",
-                        showConfirmButton: false,
-                        timer: 1500,
-                    });
+                    // Add to favourites (POST)
+                    fetch(`http://127.0.0.1:8000/api/favourites/`, {
+                        method: "POST",
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ recipe: recipeId })
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            button.classList.add("active");
+                            button.setAttribute("data-fav-id", data.id);
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: "Recipe has been added to your Favourites Successfully!",
+                                showConfirmButton: false,
+                                timer: 1500,
+                            });
+                        })
+                        .catch(err => {
+                            console.error(err);
+                            Swal.fire("Error", "Could not add to favourites", "error");
+                        });
                 }
             });
         });

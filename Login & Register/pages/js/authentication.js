@@ -96,7 +96,9 @@ document.getElementById("loginform").addEventListener("submit", function (e) {
                 lastName: data.last_name,
                 email: data.email,
                 phone: data.phone,
-                userId: data.id
+                userId: data.id,
+                access: data.access, 
+                refresh: data.refresh 
             }));
             Swal.fire({
                 title: "Welcome",

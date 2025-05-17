@@ -21,6 +21,8 @@ class RecipeSerializer(serializers.ModelSerializer):
 
 
 class FavoriteSerializer(serializers.ModelSerializer):
+    recipe_details = RecipeSerializer(source='recipe', read_only=True)
+
     class Meta:
         model = Favorite
-        fields = ['id', 'recipe']        
+        fields = ['id', 'recipe', 'recipe_details']
