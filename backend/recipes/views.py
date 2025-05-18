@@ -41,6 +41,21 @@ class RecipeViewSet(viewsets.ModelViewSet):
                 models.Q(category__icontains=search)
             ).distinct()
         return queryset
+    def update(self, request, **kwargs):
+        # PUT or PATCH?
+        partial = kwargs.pop('partial', False)
+        # what id was passed in the request? return its current data
+        currentData = self.get_object()
+        # load new data from request
+        serializer = self.get_serializer(currentData, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        # update old data in the database
+        self.perform_update(serializer)
+        return Response(serializer.data)
+
+    def create(self, request, *args, **kwargs):
+        print(request.data)
+        return super().create(request, *args, **kwargs)
 
 class FavoriteViewSet(viewsets.ModelViewSet):
     serializer_class = FavoriteSerializer

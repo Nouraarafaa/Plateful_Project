@@ -96,23 +96,37 @@ document.addEventListener("DOMContentLoaded", () => {
             cancelButtonColor: "#70974C",
             confirmButtonText: "Yes, delete it!",
             cancelButtonText: "Cancel",
-            
         }).then((result) => {
             if (result.isConfirmed) {
-                // Remove the recipe from the recipes array
-                allRecipes = allRecipes.filter((recipe) => recipe.id !== recipeId);
-    
-                // Update local storage
-                localStorage.setItem("recipes", JSON.stringify(allRecipes));
-    
-                // Re-render the recipes
-                displayRecipes(allRecipes);
-    
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "The recipe has been deleted successfully.",
-                    icon: "success",
-                    confirmButtonColor: "#2d1c0a",
+                // Send DELETE request to backend
+                fetch(`http://127.0.0.1:8000/api/recipes/${recipeId}/`, {
+                    method: "DELETE"
+                })
+                .then(res => {
+                    if (!res.ok) throw new Error("Failed to delete recipe");
+                    // Remove the recipe from the recipes array
+                    allRecipes = allRecipes.filter((recipe) => recipe.id !== recipeId);
+
+                    // Update local storage
+                    localStorage.setItem("recipes", JSON.stringify(allRecipes));
+
+                    // Re-render the recipes
+                    displayRecipes(allRecipes);
+
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "The recipe has been deleted successfully.",
+                        icon: "success",
+                        confirmButtonColor: "#2d1c0a",
+                    });
+                })
+                .catch(err => {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Failed to delete recipe: " + err.message,
+                        icon: "error",
+                        confirmButtonColor: "#d33",
+                    });
                 });
             }
         });

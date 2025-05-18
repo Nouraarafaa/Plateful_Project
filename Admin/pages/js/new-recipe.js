@@ -1,37 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
     const editCont = document.querySelector(".edit-container");
-    const storedRecipes = localStorage.getItem("recipes");
 
-    if (storedRecipes) {
-        const recipes = JSON.parse(storedRecipes) || []; //The || is added in case the stored recipes array is empty
-        console.log("Loaded recipes from local storage:", recipes);
+    displayRecipeContent();
 
-        displayRecipeContent(recipes);
-    } else {
-        // Fetch recipes from JSON file and save to local storage
-        fetch("../../../User/data/recipes.json")
-            .then(res => res.json())
-            .then(recipes => {
-                console.log("Fetched recipes from JSON file:", recipes);
-
-                // Save recipes to local storage
-                localStorage.setItem("recipes", JSON.stringify(recipes));
-
-                displayRecipeContent(recipes);
-            })
-            .catch(err => {
-                console.error("Error loading recipes:", err);
-                editCont.innerHTML = `<p class="error">Failed to load the recipes to add to. Please try again later.</p>`;
-            });
-    }
-
-    function displayRecipeContent(recipes) {
-        editCont.innerHTML = ""; 
-
-
+    function displayRecipeContent() {
         editCont.innerHTML = `
             <h1>Add New Recipe</h1>
-            <form class="edit-form" method="POST" id="edit-recipe-form">
+            <form class="edit-form" method="POST" id="edit-recipe-form" enctype="multipart/form-data">
 
                 <label for="recipe-name">Recipe Name:</label>
                 <input type="text" id="recipe-name" name="recipe-name" placeholder="It may be called..." required>
@@ -43,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 </div>
 
-                <label for="recipe-name">Recipe Description:</label>
+                <label for="recipe-desc">Recipe Description:</label>
                 <input type="text" id="recipe-desc" name="recipe-desc" placeholder="How would you describe it?" required>
 
                 <label for="How to prepare the recipe">How to prepare:</label>
@@ -54,9 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 <label for="recipe-time">Cooking time (mins):</label>
                 <input type="text" id="recipe-time" name="recipe-time" placeholder="10 minutes" required>
-
-                                <label for="recipe-name">Recipe Description:</label>
-                <input type="text" id="recipe-desc" name="recipe-desc" placeholder="How would you describe it?" required>
 
                 <label for="recipe-nut">Nutritional information:</label>
                 <div class="nutritional-info-container">
@@ -83,31 +55,35 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
 
                 <label for="recipe-video">Recipe Video URL:</label>
-                <input type="url" id="recipe-video" name="recipe-video" placeholder="https://www.website.com (don’t forget the &quot;https://&quot;)"">
+                <input type="url" id="recipe-video" name="recipe-video" placeholder="https://www.website.com (don’t forget the &quot;https://&quot;)">
 
                 <button type="submit" class="save">Add Recipe</button>
             </form>
         `;
 
-
         const form = document.getElementById("edit-recipe-form");
         form.addEventListener("submit", (e) => {
-            e.preventDefault(); // Prevent the default form submission behavior
+            e.preventDefault();
 
-            // Get values from the form
+            // Gather form values
             const setTitle = document.getElementById("recipe-name").value;
             const setDesc = document.getElementById("recipe-desc").value;
-            const setSteps = document.getElementById("How to prepare the recipe").value.split('\n').map((description, index) => ({
-                id: index + 1,
-                description: description.trim()
-            }));
-            const setIngredients = document.getElementById("recipe-ingredients").value.split('\n').map(line => {
-                const [name, quantity] = line.split(':').map(part => part.trim());
-                return { 
-                    name: name || "", 
-                    quantity: quantity || "" 
-                };
-            });
+            const setSteps = document.getElementById("How to prepare the recipe").value
+                .split('\n')
+                .map((description, idx) => ({
+                    id: idx + 1,
+                    description: description.trim()
+                }));
+            const setIngredients = document.getElementById("recipe-ingredients").value
+                .split('\n')
+                .map((line, idx) => {
+                    const [name, quantity] = line.split(':').map(part => part.trim());
+                    return {
+                        id: idx + 1,
+                        name: name || "",
+                        quantity: quantity || "1"
+                    };
+                });
             const setNutritionalInfo = {
                 calories: parseInt(document.getElementById("recipe-nut-calories").value, 10),
                 carbohydrates: parseInt(document.getElementById("recipe-nut-carbohydrates").value, 10),
@@ -115,85 +91,60 @@ document.addEventListener("DOMContentLoaded", () => {
                 fat: parseInt(document.getElementById("recipe-nut-fat").value, 10),
                 fiber: parseInt(document.getElementById("recipe-nut-fiber").value, 10)
             };
-            
             const setTime = document.getElementById("recipe-time").value;
             const setVideo = document.getElementById("recipe-video").value;
             const imageInput = document.getElementById("recipe-image");
 
+
+            const formData = new FormData();
+            formData.append("title", setTitle);
+            formData.append("description", setDesc);
+            formData.append("nutritional_info", JSON.stringify(setNutritionalInfo));
+            formData.append("steps", JSON.stringify(setSteps));
+            formData.append("ingredients", JSON.stringify(setIngredients));
+            formData.append("watch_video", setVideo);
+            formData.append("cooking_time", setTime);
+            formData.append("rating", 4.6);
+            formData.append("difficulty", "Easy");
+            formData.append("category", JSON.stringify(["Fast Food"]));
+            formData.append("cuisine", "American");
+            formData.append("preparation_time", "10 minutes");
+            formData.append("total_time", "30 minutes");
+            formData.append("description_cooking", "Default");
+
+            // Only append image if a file is selected
             if (imageInput.files && imageInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    const setImage = e.target.result; // Base64 string of the image
-            
-                    // Create a new recipe object (with image)
-                    const newRecipe = {
-                        id: recipes.length > 0 ? Math.max(...recipes.map(recipe => recipe.id)) + 1 : 1, // Set ID to previous max ID + 1
-                        title: setTitle,
-                        description: setDesc,
-                        nutritional_info: setNutritionalInfo,
-                        steps: setSteps,
-                        ingrediants: setIngredients,
-                        watchVideo: setVideo,
-                        image: setImage,
-                        cooking_time: setTime,
-                        rating: 4.6
-                    };
-            
-                    // Update recipes array
-                    recipes.push(newRecipe);
-            
-                    // Update local storage
-                    localStorage.setItem("recipes", JSON.stringify(recipes));
-            
-                    // Show success message
-                    Swal.fire({
-                        title: "Success!",
-                        text: "New recipe added successfully!",
-                        icon: "success",
-                        confirmButtonText: "OK",
-                    customClass: {
-                        confirmButton: "swal-ok-btn"
-                    },
-                    });
-            
-                    // Reset the form
-                    form.reset();
-                };
-                reader.readAsDataURL(imageInput.files[0]); // Convert the file to a Base64 string
-            } else {
-                // Create a new recipe object (no image)
-                const newRecipe = {
-                    id: recipes.length > 0 ? Math.max(...recipes.map(recipe => recipe.id)) + 1 : 1, // Set ID to previous max ID + 1
-                    title: setTitle,
-                    description: setDesc,
-                    steps: setSteps,
-                    ingrediants: setIngredients,
-                    nutritional_info: setNutritionalInfo,
-                    cooking_time: setTime,
-                    watchVideo: setVideo,
-                    image: "",
-                    rating: 4.6
-                };
-            
-                // Update recipes array
-                recipes.push(newRecipe);
-            
-                // Update local storage
-                localStorage.setItem("recipes", JSON.stringify(recipes));
-            
-                // Show success message
+                formData.append("image", imageInput.files[0]);
+            }
+
+            fetch("http://127.0.0.1:8000/api/recipes/", {
+                method: "POST",
+                body: formData
+            })
+            .then(res => {
+                if (!res.ok) throw new Error("Failed to add recipe");
+                return res.json();
+            })
+            .then(data => {
                 Swal.fire({
                     title: "Success!",
-                    text: "New recipe is added successfully!",
+                    text: "New recipe added successfully!",
                     icon: "success",
                     confirmButtonText: "OK",
                     customClass: {
                         confirmButton: "swal-ok-btn"
                     },
                 });
-                // Reset the form
                 form.reset();
-            }
+            })
+            .catch(err => {
+                Swal.fire({
+                    title: "Error!",
+                    text: "Failed to add recipe: " + err.message,
+                    icon: "error",
+                    confirmButtonText: "OK"
+                });
+            });
         });
     }
 });

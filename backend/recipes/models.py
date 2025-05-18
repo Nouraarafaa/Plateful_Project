@@ -11,7 +11,7 @@ class Step(models.Model):
 class Recipe(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    image = models.ImageField(upload_to='recipes/images/')
+    image = models.ImageField(upload_to='recipes/images/', null=True, blank=True)
     rating = models.FloatField()
     difficulty = models.CharField(max_length=50)
     category = models.JSONField()
