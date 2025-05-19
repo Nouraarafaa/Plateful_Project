@@ -191,25 +191,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 return res.json();
             })
             .then(data => {
-                Swal.fire({
-                    title: "Success!",
-                    text: "Recipe updated successfully!",
-                    icon: "success",
-                    confirmButtonText: "OK",
-                    customClass: {
-                        confirmButton: "swal-ok-btn"
-                    }
-                }).then(() => {
-                    window.location.replace("../html/card-recipes.html");
-                });
+                alert("Recipe updated successfully!");
+                window.location.replace("../html/card-recipes.html");
             })
             .catch(err => {
-                Swal.fire({
-                    title: "Error!",
-                    text: "Error updating recipe: " + err.message,
-                    icon: "error",
-                    confirmButtonText: "OK"
-                });
+                alert("Error updating recipe: " + err.message);
             });
         });
     }
