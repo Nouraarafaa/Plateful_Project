@@ -36,9 +36,12 @@ class RecipeSerializer(serializers.ModelSerializer):
         ingredients_data = validated_data.pop('ingredients', None)
         steps_data = validated_data.pop('steps', None)
 
-        # Update basic fields
+        # Only update the image if it's in validated_data
+        image = validated_data.pop('image', None)
         for attr, value in validated_data.items():
             setattr(instance, attr, value)
+        if image is not None:
+            instance.image = image
         instance.save()
 
         # Update ingredients if provided

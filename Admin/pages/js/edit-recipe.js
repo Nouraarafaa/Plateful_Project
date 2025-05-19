@@ -30,7 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
             <form class="edit-form" method="POST" id="edit-recipe-form">
 
                 <label for="recipe-name">Recipe Name:</label>
-                <input type="text" id="recipe-name" name="recipe-name" value="${recipeToEdit.title}" required>
+                <input type="text" id="recipe-name" name="recipe-name" 
+                    value="${recipeToEdit.title}" 
+                    placeholder="It may be called..." required>
 
                 <div class="image-edit-container">
                     <div class="image-preview">
@@ -43,46 +45,64 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
 
                 <label for="recipe-desc">Recipe Description:</label>
-                <input type="text" id="recipe-desc" name="recipe-desc" value="${recipeToEdit.description}" required>
+                <input type="text" id="recipe-desc" name="recipe-desc" 
+                    value="${recipeToEdit.description}" 
+                    placeholder="How would you describe it?" required>
 
                 <label for="How to prepare the recipe">How to prepare:</label>
-                <textarea id="How to prepare the recipe" name="How to prepare the recipe">${recipeToEdit.steps ? recipeToEdit.steps.map(step => step.description).join('\n') : ''}</textarea>
+                <textarea id="How to prepare the recipe" name="How to prepare the recipe"
+                    placeholder="step 1\nstep2\nstep3\netc...">${recipeToEdit.steps ? recipeToEdit.steps.map(step => step.description).join('\n') : ''}</textarea>
 
                 <label for="recipe-ingredients">Ingredients:</label>
-                <textarea id="recipe-ingredients" name="recipe-ingredients">${recipeToEdit.ingredients ? recipeToEdit.ingredients.map(ingredient => {
+                <textarea id="recipe-ingredients" name="recipe-ingredients"
+                    placeholder="ingredient1: this much\ningredient2: that much\netc...">${recipeToEdit.ingredients ? recipeToEdit.ingredients.map(ingredient => {
                     const { name, quantity } = ingredient;
                     return quantity ? `${name}: ${quantity}` : `${name}: no specified quantity`;
                 }).join('\n') : ''}</textarea>
 
                 <label for="recipe-time">Cooking time (mins):</label>
-                <input type="text" id="recipe-time" name="recipe-time" value="${recipeToEdit.cooking_time || ''}" required>
+                <input type="text" id="recipe-time" name="recipe-time" 
+                    value="${recipeToEdit.cooking_time || ''}" 
+                    placeholder="10 minutes" required>
 
                 <label for="recipe-nut">Nutritional information:</label>
                 <div class="nutritional-info-container">
                     <div class="nutritional-info-box">
                         <label for="recipe-nut-calories">Calories (kcal):</label>
-                        <input type="number" id="recipe-nut-calories" name="recipe-nut-calories" value="${recipeToEdit.nutritional_info?.calories || ''}" required>
+                        <input type="number" id="recipe-nut-calories" name="recipe-nut-calories" 
+                            value="${recipeToEdit.nutritional_info?.calories || ''}" 
+                            placeholder="10" required>
                     </div>
                     <div class="nutritional-info-box">
                         <label for="recipe-nut-carbohydrates">Carbohydrates (g):</label>
-                        <input type="number" id="recipe-nut-carbohydrates" name="recipe-nut-carbohydrates" value="${recipeToEdit.nutritional_info?.carbohydrates || ''}" required>
+                        <input type="number" id="recipe-nut-carbohydrates" name="recipe-nut-carbohydrates" 
+                            value="${recipeToEdit.nutritional_info?.carbohydrates || ''}" 
+                            placeholder="10" required>
                     </div>
                     <div class="nutritional-info-box">
                         <label for="recipe-nut-protein">Protein (g):</label>
-                        <input type="number" id="recipe-nut-protein" name="recipe-nut-protein" value="${recipeToEdit.nutritional_info?.protein || ''}" required>
+                        <input type="number" id="recipe-nut-protein" name="recipe-nut-protein" 
+                            value="${recipeToEdit.nutritional_info?.protein || ''}" 
+                            placeholder="10" required>
                     </div>
                     <div class="nutritional-info-box">
                         <label for="recipe-nut-fat">Fat (g):</label>
-                        <input type="number" id="recipe-nut-fat" name="recipe-nut-fat" value="${recipeToEdit.nutritional_info?.fat || ''}" required>
+                        <input type="number" id="recipe-nut-fat" name="recipe-nut-fat" 
+                            value="${recipeToEdit.nutritional_info?.fat || ''}" 
+                            placeholder="10" required>
                     </div>
                     <div class="nutritional-info-box">
                         <label for="recipe-nut-fiber">Fiber (g):</label>
-                        <input type="number" id="recipe-nut-fiber" name="recipe-nut-fiber" value="${recipeToEdit.nutritional_info?.fiber || ''}" required>
+                        <input type="number" id="recipe-nut-fiber" name="recipe-nut-fiber" 
+                            value="${recipeToEdit.nutritional_info?.fiber || ''}" 
+                            placeholder="10" required>
                     </div>
                 </div>
 
                 <label for="recipe-video">Recipe Video URL:</label>
-                <input type="url" id="recipe-video" name="recipe-video" value="${recipeToEdit.watchVideo || ''}">
+                <input type="url" id="recipe-video" name="recipe-video" 
+                    value="${recipeToEdit.watch_video || ''}" 
+                    placeholder="https://www.website.com (don’t forget the &quot;https://&quot;)">
 
                 <button type="submit" class="save">Save Changes</button>
             </form>
@@ -95,11 +115,23 @@ document.addEventListener("DOMContentLoaded", () => {
             // Gather updated values
             const updatedTitle = document.getElementById("recipe-name").value;
             const updatedDesc = document.getElementById("recipe-desc").value;
-            const updatedSteps = document.getElementById("How to prepare the recipe").value.split('\n').map((description, index) => ({
+            const stepsValue = document.getElementById("How to prepare the recipe").value.trim();
+            const ingredientsValue = document.getElementById("recipe-ingredients").value.trim();
+
+            if (!stepsValue) {
+                alert("Please enter at least one step for the recipe.");
+                return;
+            }
+            if (!ingredientsValue) {
+                alert("Please enter at least one ingredient for the recipe.");
+                return;
+            }
+
+            const updatedSteps = stepsValue.split('\n').map((description, index) => ({
                 id: index + 1,
                 description: description.trim()
             }));
-            const updatedIngredients = document.getElementById("recipe-ingredients").value.split('\n').map((line, idx) => {
+            const updatedIngredients = ingredientsValue.split('\n').map((line, idx) => {
                 const [name, quantity] = line.split(':').map(part => part.trim());
                 return {
                     id: idx + 1,
@@ -155,14 +187,29 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .then(res => {
                 if (!res.ok) throw new Error("Failed to update recipe");
+                if (res.status === 204) return {}; // No Content, treat as success
                 return res.json();
             })
             .then(data => {
-                alert("Recipe updated successfully!");
-                // Optionally, redirect or update the UI
+                Swal.fire({
+                    title: "Success!",
+                    text: "Recipe updated successfully!",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    customClass: {
+                        confirmButton: "swal-ok-btn"
+                    }
+                }).then(() => {
+                    window.location.replace("../html/card-recipes.html");
+                });
             })
             .catch(err => {
-                alert("Error updating recipe: " + err.message);
+                Swal.fire({
+                    title: "Error!",
+                    text: "Error updating recipe: " + err.message,
+                    icon: "error",
+                    confirmButtonText: "OK"
+                });
             });
         });
     }
