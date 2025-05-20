@@ -137,48 +137,25 @@ document.addEventListener("DOMContentLoaded", () => {
             categoryItems.forEach((el) => el.classList.remove("active"));
             item.classList.add("active");
 
-            if (selectedCategory === "All") {
-                item.classList.add("active");
-                displayRecipes(allRecipes);
-            }
-            else if(item.id === "parent")
-            {
-                item.classList.add("active");
-                //check if a recipe includes a category from the selected ones (subs)
-                const selectedSubCategories = Array.from(item.nextElementSibling.childNodes).filter(
-                    (child) => child.nodeType === 1 && child.classList.contains("subcategory-item") // Filter only elements with the class "subcategory-item"
-                );
+            let url = "http://127.0.0.1:8000/api/recipes/";
 
-                const selectedSubCategoriesNames = selectedSubCategories.map(
-                    (subcategory) => subcategory.textContent.trim()
-                ); 
-                //removing the dropdown symbol
-                selectedCategory = selectedCategory.slice(0,-2)
-                selectedSubCategoriesNames.push(selectedCategory)
-                const filteredRecipes = allRecipes.filter((recipe) =>
-                    selectedSubCategoriesNames.some((subcategoryName) =>
-                        recipe.category.includes(subcategoryName)
-                    )
-                );
-                displayRecipes(filteredRecipes);
+            if (selectedCategory !== "All") {
+                // Remove dropdown symbol if present
+                if (item.id === "parent") {
+                    selectedCategory = selectedCategory.slice(0, -2);
+                }
+                url += `?category=${encodeURIComponent(selectedCategory)}`;
+            }
 
-            }
-            else if(item.classList[0] === "subcategory-item")
-            {
-                const parentCategory = item.closest(".subcategory-menu").previousElementSibling;
-                parentCategory.classList.add("active");
-                const filteredRecipes = allRecipes.filter(
-                    (recipe) => recipe.category.includes(selectedCategory)
-                );
-                displayRecipes(filteredRecipes);
-            }
-            else {
-                item.classList.add("active");
-                const filteredRecipes = allRecipes.filter(
-                    (recipe) => recipe.category.includes(selectedCategory)
-                );
-                displayRecipes(filteredRecipes);
-            }
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    const recipes = Array.isArray(data) ? data : data.results;
+                    displayRecipes(recipes);
+                })
+                .catch(error => {
+                    cardsBody.innerHTML = "<p>Failed to load recipes. Please try again later.</p>";
+                });
         });
     });
 

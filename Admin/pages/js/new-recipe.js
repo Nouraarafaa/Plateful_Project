@@ -4,6 +4,19 @@ document.addEventListener("DOMContentLoaded", () => {
     displayRecipeContent();
 
     function displayRecipeContent() {
+        const availableCategories = [
+            "Egyptian",
+            "Oriental",
+            "Western",
+            "Grilled",
+            "Sea Food",
+            "Pasta & Rice",
+            "Soups",
+            "Salads",
+            "Desserts",
+            "Drinks",
+        ];
+
         editCont.innerHTML = `
             <h1>Add New Recipe</h1>
             <form class="edit-form" method="POST" id="edit-recipe-form" enctype="multipart/form-data">
@@ -20,6 +33,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 <label for="recipe-desc">Recipe Description:</label>
                 <input type="text" id="recipe-desc" name="recipe-desc" placeholder="How would you describe it?" required>
+
+                <label for="category-select">Category:</label>
+                <select id="category-select" name="category-select" required>
+                    ${availableCategories.map(cat =>
+                        `<option value="${cat}">${cat}</option>`
+                    ).join("")}
+                </select>
 
                 <label for="How to prepare the recipe">How to prepare:</label>
                 <textarea id="How to prepare the recipe" name="How to prepare the recipe" placeholder="step 1\nstep2\nstep3\netc..."></textarea>
@@ -94,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const setTime = document.getElementById("recipe-time").value;
             const setVideo = document.getElementById("recipe-video").value;
             const imageInput = document.getElementById("recipe-image");
-
+            const setCategory = [document.getElementById("category-select").value];
 
             const formData = new FormData();
             formData.append("title", setTitle);
@@ -106,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
             formData.append("cooking_time", setTime);
             formData.append("rating", 4.6);
             formData.append("difficulty", "Easy");
-            formData.append("category", JSON.stringify(["Fast Food"]));
+            formData.append("category", JSON.stringify(setCategory));
             formData.append("cuisine", "American");
             formData.append("preparation_time", "10 minutes");
             formData.append("total_time", "30 minutes");

@@ -10,6 +10,20 @@ document.addEventListener("DOMContentLoaded", () => {
             return res.json();
         })
         .then(recipeToEdit => {
+            // Highlight the category in the categories bar if it exists
+            const categoryBar = document.querySelectorAll('.category-bar .category-item');
+            let recipeCategory = Array.isArray(recipeToEdit.category)
+                ? recipeToEdit.category[0]
+                : recipeToEdit.category || "";
+
+            categoryBar.forEach(item => {
+                if (item.textContent.trim() === recipeCategory) {
+                    item.classList.add("active");
+                } else {
+                    item.classList.remove("active");
+                }
+            });
+
             displayRecipeContent(recipeToEdit);
         })
         .catch(err => {
@@ -24,6 +38,25 @@ document.addEventListener("DOMContentLoaded", () => {
             editCont.innerHTML = `<p class="no-results">No recipe found for this ID.</p>`;
             return;
         }
+
+        // Define available categories (you can fetch this from the backend if needed)
+        const availableCategories = [
+            "Egyptian",
+            "Oriental",
+            "Western",
+            "Grilled",
+            "Sea Food",
+            "Pasta & Rice",
+            "Soups",
+            "Salads",
+            "Desserts",
+            "Drinks",
+        ];
+
+        // Get the current category (assume it's the first in the array if it's an array)
+        let currentCategory = Array.isArray(recipeToEdit.category)
+            ? recipeToEdit.category[0]
+            : recipeToEdit.category || "";
 
         editCont.innerHTML = `
             <h1>Edit Recipe</h1>
@@ -48,6 +81,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 <input type="text" id="recipe-desc" name="recipe-desc" 
                     value="${recipeToEdit.description}" 
                     placeholder="How would you describe it?" required>
+
+                <label for="category-select">Category:</label>
+                <select id="category-select" name="category-select" required>
+                    ${availableCategories.map(cat => 
+                        `<option value="${cat}"${cat === currentCategory ? " selected" : ""}>${cat}</option>`
+                    ).join("")}
+                </select>
 
                 <label for="How to prepare the recipe">How to prepare:</label>
                 <textarea id="How to prepare the recipe" name="How to prepare the recipe"
@@ -117,6 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const updatedDesc = document.getElementById("recipe-desc").value;
             const stepsValue = document.getElementById("How to prepare the recipe").value.trim();
             const ingredientsValue = document.getElementById("recipe-ingredients").value.trim();
+            const updatedCategory = [document.getElementById("category-select").value];
 
             if (!stepsValue) {
                 alert("Please enter at least one step for the recipe.");
@@ -151,7 +192,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const imageInput = document.getElementById("recipe-image");
 
             // Add any other required fields here
-            const updatedCategory = ["Fast Food"]; // Or get from a select/input if needed
             const updatedDifficulty = "Easy"; // Or get from a select/input if needed
             const updatedCuisine = "American"; // Or get from a select/input if needed
             const updatedPreparationTime = "10 minutes";
@@ -191,11 +231,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 return res.json();
             })
             .then(data => {
-                alert("Recipe updated successfully!");
-                window.location.replace("../html/card-recipes.html");
+                Swal.fire({
+                    title: "Success!",
+                    text: "Recipe updated successfully!",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                    customClass: {
+                        confirmButton: "swal-ok-btn"
+                    }
+                });
             })
             .catch(err => {
-                alert("Error updating recipe: " + err.message);
+                Swal.fire({
+                    title: "Error!",
+                    text: "Error updating recipe: " + err.message,
+                    icon: "error",
+                    confirmButtonText: "OK"
+                });
             });
         });
     }
