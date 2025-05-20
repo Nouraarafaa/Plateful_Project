@@ -10,20 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return res.json();
         })
         .then(recipeToEdit => {
-            // Highlight the category in the categories bar if it exists
-            const categoryBar = document.querySelectorAll('.category-bar .category-item');
-            let recipeCategory = Array.isArray(recipeToEdit.category)
-                ? recipeToEdit.category[0]
-                : recipeToEdit.category || "";
-
-            categoryBar.forEach(item => {
-                if (item.textContent.trim() === recipeCategory) {
-                    item.classList.add("active");
-                } else {
-                    item.classList.remove("active");
-                }
-            });
-
             displayRecipeContent(recipeToEdit);
         })
         .catch(err => {
@@ -44,8 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
             "Egyptian",
             "Oriental",
             "Western",
+            "Fast Food",
             "Grilled",
-            "Sea Food",
+            "Seafood",
             "Pasta & Rice",
             "Soups",
             "Salads",

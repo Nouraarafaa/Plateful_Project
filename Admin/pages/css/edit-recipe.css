@@ -168,13 +168,13 @@ body{
   font-weight: bold;
 }
 
-/* Category dropdown styling */
+
 .edit-form select#category-select {
   width: 100%;
   padding: 10px;
   border: 1.5px solid var(--font-color);
   border-radius: 8px;
-  background-color: #fffbea;
+  background-color: #ffffff;
   color: var(--font-color);
   font-size: 15px;
   margin-bottom: 10px;
@@ -182,18 +182,7 @@ body{
   box-shadow: 0 2px 8px rgba(252, 247, 247, 0.08);
 }
 
-.edit-form select#category-select:focus {
-  border-color: #e0a96d;
-  outline: none;
-  background-color: #fff7e4;
-}
 
-.edit-form label[for="category-select"] {
-  margin-top: 8px;
-  color: #b77b2b;
-  font-size: 17px;
-  letter-spacing: 0.5px;
-}
 
 .edit-form select#category-select option {
   background: #fff;
